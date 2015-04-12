@@ -1,0 +1,42 @@
+{
+  "name": "bumped",
+  "description": "Makes easy release software.",
+  "homepage": "https://github.com/bumped/bumped",
+  "version": "0.0.0",
+  "main": "./bin/index.js",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": "https://github.com/bumped"
+  },
+  "repository": "bumped/bumped",
+  "bugs": {
+    "url": "https://github.com/bumped/bumped/issues"
+  },
+  "keywords": [
+    "semver"
+  ],
+  "dependencies": {
+    "acho": "*",
+    "async": "^0.9.0",
+    "finepack": "*",
+    "lodash": "*",
+    "meow": "*",
+    "oh-my-terminal": "*",
+    "rc": "*",
+    "semver": "*"
+  },
+  "devDependencies": {
+    "fs-extra": "^0.18.0",
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">= 1.4.0"
+  },
+  "scripts": {
+    "test": "sh test/test.sh"
+  },
+  "license": "MIT"
+}
