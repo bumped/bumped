@@ -11,7 +11,7 @@ module.exports = class Bumped
   constructor: (options) ->
     process.chdir options.scope if options.scope?
     @config = require('rc')(pkgJSON.name, {})
-    @version = @_syncVersion()
+    @version = @_lastVersion()
     this
 
   increment: (release) ->
@@ -29,7 +29,7 @@ module.exports = class Bumped
     fileoutput = JSON.stringify(file, null, 2) + os.EOL
     fs.writeFile filePath, fileoutput, encoding: 'utf8', cb
 
-  _syncVersion: ->
+  _lastVersion: ->
     versions = []
     versions.push require(path.resolve(file)).version for file in @config.files
     _.reduce versions, (max, version) -> max = version if semver.gt version, max
