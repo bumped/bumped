@@ -1,16 +1,20 @@
 fs      = require 'fs'
 os      = require 'os'
 path    = require 'path'
-semver  = require 'semver'
 _       = require 'lodash'
 async   = require 'async'
+semver  = require 'semver'
 pkgJSON = require '../package.json'
+CONST   =
+  DEFAULT_CONFIG:
+    files: ['package.json']
+
 
 module.exports = class Bumped
 
   constructor: (options) ->
     process.chdir options.scope if options.scope?
-    @config = require('rc')(pkgJSON.name, {})
+    @config = require('rc')(pkgJSON.name, CONST.DEFAULT_CONFIG)
     @version = @_lastVersion()
     this
 

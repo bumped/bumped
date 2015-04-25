@@ -4,6 +4,7 @@
   "homepage": "https://github.com/bumped/bumped",
   "version": "0.0.0",
   "main": "./bin/index.js",
+  "bin": "./bin/index.js",
   "author": {
     "name": "",
     "email": "",
@@ -18,16 +19,17 @@
   ],
   "dependencies": {
     "acho": "*",
-    "async": "^0.9.0",
+    "async": "*",
     "finepack": "*",
     "lodash": "*",
     "meow": "*",
     "oh-my-terminal": "*",
     "rc": "*",
-    "semver": "*"
+    "semver": "*",
+    "update-notifier": "*"
   },
   "devDependencies": {
-    "fs-extra": "^0.18.0",
+    "fs-extra": "*",
     "mocha": "*",
     "should": "*"
   },
