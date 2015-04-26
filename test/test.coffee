@@ -28,7 +28,7 @@ describe 'Bumped ::', ->
       @bumped.version().should.be.equal('0.2.0')
 
     it 'increment the version', (done) ->
-      @bumped.increment 'major', =>
+      @bumped.incrementVersion 'major', =>
         @bumped.version().should.be.equal('1.0.0')
         bower = require('./sample_directory/bower.json')
         bower.version.should.be.equal('1.0.0')

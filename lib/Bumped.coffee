@@ -24,6 +24,23 @@ module.exports = class Bumped
       @logger.success "Config file created!."
       cb()
 
+  version: (newVersion) ->
+    return @_version if arguments.length is 0
+    @_version = newVersion
+
+  syncVersion: (cb) =>
+    async.compose(@maxVersion, @filesVersion) (err, max) =>
+      @_version = max
+      cb()
+
+  incrementVersion: (release, cb) ->
+    newVersion = semver.inc @version(), release
+    @version newVersion
+    async.each @config.files, @saveVersion, (err) =>
+      @logError err, cb
+      @logger.success "Created version #{@version()}"
+      cb?()
+
   writeConfig: (cb) =>
     file = files: @config.files, plugins: []
     fs.writeFile ".#{pkg.name}rc", JSON.stringify(file, null, 2), encoding: 'utf8', cb
@@ -36,14 +53,6 @@ module.exports = class Bumped
           @addFile file, logger: false, next
     , cb
 
-  version: (newVersion) ->
-    return @_version if arguments.length is 0
-    @_version = newVersion
-
-  syncVersion: (cb) =>
-    async.compose(@maxVersion, @filesVersion) (err, max) =>
-      @_version = max
-      cb()
 
   filesVersion: (cb) =>
     async.map @config.files, (file, next) ->
@@ -67,14 +76,6 @@ module.exports = class Bumped
     @config.files.push name
     @logger.info "File '#{name}' added." if options.logger
     cb?()
-
-  increment: (release, cb) ->
-    newVersion = semver.inc @version(), release
-    @version newVersion
-    async.each @config.files, @saveVersion, (err) =>
-      @logError err, cb
-      @logger.success "Created version #{@version()}"
-      cb?()
 
   saveVersion: (file, cb) =>
     filepath = path.resolve file
