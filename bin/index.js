@@ -3,7 +3,7 @@
 require('coffee-script').register();
 var path = require('path'),
     Logger = require('acho'),
-    Bumped = require('./index.js'),
+    Bumped = require('./../lib/Bumped'),
     updateNotifier = require('update-notifier'),
     cli = require('meow')({
       pkg: '../package.json',
@@ -20,3 +20,10 @@ var path = require('path'),
 
 updateNotifier({pkg: cli.pkg}).notify();
 if (cli.input.length === 0) cli.showHelp();
+
+var bumped = new Bumped({
+      logger: {color: true}
+    }),
+    action = cli.input.shift();
+
+bumped[action](cli.input);

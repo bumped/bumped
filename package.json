@@ -19,10 +19,9 @@
   ],
   "dependencies": {
     "acho": "*",
-    "async": "*",
     "finepack": "*",
-    "lodash": "*",
     "meow": "*",
+    "neo-async": "*",
     "oh-my-terminal": "*",
     "rc": "*",
     "semver": "*",
