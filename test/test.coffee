@@ -25,11 +25,11 @@ describe 'Bumped ::', ->
         done()
 
     it 'sync correctly the version between the files', ->
-      @bumped.version().should.be.equal('0.2.0')
+      @bumped.semver.version().should.be.equal('0.2.0')
 
     it 'increment the version', (done) ->
-      @bumped.incrementVersion 'major', =>
-        @bumped.version().should.be.equal('1.0.0')
+      @bumped.semver.increment 'major', =>
+        @bumped.semver.version().should.be.equal('1.0.0')
         bower = require('./sample_directory/bower.json')
         bower.version.should.be.equal('1.0.0')
         done()
