@@ -2,5 +2,9 @@
 
 Acho = require 'acho'
 
-module.exports = (optionsLogger) ->
-  new Acho optionsLogger
+Acho::errorHandler = (err, cb) ->
+  if err
+    logger.error err.message
+    return cb(err)
+
+module.exports = Acho

@@ -13,7 +13,7 @@ module.exports = class Semver
 
   sync: (cb) =>
     async.compose(@max, @versions) (err, max) =>
-      @_version = max
+      @bumped._version = max
       cb()
 
   versions: (cb) =>
@@ -33,7 +33,7 @@ module.exports = class Semver
     newVersion = semver.inc @version(), release
     @version newVersion
     async.each @bumped.config.files, @save, (err) =>
-      @bumped.errorHandler err, cb
+      @bumped.logger.errorHandler err, cb
       @bumped.logger.success "Created version #{@version()}"
       cb?()
 
@@ -45,5 +45,5 @@ module.exports = class Semver
     fs.writeFile filepath, fileoutput, encoding: 'utf8', cb
 
   version: (newVersion) ->
-    return @_version if arguments.length is 0
-    @_version = newVersion
+    return @bumped._version if arguments.length is 0
+    @bumped._version = newVersion
