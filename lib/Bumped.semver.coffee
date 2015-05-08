@@ -1,10 +1,10 @@
 'use strict'
 
+os     = require 'os'
+path   = require 'path'
 semver = require 'semver'
-async     = require 'neo-async'
-path      = require 'path'
-os      = require 'os'
-fs      = require 'fs-extra'
+fs     = require 'fs-extra'
+async  = require 'neo-async'
 
 module.exports = class Semver
 

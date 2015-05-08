@@ -1,9 +1,5 @@
 'use strict'
 
-fs      = require 'fs'
-os      = require 'os'
-Acho    = require 'acho'
-path    = require 'path'
 async   = require 'neo-async'
 Semver  = require './Bumped.semver'
 DEFAULT = require './Bumped.default'
