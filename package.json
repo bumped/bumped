@@ -20,6 +20,7 @@
   "dependencies": {
     "acho": "*",
     "finepack": "*",
+    "fn-partial": "*",
     "meow": "*",
     "neo-async": "*",
     "oh-my-terminal": "*",

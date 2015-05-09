@@ -18,18 +18,20 @@ describe 'Bumped ::', ->
       fs.removeSync("#{process.cwd()}/.#{pkg.name}rc")
 
     it 'initialize a configuration file', (done) ->
-      @bumped.init (err) ->
+      @bumped.init ->
         config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
         config = JSON.parse(config)
         config.files.length.should.be.equal 2
         done()
 
     it 'sync correctly the version between the files', ->
-      @bumped.semver.version().should.be.equal('0.2.0')
+      @bumped.semver.version (version) ->
+        version.should.be.equal('0.2.0')
 
     it 'increment the version', (done) ->
-      @bumped.semver.increment 'major', =>
-        @bumped.semver.version().should.be.equal('1.0.0')
-        bower = require('./sample_directory/bower.json')
-        bower.version.should.be.equal('1.0.0')
-        done()
+      @bumped.semver.increment release:'major', =>
+        @bumped.semver.version (version) ->
+          version.should.be.equal('1.0.0')
+          bower = require('./sample_directory/bower.json')
+          bower.version.should.be.equal('1.0.0')
+          done()
