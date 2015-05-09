@@ -47,11 +47,5 @@ module.exports = class Semver
 
   version: (newVersion, cb) =>
     cb = newVersion if arguments.length is 1
-
-    if @bumped._version
-      @bumped.logger.info MSG.CURRENT_VERSION(@bumped._version)
-      return cb(@bumped._version)
-    else
-      @bumped.init messages:false, =>
-        @bumped.logger.info MSG.CURRENT_VERSION(@bumped._version)
-        return cb(@bumped._version)
+    @bumped.logger.info MSG.CURRENT_VERSION(@bumped._version)
+    return cb(@bumped._version)

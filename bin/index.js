@@ -23,7 +23,8 @@ if (cli.input.length === 0) cli.showHelp();
 
 var options = {
   logger: {
-    color: true
+    color: true,
+    level: 'silly'
   }
 };
 
@@ -37,9 +38,18 @@ var exit = function(err) {
 
 var commands = {
   init: partial(bumped.init, exit),
-  version: partial(bumped.semver.version, exit)
+  version: partial(bumped.semver.version, exit),
+  increment: partial(bumped.semver.increment, {release: cli.input[0]}, exit)
 };
 
 var existCommand = Object.keys(commands).indexOf(command) > -1;
-if (existCommand) return commands[command]();
+
+if (existCommand) {
+  return bumped.init({
+    outputMessage: false
+  }, function() {
+    return commands[command]();
+  });
+}
+
 cli.showHelp();

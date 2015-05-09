@@ -14,6 +14,8 @@ module.exports = class Bumped
     @config = new Config(this)
     @semver = new Semver(this)
     @logger = new Logger(opts.logger)
+    @initialized = false
+    this
 
   init: (opts, cb) =>
     args = DEFAULT.args(arguments)
@@ -27,4 +29,5 @@ module.exports = class Bumped
     async.waterfall tasks, (err, result) =>
       @logger.errorHandler err, args.cb
       @logger.success MSG.CONFIG_CREATED() if args.opts.outputMessage
+      @initialized = true
       args.cb()
