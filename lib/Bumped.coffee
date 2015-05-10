@@ -28,6 +28,8 @@ module.exports = class Bumped
 
     async.waterfall tasks, (err, result) =>
       @logger.errorHandler err, args.cb
-      @logger.success MSG.CONFIG_CREATED() if args.opts.outputMessage
+      if args.opts.outputMessage
+        @logger.success MSG.CONFIG_CREATED()
+        @logger.success MSG.CURRENT_VERSION(@_version)
       @initialized = true
       args.cb()

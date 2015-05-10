@@ -39,7 +39,7 @@ var exit = function(err) {
 var commands = {
   init: partial(bumped.init, exit),
   version: partial(bumped.semver.version, exit),
-  increment: partial(bumped.semver.increment, {release: cli.input[0]}, exit)
+  release: partial(bumped.semver.release, {version: cli.input[0]}, exit)
 };
 
 var existCommand = Object.keys(commands).indexOf(command) > -1;
