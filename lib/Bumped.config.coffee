@@ -10,14 +10,14 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @bumped.config = require('rc')(pkg.name, DEFAULT.fileStructure)
+    @bumped.config = require('rc') pkg.name, DEFAULT.fileStructure
 
   detect: (opts, cb) =>
     @bumped.config.files = []
     async.each DEFAULT.checkFiles, (file, next) =>
       fs.exists "#{process.cwd()}/#{file}", (exists) =>
         return next() unless exists
-        @bumped.logger.info MSG.DETECTED_FILE(file) if opts.outputMessage
+        @bumped.logger.info MSG.DETECTED_FILE file if opts.outputMessage
         @add filename:file, next
     , cb
 

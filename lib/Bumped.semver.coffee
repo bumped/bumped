@@ -20,25 +20,24 @@ module.exports = class Semver
   versions: (cb) =>
     async.map @bumped.config.files, (file, next) ->
       version = require(path.resolve(file)).version
-      next(null, version)
+      next null, version
     , cb
 
   max: (versions, cb) ->
     initial = versions.shift()
     async.reduce versions, initial, (max, version, next) ->
       max = version if semver.gt version, max
-      next(null, max)
+      next null, max
     , cb
 
   release: (opts, cb) =>
 
     throwError = (message) =>
-      error = new Error()
-      error.message = message
-      @bumped.logger.error error.message
-      return cb error
+      err = new Error()
+      err.message = message
+      return @bumped.logger.errorHandler(err, cb)
 
-    return throwError MSG.NOT_VALID_VERSION(opts.version) unless opts.version
+    return throwError MSG.NOT_VALID_VERSION opts.version unless opts.version
 
     if @isSemverWord opts.version
       return @update semver.inc(@bumped._version, opts.version), cb
@@ -57,7 +56,7 @@ module.exports = class Semver
     @bumped._version = newVersion
     async.each @bumped.config.files, @save, (err) =>
       @bumped.logger.errorHandler err, cb
-      @bumped.logger.success MSG.CREATED_VERSION(@bumped._version)
+      @bumped.logger.success MSG.CREATED_VERSION @bumped._version
       cb null, @bumped._version
 
   save: (file, cb) =>
@@ -69,8 +68,8 @@ module.exports = class Semver
 
   version: (newVersion, cb) =>
     cb = newVersion if arguments.length is 1
-    @bumped.logger.info MSG.CURRENT_VERSION(@bumped._version)
-    return cb(@bumped._version)
+    @bumped.logger.info MSG.CURRENT_VERSION @bumped._version
+    return cb @bumped._version
 
   isSemverWord: (word) ->
     [ 'major'
