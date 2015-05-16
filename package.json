@@ -18,6 +18,7 @@
     "semver"
   ],
   "dependencies": {
+    "args-js": "latest",
     "coffee-script": "latest",
     "acho": "latest",
     "fn-partial": "latest",
