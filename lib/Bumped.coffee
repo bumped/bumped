@@ -30,7 +30,7 @@ module.exports = class Bumped
     fs.readJSON opts.filepath, (err, config) =>
       throw err if err
       @config.files = config.files
-      cb()
+      @semver.sync opts, cb
 
   init: (opts, cb) =>
     args = DEFAULT.args arguments

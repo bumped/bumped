@@ -53,8 +53,13 @@ var commands = {
     detect: true,
     save: true,
     file: cli.input[0]
+  }, exit),
+
+  remove: partial(bumped.config.remove, {
+    outputMessage: true,
+    save: true,
+    file: cli.input[0]
   }, exit)
-  // TODO remove
 };
 
 var existCommand = Object.keys(commands).indexOf(command) > -1;
