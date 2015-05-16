@@ -7,7 +7,7 @@ module.exports =
   ADD_FILE            : (file) -> "'#{file}' has been added."
   ADD_ALREADY_FILE    : (file) -> "'#{file}' is already added."
   REMOVE_FILE         : (file) -> "'#{file}' has been removed."
-  DETECTED_FILE       : (file) -> "'#{file}' has been detected in the directory."
+  DETECTED_FILE       : (file) -> "Detected '#{file}' in the directory."
   CREATED_VERSION     : (version) -> "Releases version '#{version}'."
   CURRENT_VERSION     : (version) -> "Current version is '#{version}'."
 
