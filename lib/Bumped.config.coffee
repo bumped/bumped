@@ -14,7 +14,7 @@ module.exports = class Config
 
   autodetect: (opts, cb) =>
     @bumped.config.files = []
-    async.each DEFAULT.checkFiles, (file, next) =>
+    async.each DEFAULT.detect, (file, next) =>
       @detect file: file, outputMessage: opts.outputMessage, (exists) =>
         return next() unless exists
         @add file: file, next

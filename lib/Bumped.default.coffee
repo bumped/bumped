@@ -8,7 +8,7 @@ module.exports =
     "files": []
     "plugins": []
 
-  checkFiles: ['package.json', 'bower.json']
+  detect: ['package.json', 'bower.json']
 
   opts:
     outputMessage: true
