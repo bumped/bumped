@@ -17,7 +17,7 @@ module.exports = class Config
         return next() unless @rc.config
         fs.remove @rc.config, (err) -> next()
       (next) =>
-        @bumped.config.files = DEFAULT.structure().files
+        @rc.files = DEFAULT.structure().files
         async.each DEFAULT.detect, (file, done) =>
           @detect file: file, outputMessage: false, (exists) =>
             return done() unless exists
@@ -42,7 +42,7 @@ module.exports = class Config
     if @hasFile opts.file
       message = MSG.ADD_ALREADY_FILE opts.file
       @bumped.logger.error message if opts.outputMessage
-      return cb message, @bumped.config.files
+      return cb message, @rc.files
 
     tasks = [
       (next) => unless opts.detect then next() else @detectFile opts, next
@@ -51,13 +51,13 @@ module.exports = class Config
     ]
 
     async.waterfall tasks, (err, result) =>
-      cb err, @bumped.config.files
+      cb err, @rc.files
 
   remove: (opts, cb) =>
     unless @hasFile opts.file
       message = MSG.NOT_REMOVE_FILE opts.file
       @bumped.logger.error message if opts.outputMessage
-      return cb message, @bumped.config.files
+      return cb message, @rc.files
 
     tasks = [
       (next) => @removeFile opts, next
@@ -65,10 +65,10 @@ module.exports = class Config
     ]
 
     async.waterfall tasks, (err, result) =>
-      cb(err, @bumped.config.files)
+      cb(err, @rc.files)
 
   save: (opts, cb) =>
-    file = files: @bumped.config.files
+    file = files: @rc.files
     fs.writeFile ".#{@bumped.pkg.name}rc", JSON.stringify(file, null, 2), encoding: 'utf8', cb
 
   detectFile: (opts, cb) ->
@@ -77,15 +77,15 @@ module.exports = class Config
       cb()
 
   addFile: (opts, cb) ->
-    @bumped.config.files.push opts.file
+    @rc.files.push opts.file
     @bumped.logger.info MSG.ADD_FILE opts.file if opts.outputMessage
     cb()
 
   removeFile: (opts, cb) ->
-    index = @bumped.config.files.indexOf opts.file
-    @bumped.config.files.splice index, 1
+    index = @rc.files.indexOf opts.file
+    @rc.files.splice index, 1
     @bumped.logger.info MSG.REMOVE_FILE opts.file if opts.outputMessage
     cb()
 
   hasFile: (file) ->
-    @bumped.config.files.indexOf(file) isnt -1
+    @rc.files.indexOf(file) isnt -1

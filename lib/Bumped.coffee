@@ -29,7 +29,7 @@ module.exports = class Bumped
   load: (opts, cb) ->
     fs.readJSON opts.filepath, (err, config) =>
       throw err if err
-      @config.files = config.files
+      @config.rc.files = config.files
       @semver.sync opts, cb
 
   init: (opts, cb) =>
@@ -48,7 +48,7 @@ module.exports = class Bumped
   end: (opts, cb) ->
     return @semver.version opts, cb unless opts.outputMessage?
 
-    if @config.files.length is 0
+    if @config.rc.files.length is 0
       @logger.warn MSG.NOT_AUTODETECTED()
       @logger.warn MSG.NOT_AUTODETECTED_2()
 

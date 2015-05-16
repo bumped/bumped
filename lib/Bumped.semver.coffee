@@ -18,7 +18,7 @@ module.exports = class Semver
       cb()
 
   versions: (cb) =>
-    async.map @bumped.config.files, (file, next) ->
+    async.map @bumped.config.rc.files, (file, next) ->
       version = require(path.resolve file).version
       next null, version
     , cb
@@ -55,7 +55,7 @@ module.exports = class Semver
 
   update: (opts, cb) ->
     @bumped._version = opts.version
-    async.each @bumped.config.files, @save, (err) =>
+    async.each @bumped.config.rc.files, @save, (err) =>
       @bumped.logger.errorHandler err, cb
       @bumped.logger.success MSG.CREATED_VERSION @bumped._version if opts.outputMessage
       cb null, @bumped._version
