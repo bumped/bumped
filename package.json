@@ -18,14 +18,14 @@
     "semver"
   ],
   "dependencies": {
-    "coffee-script": "*",
-    "acho": "*",
-    "fn-partial": "*",
-    "meow": "*",
-    "neo-async": "*",
-    "rc": "*",
-    "semver": "*",
-    "update-notifier": "*"
+    "coffee-script": "latest",
+    "acho": "latest",
+    "fn-partial": "latest",
+    "meow": "latest",
+    "neo-async": "latest",
+    "rc": "latest",
+    "semver": "latest",
+    "update-notifier": "latest"
   },
   "devDependencies": {
     "fs-extra": "*",
