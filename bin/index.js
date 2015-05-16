@@ -38,18 +38,32 @@ var exit = function(err) {
 
 var commands = {
   init: partial(bumped.init, exit),
-  version: partial(bumped.semver.version, {outputMessage: true}, exit),
-  release: partial(bumped.semver.release, {outputMessage: true, version: cli.input[0]}, exit),
-  add: partial(bumped.config.add, {outputMessage: true, file: cli.input[0]}, exit)
+
+  version: partial(bumped.semver.version, {
+    outputMessage: true
+  }, exit),
+
+  release: partial(bumped.semver.release, {
+    outputMessage: true,
+    version: cli.input[0]
+  }, exit),
+
+  add: partial(bumped.config.add, {
+    outputMessage: true,
+    detect: true,
+    save: true,
+    file: cli.input[0]
+  }, exit)
   // TODO remove
 };
 
 var existCommand = Object.keys(commands).indexOf(command) > -1;
 
 if (existCommand) {
-  return bumped.init({
+  return bumped.start({
     outputMessage: false
   }, function() {
+    console.log("current files", bumped.config.files);
     return commands[command]();
   });
 }

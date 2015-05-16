@@ -1,11 +1,13 @@
 'use strict'
 
+fs      = require 'fs-extra'
 async   = require 'neo-async'
 Semver  = require './Bumped.semver'
 Config  = require './Bumped.config'
 Logger  = require './Bumped.logger'
 DEFAULT = require './Bumped.default'
 MSG     = require './Bumped.messages'
+pkg     = require '../package.json'
 
 module.exports = class Bumped
 
@@ -15,6 +17,20 @@ module.exports = class Bumped
     @semver = new Semver this
     @logger = new Logger opts.logger
     this
+
+  start: ->
+    args = DEFAULT.args arguments
+    filepath = "#{process.cwd()}/.#{pkg.name}rc"
+    fs.open filepath, 'r', (err, fileDescriptor) =>
+      return @init args.opts, args.cb  if err
+      args.opts.filepath = filepath
+      @load args.opts, args.cb
+
+  load: (opts, cb) ->
+    fs.readJSON opts.filepath, (err, config) =>
+      throw err if err
+      @config.files = config.files
+      cb()
 
   init: (opts, cb) =>
     args = DEFAULT.args arguments

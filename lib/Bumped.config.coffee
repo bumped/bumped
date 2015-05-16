@@ -14,8 +14,8 @@ module.exports = class Config
 
   autodetect: (opts, cb) ->
     tasks = [
-      (next) =>
-        filepath = "#{process.cwd()}/.#{pkg.name}rc"
+      (next) ->
+        filepath = "#{process.cwd()}/.#{pkg.name}rc" #warning
         fs.remove filepath, (err) ->
           throw err if err
           next()
@@ -71,6 +71,7 @@ module.exports = class Config
       cb()
 
   addFile: (opts, cb) ->
+    console.log "adding #{opts.file}" if opts.outputMessage # DELETE
     if @hasFile opts.file
       message = MSG.ADD_ALREADY_FILE opts.file
       @bumped.logger.error message if opts.outputMessage
