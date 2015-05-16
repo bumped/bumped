@@ -104,3 +104,25 @@ describe 'Bumped ::', ->
             config.files.length.should.be.equal 4
             done()
       describe 'remove ::', ->
+        it 'try to removed a file that doesn\'t exist', (done) ->
+          @bumped.config.remove
+            file: 'unicorn.json'
+            outputMessage: true
+            save: true
+          , (err, files) ->
+            (err?).should.be.equal true
+            files.length.should.be.equal 4
+            done()
+
+        it 'remove a previous declared file', (done) ->
+          @bumped.config.remove
+            file: 'test.json'
+            outputMessage: true
+            save: true
+          , (err, files) ->
+            (err?).should.be.equal false
+            files.length.should.be.equal 3
+            config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
+            config = JSON.parse(config)
+            config.files.length.should.be.equal 3
+            done()

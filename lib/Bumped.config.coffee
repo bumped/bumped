@@ -39,6 +39,14 @@ module.exports = class Config
     async.waterfall tasks, (err, result) =>
       cb(err, @bumped.config.files)
 
+  remove: (opts, cb) ->
+    tasks = [
+      (next) => @removeFile opts, next
+      (next) => unless opts.save then next() else @save opts, next
+    ]
+
+    async.waterfall tasks, (err, result) =>
+      cb(err, @bumped.config.files)
 
   save: (opts, cb) =>
     file = files: @bumped.config.files
@@ -50,13 +58,23 @@ module.exports = class Config
       cb()
 
   addFile: (opts, cb) ->
-    if @isPresent opts.file
-      message = MSG.ALREADY_FILE opts.file
+    if @hasFile opts.file
+      message = MSG.ADD_ALREADY_FILE opts.file
       @bumped.logger.error message if opts.outputMessage
       return cb message
     @bumped.config.files.push opts.file
     @bumped.logger.info MSG.ADD_FILE opts.file if opts.outputMessage
     cb()
 
-  isPresent: (file) ->
+  removeFile: (opts, cb) ->
+    unless @hasFile opts.file
+      message = MSG.NOT_REMOVE_FILE opts.file
+      @bumped.logger.error message if opts.outputMessage
+      return cb message
+    index = (@bumped.config.files.indexOf opts.file) - 1
+    @bumped.config.files.splice index, 1
+    @bumped.logger.info MSG.REMOVE_FILE opts.file if opts.outputMessage
+    cb()
+
+  hasFile: (file) ->
     @bumped.config.files.indexOf(file) isnt -1
