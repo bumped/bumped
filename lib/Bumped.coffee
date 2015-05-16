@@ -21,7 +21,7 @@ module.exports = class Bumped
     args = DEFAULT.args arguments
 
     tasks = [
-      (next) => @config.detect args.opts, next
+      (next) => @config.autodetect args.opts, next
       (next) => @config.save args.opts, next
       (next) => @semver.sync args.opts, next
     ]
