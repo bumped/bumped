@@ -22,7 +22,7 @@ module.exports = class Bumped
     args = DEFAULT.args arguments
     filepath = "#{process.cwd()}/.#{pkg.name}rc"
     fs.open filepath, 'r', (err, fileDescriptor) =>
-      return @init args.opts, args.cb  if err
+      args.cb err if err
       args.opts.filepath = filepath
       @load args.opts, args.cb
 

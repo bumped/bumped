@@ -67,7 +67,7 @@ var existCommand = Object.keys(commands).indexOf(command) > -1;
 if (existCommand) {
   return bumped.start({
     outputMessage: false
-  }, function() {
+  }, function(err) {
     return commands[command]();
   });
 }
