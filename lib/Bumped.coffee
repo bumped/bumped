@@ -20,14 +20,11 @@ module.exports = class Bumped
 
   start: ->
     args = DEFAULT.args arguments
-    filepath = "#{process.cwd()}/.#{pkg.name}rc"
-    fs.open filepath, 'r', (err, fileDescriptor) =>
-      return args.cb err if err
-      args.opts.filepath = filepath
-      @load args.opts, args.cb
+    return args.cb() unless @config.rc.config
+    @load args.opts, args.cb
 
   load: (opts, cb) ->
-    fs.readJSON opts.filepath, (err, config) =>
+    fs.readJSON @config.rc.config, (err, config) =>
       throw err if err
       @config.rc.files = config.files
       @semver.sync opts, cb
