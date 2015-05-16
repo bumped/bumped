@@ -19,7 +19,7 @@ module.exports = class Semver
 
   versions: (cb) =>
     async.map @bumped.config.files, (file, next) ->
-      version = require(path.resolve(file)).version
+      version = require(path.resolve file).version
       next null, version
     , cb
 
@@ -35,7 +35,7 @@ module.exports = class Semver
     throwError = (message) =>
       err = new Error()
       err.message = message
-      return @bumped.logger.errorHandler(err, cb)
+      return @bumped.logger.errorHandler err, cb
 
     return throwError MSG.NOT_VALID_VERSION opts.version unless opts.version
 

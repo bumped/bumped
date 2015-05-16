@@ -18,12 +18,11 @@
     "semver"
   ],
   "dependencies": {
+    "coffee-script": "*",
     "acho": "*",
-    "finepack": "*",
     "fn-partial": "*",
     "meow": "*",
     "neo-async": "*",
-    "oh-my-terminal": "*",
     "rc": "*",
     "semver": "*",
     "update-notifier": "*"

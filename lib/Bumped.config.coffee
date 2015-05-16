@@ -10,10 +10,10 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @bumped.config = require('rc') pkg.name, DEFAULT.fileStructure
+    @bumped.config = require('rc') pkg.name, DEFAULT.structure
 
   autodetect: (opts, cb) =>
-    @bumped.config.files = []
+    @bumped.config.files = DEFAULT.structure.files
     async.each DEFAULT.detect, (file, next) =>
       @detect file: file, outputMessage: opts.outputMessage, (exists) =>
         return next() unless exists
@@ -45,8 +45,8 @@ module.exports = class Config
     fs.writeFile ".#{pkg.name}rc", JSON.stringify(file, null, 2), encoding: 'utf8', cb
 
   detectFile: (opts, cb) ->
-    @detect opts, (exists) =>
-      return cb(MSG.DETECTED_FILE opts.file) unless exists
+    @detect opts, (exists) ->
+      return cb MSG.DETECTED_FILE opts.file unless exists
       cb()
 
   addFile: (opts, cb) ->
