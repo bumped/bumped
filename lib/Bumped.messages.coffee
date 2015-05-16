@@ -4,6 +4,7 @@ module.exports =
 
   CONFIG_CREATED      : -> 'Config file created!.'
   ADD_FILE            : (file) -> "'#{file}' added."
+  ALREADY_FILE        : (file) -> "'#{file}' is already added."
   DETECTED_FILE       : (file) -> "Detected '#{file}' in the directory."
   NOT_DETECTED_FILE   : (file) -> "'#{file}' doesn't exist in the directory."
   CREATED_VERSION     : (version) -> "Created version '#{version}'."

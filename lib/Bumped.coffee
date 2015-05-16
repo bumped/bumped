@@ -14,7 +14,6 @@ module.exports = class Bumped
     @config = new Config this
     @semver = new Semver this
     @logger = new Logger opts.logger
-    @initialized = false
     this
 
   init: (opts, cb) =>
@@ -31,5 +30,4 @@ module.exports = class Bumped
       if args.opts.outputMessage
         @logger.success MSG.CONFIG_CREATED()
         @logger.success MSG.CURRENT_VERSION @_version
-      @initialized = true
       args.cb()

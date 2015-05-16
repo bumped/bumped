@@ -61,3 +61,44 @@ describe 'Bumped ::', ->
           require('./sample_directory/bower.json').version.should.be.equal('1.1.0')
           done()
 
+    describe 'config ::', ->
+      it 'just add a file', (done) ->
+        @bumped.config.add
+          file: 'test.json'
+          outputMessage: true
+        , (err, files) ->
+          files.length.should.be.equal 3
+          done()
+
+      it 'try to add a file that is already added', (done) ->
+        @bumped.config.add
+          file: 'test.json'
+          outputMessage: true
+        , (err, files) ->
+          (err?).should.be.equal true
+          files.length.should.be.equal 3
+          done()
+
+      it 'prevent add a file that doesn\'t exist in the directory', (done) ->
+        @bumped.config.add
+          file: 'testing.json'
+          detect: true
+          outputMessage: true
+        , (err, files) ->
+          (err?).should.be.equal true
+          files.length.should.be.equal 3
+          done()
+
+      it 'add a file that exist in the directory and then save it', (done) ->
+        @bumped.config.add
+          file: 'component.json'
+          detect: true
+          outputMessage: true
+          save: true
+        , (err, files) ->
+          (err?).should.be.equal false
+          files.length.should.be.equal 4
+          config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
+          config = JSON.parse(config)
+          config.files.length.should.be.equal 4
+          done()
