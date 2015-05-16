@@ -4,8 +4,10 @@ Args = require 'args-js'
 
 module.exports =
 
-  structure:
-    "files": []
+  structure: ->
+    return {
+      files: []
+    }
 
   detect: ['package.json', 'bower.json']
 

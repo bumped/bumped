@@ -38,8 +38,10 @@ var exit = function(err) {
 
 var commands = {
   init: partial(bumped.init, exit),
-  version: partial(bumped.semver.version, exit),
-  release: partial(bumped.semver.release, {version: cli.input[0]}, exit)
+  version: partial(bumped.semver.version, {outputMessage: true}, exit),
+  release: partial(bumped.semver.release, {outputMessage: true, version: cli.input[0]}, exit),
+  add: partial(bumped.config.add, {outputMessage: true, file: cli.input[0]}, exit)
+  // TODO remove
 };
 
 var existCommand = Object.keys(commands).indexOf(command) > -1;

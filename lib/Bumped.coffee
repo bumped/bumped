@@ -27,7 +27,15 @@ module.exports = class Bumped
 
     async.waterfall tasks, (err, result) =>
       @logger.errorHandler err, args.cb
-      if args.opts.outputMessage
-        @logger.success MSG.CONFIG_CREATED()
-        @logger.success MSG.CURRENT_VERSION @_version
-      args.cb()
+      @end args.opts, args.cb
+
+  end: (opts, cb) ->
+    return @semver.version opts, cb unless opts.outputMessage?
+
+    if @config.files.length is 0
+      @logger.warn MSG.NOT_AUTODETECTED()
+      @logger.warn MSG.NOT_AUTODETECTED_2()
+
+    @semver.version opts, =>
+      @logger.success MSG.CONFIG_CREATED() if opts.outputMessage
+      cb()
