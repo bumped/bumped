@@ -2,7 +2,6 @@
 
 fs      = require 'fs-extra'
 async   = require 'neo-async'
-pkg     = require '../package.json'
 DEFAULT = require './Bumped.default'
 MSG     = require './Bumped.messages'
 
@@ -10,15 +9,13 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @bumped.config = require('rc') pkg.name, DEFAULT.structure()
+    @rc = require('rc') bumped.pkg.name, DEFAULT.structure()
 
   autodetect: (opts, cb) ->
     tasks = [
-      (next) ->
-        filepath = "#{process.cwd()}/.#{pkg.name}rc" #warning
-        fs.remove filepath, (err) ->
-          throw err if err
-          next()
+      (next) =>
+        return next() unless @rc.config
+        fs.remove @rc.config, (err) -> next()
       (next) =>
         @bumped.config.files = DEFAULT.structure().files
         async.each DEFAULT.detect, (file, done) =>
@@ -72,7 +69,7 @@ module.exports = class Config
 
   save: (opts, cb) =>
     file = files: @bumped.config.files
-    fs.writeFile ".#{pkg.name}rc", JSON.stringify(file, null, 2), encoding: 'utf8', cb
+    fs.writeFile ".#{@bumped.pkg.name}rc", JSON.stringify(file, null, 2), encoding: 'utf8', cb
 
   detectFile: (opts, cb) ->
     @detect opts, (exists) ->

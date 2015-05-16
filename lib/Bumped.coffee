@@ -7,12 +7,12 @@ Config  = require './Bumped.config'
 Logger  = require './Bumped.logger'
 DEFAULT = require './Bumped.default'
 MSG     = require './Bumped.messages'
-pkg     = require '../package.json'
 
 module.exports = class Bumped
 
   constructor: (opts = {}) ->
     process.chdir opts.cwd if opts.cwd?
+    @pkg = require '../package.json'
     @config = new Config this
     @semver = new Semver this
     @logger = new Logger opts.logger
@@ -22,7 +22,7 @@ module.exports = class Bumped
     args = DEFAULT.args arguments
     filepath = "#{process.cwd()}/.#{pkg.name}rc"
     fs.open filepath, 'r', (err, fileDescriptor) =>
-      args.cb err if err
+      return args.cb err if err
       args.opts.filepath = filepath
       @load args.opts, args.cb
 
