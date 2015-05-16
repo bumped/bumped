@@ -42,15 +42,19 @@ module.exports = class Config
       cb exists
 
   add: (opts, cb) =>
+    if @hasFile opts.file
+      message = MSG.ADD_ALREADY_FILE opts.file
+      @bumped.logger.error message if opts.outputMessage
+      return cb message, @bumped.config.files
+
     tasks = [
       (next) => unless opts.detect then next() else @detectFile opts, next
       (next) => @addFile opts, next
-      # (next) => # sync
       (next) => unless opts.save then next() else @save opts, next
     ]
 
     async.waterfall tasks, (err, result) =>
-      cb(err, @bumped.config.files)
+      cb err, @bumped.config.files
 
   remove: (opts, cb) ->
     tasks = [
@@ -71,11 +75,6 @@ module.exports = class Config
       cb()
 
   addFile: (opts, cb) ->
-    console.log "adding #{opts.file}" if opts.outputMessage # DELETE
-    if @hasFile opts.file
-      message = MSG.ADD_ALREADY_FILE opts.file
-      @bumped.logger.error message if opts.outputMessage
-      return cb message
     @bumped.config.files.push opts.file
     @bumped.logger.info MSG.ADD_FILE opts.file if opts.outputMessage
     cb()

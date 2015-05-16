@@ -63,7 +63,6 @@ if (existCommand) {
   return bumped.start({
     outputMessage: false
   }, function() {
-    console.log("current files", bumped.config.files);
     return commands[command]();
   });
 }
