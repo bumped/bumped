@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <br>
-  <img src="http://i.imgur.com/QHd53Db.png" alt="bumped">
+  <img src="http://i.imgur.com/DmMbFwL.png" alt="bumped">
   <br>
   <br>
 </h1>
