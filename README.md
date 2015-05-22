@@ -18,27 +18,11 @@
 ## Install
 
 ```bash
-npm install bumped
+npm install bumped -g 
 ```
-
-If you want to use in the browser (powered by [Browserify](http://browserify.org/)):
-
-```bash
-bower install bumped --save
-```
-
-and later link in your HTML:
-
-```html
-<script src="bower_components/bumped/dist/bumped.js"></script>
-```
-
-## Usage
-
-## API
 
 ## License
 
-MIT © []()
+MIT © BumpedJS
 
 
