@@ -3,6 +3,7 @@ should  = require 'should'
 fs      = require 'fs-extra'
 Bumped  = require '../lib/Bumped'
 pkg     = require '../package.json'
+CSON    = require 'season'
 
 describe 'Bumped ::', ->
 
@@ -21,7 +22,7 @@ describe 'Bumped ::', ->
       it 'initialize a configuration file', (done) ->
         @bumped.init ->
           config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-          config = JSON.parse(config)
+          config = CSON.parse config
           config.files.length.should.be.equal 2
           done()
 
@@ -100,7 +101,7 @@ describe 'Bumped ::', ->
             (err?).should.be.equal false
             files.length.should.be.equal 4
             config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-            config = JSON.parse(config)
+            config = CSON.parse config
             config.files.length.should.be.equal 4
             done()
       describe 'remove ::', ->
@@ -123,6 +124,6 @@ describe 'Bumped ::', ->
             (err?).should.be.equal false
             files.length.should.be.equal 3
             config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-            config = JSON.parse(config)
+            config = CSON.parse config
             config.files.length.should.be.equal 3
             done()

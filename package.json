@@ -18,14 +18,15 @@
     "semver"
   ],
   "dependencies": {
+    "acho": "latest",
     "args-js": "latest",
     "coffee-script": "latest",
-    "acho": "latest",
     "fn-partial": "latest",
     "fs-extra": "latest",
     "meow": "latest",
     "neo-async": "latest",
     "rc": "latest",
+    "season": "latest",
     "semver": "latest",
     "update-notifier": "latest"
   },

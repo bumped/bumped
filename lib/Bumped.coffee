@@ -1,5 +1,6 @@
 'use strict'
 
+CSON    = require 'season'
 fs      = require 'fs-extra'
 async   = require 'neo-async'
 Semver  = require './Bumped.semver'
@@ -24,8 +25,9 @@ module.exports = class Bumped
     @load args.opts, args.cb
 
   load: (opts, cb) ->
-    fs.readJSON @config.rc.config, (err, config) =>
+    fs.readFile @config.rc.config, 'utf8', (err, config) =>
       throw err if err
+      config = CSON.parse config
       @config.rc.files = config.files
       @semver.sync opts, cb
 

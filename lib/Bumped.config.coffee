@@ -1,5 +1,6 @@
 'use strict'
 
+CSON    = require 'season'
 fs      = require 'fs-extra'
 async   = require 'neo-async'
 DEFAULT = require './Bumped.default'
@@ -9,7 +10,7 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @rc = require('rc') bumped.pkg.name, DEFAULT.structure()
+    @rc = require('rc') bumped.pkg.name, DEFAULT.structure(), null, (config) -> CSON.parse config
 
   autodetect: (opts, cb) ->
     tasks = [
@@ -69,7 +70,7 @@ module.exports = class Config
 
   save: (opts, cb) =>
     file = files: @rc.files
-    fs.writeFile ".#{@bumped.pkg.name}rc", JSON.stringify(file, null, 2), encoding: 'utf8', cb
+    fs.writeFile ".#{@bumped.pkg.name}rc", CSON.stringify(file, null, 2), encoding: 'utf8', cb
 
   detectFile: (opts, cb) ->
     @detect opts, (exists) ->

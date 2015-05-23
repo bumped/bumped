@@ -18,7 +18,7 @@
 ## Install
 
 ```bash
-npm install bumped -g 
+npm install bumped -g
 ```
 
 ## License
