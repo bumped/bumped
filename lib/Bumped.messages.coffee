@@ -12,7 +12,7 @@ module.exports =
   CURRENT_VERSION     : (version) -> "Current version is '#{version}'."
 
   # Negative
-  NOT_REMOVE_FILE     : (file) -> "#{file} can\'t be removed because previously hasn\' been declared."
+  NOT_REMOVE_FILE     : (file) -> "#{file} can\'t be removed because previously hasn\' been added."
   NOT_DETECTED_FILE   : (file) -> "'#{file}' hasn\'t been detected in the directory."
   NOT_VALID_VERSION   : (version) -> "version '#{version}' provided to release is not valid."
   NOT_GREATER_VERSION : (last, old) -> "version '#{last}' is not greater that the current '#{old}' version."
