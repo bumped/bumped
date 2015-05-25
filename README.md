@@ -115,7 +115,7 @@ For example, I want to add a new file called `component.json` that have the vers
 
 ```json
 {
-"version": "2.0.0"
+  "version": "2.0.0"
 }
 ```
 
@@ -133,6 +133,7 @@ If you check now the `.bumpedrc` file the list of configuration files as been up
 ```cson
 files: [
   "package.json"
+  "component.json"
 ]
 ```
 
