@@ -59,7 +59,7 @@ info	: Current version is '1.0.1'.
 success	: Config file created!.
 ```
 
-At this moment, bumped will create a configuration file `.bumpedrc` that is associate with the folder of the project. If you open the files this content a list of files to syncrhonizes:
+At this moment, **Bumped** will create a configuration file `.bumpedrc` that is associate with the folder of the project. If you open the files this content a list of files to syncrhonizes:
 
 ```cson
 files: [
@@ -67,7 +67,7 @@ files: [
 ]
 ```
 
-The format of the file is [CSON](https://github.com/bevry/cson), However you can use JSON, but this file is auto-generate for Bumped.
+The format of the file is [CSON](https://github.com/bevry/cson), However you can use JSON, but this file is auto-generate for **Bumped**.
 
 ### .version
 
@@ -109,9 +109,9 @@ success	: Releases version '1.1.0'.
 
 ### .add
 
-In the beginning Bumped automatically  detect common configuration files of the most popular packages managers, but maybe you need to add one manually.
+In the beginning **Bumped** automatically  detect common configuration files of the most popular packages managers, but maybe you need to add one manually.
 
-For example, I want to add a new file called `component.json` that have the version setted to `2.0.0`: 
+For example, I want to add a new file called `component.json` that have the version setted to `2.0.0`:
 
 ```json
 {
@@ -128,7 +128,7 @@ info    : Detected 'component.json' in the directory.
 success	: 'component.json' has been added.
 ```
 
-If you check now the `.bumpedrc` file the list of configuration files as been updated: 
+If you check now the `.bumpedrc` file the list of configuration files as been updated:
 
 ```cson
 files: [
