@@ -2,7 +2,7 @@
   "name": "bumped",
   "description": "Makes easy release software.",
   "homepage": "https://github.com/bumped/bumped",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "./bin/index.js",
   "bin": "./bin/index.js",
   "author": {
@@ -18,20 +18,19 @@
     "semver"
   ],
   "dependencies": {
-    "acho": "latest",
-    "args-js": "latest",
-    "coffee-script": "latest",
-    "fn-partial": "latest",
-    "fs-extra": "latest",
-    "meow": "latest",
-    "neo-async": "latest",
-    "rc": "latest",
-    "season": "latest",
-    "semver": "latest",
-    "update-notifier": "latest"
+    "acho": "*",
+    "args-js": "*",
+    "coffee-script": "*",
+    "fn-partial": "*",
+    "fs-extra": "*",
+    "meow": "*",
+    "neo-async": "*",
+    "rc": "*",
+    "season": "*",
+    "semver": "*",
+    "update-notifier": "*"
   },
   "devDependencies": {
-    "fs-extra": "*",
     "mocha": "*",
     "should": "*"
   },
