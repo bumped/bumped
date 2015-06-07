@@ -25,7 +25,7 @@ nbproject
 ############################
 testApp
 coverage
-
+test/sample_directory
 
 ############################
 # Other

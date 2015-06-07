@@ -127,3 +127,15 @@ describe 'Bumped ::', ->
             config = CSON.parse config
             config.files.length.should.be.equal 3
             done()
+      describe 'set ::', ->
+        it 'change a property across the files', ->
+          descriptionValue = 'a new description for the project'
+          @bumped.config.set
+            property: 'description'
+            value: descriptionValue
+            outputMessage: true
+          , (err) ->
+            (err?).should.be.equal false
+            require('./sample_directory/bower.json').description.should.be.equal descriptionValue
+            require('./sample_directory/package.json').description.should.be.equal descriptionValue
+            require('./sample_directory/component.json').description.should.be.equal descriptionValue

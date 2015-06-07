@@ -3,6 +3,7 @@
 CSON    = require 'season'
 fs      = require 'fs-extra'
 async   = require 'neo-async'
+Util    = require './Bumped.util'
 Semver  = require './Bumped.semver'
 Config  = require './Bumped.config'
 Logger  = require './Bumped.logger'
@@ -13,10 +14,11 @@ module.exports = class Bumped
 
   constructor: (opts = {}) ->
     process.chdir opts.cwd if opts.cwd?
-    @pkg = require '../package.json'
+    @pkg    = require '../package.json'
     @config = new Config this
     @semver = new Semver this
     @logger = new Logger opts.logger
+    @util   = new Util this
     this
 
   start: ->

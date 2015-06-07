@@ -59,6 +59,12 @@ var commands = {
     outputMessage: true,
     save: true,
     file: cli.input[0]
+  }, exit),
+
+  set: partial(bumped.config.set, {
+    outputMessage: true,
+    property: cli.input[0],
+    value: cli.input[1]
   }, exit)
 };
 

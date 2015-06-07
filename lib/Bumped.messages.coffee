@@ -10,6 +10,7 @@ module.exports =
   DETECTED_FILE       : (file) -> "Detected '#{file}' in the directory."
   CREATED_VERSION     : (version) -> "Releases version '#{version}'."
   CURRENT_VERSION     : (version) -> "Current version is '#{version}'."
+  SETTED_PROPERTY     : (property) -> "Property '#{property}' setted successful."
 
   # Negative
   NOT_REMOVE_FILE     : (file) -> "#{file} can\'t be removed because previously hasn\' been added."
@@ -19,3 +20,4 @@ module.exports =
   NOT_CURRENT_VERSION : -> 'There isn\'t version declared.'
   NOT_AUTODETECTED    : -> "It has been impossible to detect files automatically."
   NOT_AUTODETECTED_2  : -> "Try to add manually with 'add' command."
+  NOT_SETTED_PROPERTY : -> "You need to provide the property and the value to be setted"

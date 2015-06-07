@@ -32,12 +32,7 @@ module.exports = class Semver
 
   release: (opts, cb) =>
 
-    throwError = (message) =>
-      err = new Error()
-      err.message = message
-      return @bumped.logger.errorHandler err, cb
-
-    return throwError MSG.NOT_VALID_VERSION opts.version unless opts.version
+    return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
 
     if @isSemverWord opts.version
       newVersion = semver.inc(@bumped._version, opts.version)
@@ -47,9 +42,9 @@ module.exports = class Semver
     newVersion = semver.clean newVersion
     newVersion = semver.valid newVersion
 
-    return throwError MSG.NOT_VALID_VERSION opts.version unless newVersion?
+    return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless newVersion?
     unless semver.gt newVersion, @bumped._version
-      return throwError MSG.NOT_GREATER_VERSION opts.version, @bumped._version
+      return @bumped.util.throwError MSG.NOT_GREATER_VERSION(opts.version, @bumped._version), cb
 
     @update version:newVersion, outputMessage: opts.outputMessage, cb
 
@@ -61,11 +56,11 @@ module.exports = class Semver
       cb null, @bumped._version
 
   save: (file, cb) =>
-    filepath = path.resolve file
-    file = require filepath
-    file.version = @bumped._version
-    fileoutput = JSON.stringify(file, null, 2) + os.EOL
-    fs.writeFile filepath, fileoutput, encoding: 'utf8', cb
+    @bumped.util.updateJSON
+      filename : file
+      property : 'version'
+      value    : @bumped._version
+    , cb
 
   version: (opts, cb) =>
     cb = opts if arguments.length is 1
@@ -78,10 +73,5 @@ module.exports = class Semver
     return cb @bumped._version
 
   isSemverWord: (word) ->
-    [ 'major'
-      'premajor'
-      'minor'
-      'preminor'
-      'patch'
-      'prepatch'
-      'prerelease' ].indexOf(word) isnt -1
+    [ 'major', 'premajor', 'minor', 'preminor'
+      'patch', 'prepatch', 'prerelease' ].indexOf(word) isnt -1

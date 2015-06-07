@@ -71,8 +71,10 @@ module.exports = class Config
       cb(err, @rc.files)
 
   save: (opts, cb) =>
-    file = files: @rc.files
-    fs.writeFile ".#{@bumped.pkg.name}rc", CSON.stringify(file, null, 2), encoding: 'utf8', cb
+    @bumped.util.saveJSON
+      filename: ".#{@bumped.pkg.name}rc"
+      data    : CSON.stringify(files: @rc.files, null, 2)
+    , cb
 
   detectFile: (opts, cb) ->
     @detect opts, (exists) ->
@@ -90,6 +92,22 @@ module.exports = class Config
     @rc.files.splice index, 1
     @bumped.logger.success MSG.REMOVE_FILE opts.file if opts.outputMessage
     cb()
+
+  set: (opts, cb) =>
+
+    setProperty = (file, done) =>
+      @bumped.util.updateJSON
+        filename : file
+        property : opts.property
+        value    : opts.value
+      , done
+
+    return @bumped.utilthrowError MSG.NOT_SETTED_PROPERTY(), cb unless opts.property or opts.value
+
+    async.each @bumped.config.rc.files, setProperty, (err) =>
+      @bumped.logger.errorHandler err, cb
+      @bumped.logger.success MSG.SETTED_PROPERTY opts.property if opts.outputMessage
+      cb null, opts
 
   hasFile: (file) ->
     @rc.files.indexOf(file) isnt -1
