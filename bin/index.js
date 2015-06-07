@@ -61,11 +61,16 @@ var commands = {
     file: cli.input[0]
   }, exit),
 
-  set: partial(bumped.config.set, {
-    outputMessage: true,
-    property: cli.input[0],
-    value: cli.input[1]
-  }, exit)
+  set: (function() {
+    var property = cli.input[0];
+    cli.input.shift();
+    var value = cli.input.join(' ');
+    return partial(bumped.config.set, {
+      outputMessage: true,
+      property: property,
+      value: value
+    }, exit);
+  })()
 };
 
 var existCommand = Object.keys(commands).indexOf(command) > -1;

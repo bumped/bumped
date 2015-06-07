@@ -3,6 +3,7 @@
 os     = require 'os'
 path   = require 'path'
 fs     = require 'fs-extra'
+dotProp = require 'dot-prop'
 
 module.exports = class Util
 
@@ -12,7 +13,21 @@ module.exports = class Util
   updateJSON: (opts, cb) ->
     filepath = path.resolve opts.filename
     file = require filepath
-    file[opts.property] = opts.value
+    firstChar = opts.value.charAt(0);
+    lastChar = opts.value.charAt(opts.value.length - 1);
+    isArray = (firstChar is '[') and (lastChar is ']')
+    isDotProp = opts.property.split('.') > 1
+
+    if isDotProp
+      dotProp.set(file, opts.property, opts.value);
+    else if isArray
+      items = opts.value.substring(1, opts.value.length - 1)
+      items = items.split(',')
+      items = items.map (item) -> item.trim()
+      file[opts.property] = items
+    else
+      file[opts.property] = opts.value
+
     fileoutput = JSON.stringify(file, null, 2) + os.EOL
     fs.writeFile filepath, fileoutput, encoding: 'utf8', cb
 

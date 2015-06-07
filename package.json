@@ -21,6 +21,7 @@
     "acho": "latest",
     "args-js": "latest",
     "coffee-script": "latest",
+    "dot-prop": "latest",
     "fn-partial": "latest",
     "fs-extra": "latest",
     "meow": "latest",

@@ -13,11 +13,12 @@ module.exports =
   SETTED_PROPERTY     : (property) -> "Property '#{property}' setted successful."
 
   # Negative
-  NOT_REMOVE_FILE     : (file) -> "#{file} can\'t be removed because previously hasn\' been added."
-  NOT_DETECTED_FILE   : (file) -> "'#{file}' hasn\'t been detected in the directory."
+  NOT_REMOVE_FILE     : (file) -> "#{file} can't be removed because previously hasn't been added."
+  NOT_DETECTED_FILE   : (file) -> "'#{file}' hasn't been detected in the directory."
   NOT_VALID_VERSION   : (version) -> "version '#{version}' provided to release is not valid."
   NOT_GREATER_VERSION : (last, old) -> "version '#{last}' is not greater that the current '#{old}' version."
-  NOT_CURRENT_VERSION : -> 'There isn\'t version declared.'
+  NOT_CURRENT_VERSION : -> "There isn't version declared."
   NOT_AUTODETECTED    : -> "It has been impossible to detect files automatically."
   NOT_AUTODETECTED_2  : -> "Try to add manually with 'add' command."
   NOT_SETTED_PROPERTY : -> "You need to provide the property and the value to be setted"
+  NOT_SETTED_VERSION  : -> "Use 'bumped release' instead."
