@@ -16,15 +16,15 @@ module.exports = class Util
     firstChar = opts.value.charAt(0);
     lastChar = opts.value.charAt(opts.value.length - 1);
     isArray = (firstChar is '[') and (lastChar is ']')
-    isDotProp = opts.property.split('.') > 1
+    isDotProp = opts.property.split('.').length > 1
 
-    if isDotProp
-      dotProp.set(file, opts.property, opts.value);
-    else if isArray
+    if isArray
       items = opts.value.substring(1, opts.value.length - 1)
       items = items.split(',')
       items = items.map (item) -> item.trim()
       file[opts.property] = items
+    else if isDotProp
+      dotProp.set(file, opts.property, opts.value);
     else
       file[opts.property] = opts.value
 
