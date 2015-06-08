@@ -58,7 +58,7 @@ info	: Current version is '1.0.1'.
 success	: Config file created!.
 ```
 
-At this moment, **Bumped** creates a configuration file `.bumpedrc`, which is associated with the project folder. If you open this file, its content is a list made up of all the synchronized files:  
+At this moment, **Bumped** creates a configuration file `.bumpedrc`, which is associated with the project folder. If you open this file, its content is a list made up of all the synchronized files:
 
 ```cson
 files: [
@@ -151,14 +151,43 @@ The version is setted to 2.0.0 because it's the major version between all the co
 If you decide to remove a file, just use the `remove` command:
 
 ```
-bumped remove component.json
+$ bumped remove component.json
 
 info	: 'component.json' has been removed.
 ```
 
+### .set
+
+Sometimes you need to update a determinate property in the configuration files. No more edit files manually!
+
+```
+$ bumped set name simple-average
+
+success : Property 'name' set.
+```
+
+In this case, `name` is a plain property in the JSON, but you can update nested object properties as well providing the object path:
+
+```
+$ bumped set author.name Kiko Beats
+
+success : Property 'author.name' set.
+```
+
+or Arrays values:
+
+```
+bumped set keywords "[average, avg]"
+
+success	: Property 'keywords' set.
+```
+
+Note that this setup the property across all the files.
+
 ## What's next?
 
 The most interesting aspect in **Bumped** is the posibility to associate *hooks* before or after a release action. Usually, every time you releases a new version of your software, you always have to accomplish several tasks:
+
 - Run a grunt/gulp task to generate a build.
 - Lint the code.
 - Create a tagged version using `git`.
