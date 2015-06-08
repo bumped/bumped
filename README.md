@@ -177,7 +177,7 @@ success : Property 'author.name' set.
 or Arrays values:
 
 ```bash
-bumped set keywords "[average, avg]"
+$ bumped set keywords "[average, avg]"
 
 success	: Property 'keywords' set.
 ```
