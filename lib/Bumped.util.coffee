@@ -35,6 +35,12 @@ module.exports = class Util
     filepath = path.resolve opts.filename
     fs.writeFile filepath, opts.data, encoding: 'utf8', cb
 
+  existsFile: (filepath, cb) ->
+    fs.stat filepath, (err, stats) ->
+      return cb null, true unless err?
+      return cb null, false if err.code is 'ENOENT'
+      cb err, stats
+
   throwError: (message, cb) ->
     err = new Error()
     err.message = message

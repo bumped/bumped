@@ -30,7 +30,8 @@ module.exports = class Config
     async.waterfall tasks, cb
 
   detect: (opts, cb) ->
-    fs.exists "#{process.cwd()}/#{opts.file}", (exists) =>
+    @bumped.util.existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
+      return cb err if err
       return cb exists unless opts.outputMessage
       if opts.outputMessage
         if exists
