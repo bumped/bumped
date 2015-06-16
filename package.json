@@ -29,7 +29,8 @@
     "rc": "latest",
     "season": "latest",
     "semver": "latest",
-    "update-notifier": "latest"
+    "update-notifier": "latest",
+    "exists-file": "*"
   },
   "devDependencies": {
     "mocha": "latest",

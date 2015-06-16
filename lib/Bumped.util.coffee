@@ -1,9 +1,10 @@
 'use strict'
 
-os     = require 'os'
-path   = require 'path'
-fs     = require 'fs-extra'
+os      = require 'os'
+path    = require 'path'
+fs      = require 'fs-extra'
 dotProp = require 'dot-prop'
+exists  = require 'exists-file'
 
 module.exports = class Util
 
@@ -34,12 +35,6 @@ module.exports = class Util
   saveJSON: (opts, cb) ->
     filepath = path.resolve opts.filename
     fs.writeFile filepath, opts.data, encoding: 'utf8', cb
-
-  existsFile: (filepath, cb) ->
-    fs.stat filepath, (err, stats) ->
-      return cb null, true unless err?
-      return cb null, false if err.code is 'ENOENT'
-      cb err, stats
 
   throwError: (message, cb) ->
     err = new Error()

@@ -1,10 +1,11 @@
 'use strict'
 
-CSON    = require 'season'
-fs      = require 'fs-extra'
-async   = require 'neo-async'
-DEFAULT = require './Bumped.default'
-MSG     = require './Bumped.messages'
+CSON       = require 'season'
+fs         = require 'fs-extra'
+async      = require 'neo-async'
+existsFile = require 'exists-file'
+DEFAULT    = require './Bumped.default'
+MSG        = require './Bumped.messages'
 
 module.exports = class Config
 
@@ -30,14 +31,13 @@ module.exports = class Config
     async.waterfall tasks, cb
 
   detect: (opts, cb) ->
-    @bumped.util.existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
+    existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
       return cb err if err
       return cb exists unless opts.outputMessage
-      if opts.outputMessage
-        if exists
-          @bumped.logger.info MSG.DETECTED_FILE opts.file
-        else
-          @bumped.logger.error MSG.NOT_DETECTED_FILE opts.file
+      if exists
+        @bumped.logger.info MSG.DETECTED_FILE opts.file
+      else
+        @bumped.logger.error MSG.NOT_DETECTED_FILE opts.file
       cb exists
 
   add: (opts, cb) =>
