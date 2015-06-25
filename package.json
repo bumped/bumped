@@ -6,8 +6,8 @@
   "main": "./bin/index.js",
   "bin": "./bin/index.js",
   "author": {
-    "name": "",
     "email": "",
+    "name": "",
     "url": "https://github.com/bumped"
   },
   "repository": "bumped/bumped",
@@ -15,13 +15,17 @@
     "url": "https://github.com/bumped/bumped/issues"
   },
   "keywords": [
-    "semver"
+    "npm",
+    "release",
+    "semver",
+    "version"
   ],
   "dependencies": {
     "acho": "latest",
     "args-js": "latest",
     "coffee-script": "latest",
     "dot-prop": "latest",
+    "exists-file": "latest",
     "fn-partial": "latest",
     "fs-extra": "latest",
     "meow": "latest",
@@ -29,8 +33,7 @@
     "rc": "latest",
     "season": "latest",
     "semver": "latest",
-    "update-notifier": "latest",
-    "exists-file": "*"
+    "update-notifier": "latest"
   },
   "devDependencies": {
     "mocha": "latest",
