@@ -1,11 +1,12 @@
 'use strict'
 
-os     = require 'os'
-path   = require 'path'
-semver = require 'semver'
-fs     = require 'fs-extra'
-async  = require 'neo-async'
-MSG    = require './Bumped.messages'
+os      = require 'os'
+path    = require 'path'
+semver  = require 'semver'
+fs      = require 'fs-extra'
+async   = require 'neo-async'
+MSG     = require './Bumped.messages'
+DEFAULT = require './Bumped.default'
 
 module.exports = class Semver
 
@@ -30,7 +31,8 @@ module.exports = class Semver
       next null, max
     , cb
 
-  release: (opts, cb) =>
+  release: =>
+    [opts, cb] = DEFAULT.args arguments
 
     return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
 
@@ -48,7 +50,9 @@ module.exports = class Semver
 
     @update version:newVersion, outputMessage: opts.outputMessage, cb
 
-  update: (opts, cb) ->
+  update: ->
+    [opts, cb] = DEFAULT.args arguments
+
     @bumped._version = opts.version
     async.each @bumped.config.rc.files, @save, (err) =>
       @bumped.logger.errorHandler err, cb
@@ -62,8 +66,9 @@ module.exports = class Semver
       value    : @bumped._version
     , cb
 
-  version: (opts, cb) =>
-    cb = opts if arguments.length is 1
+  version: =>
+    [opts, cb] = DEFAULT.args arguments
+
     if opts.outputMessage
       if @bumped._version?
         @bumped.logger.info MSG.CURRENT_VERSION @bumped._version

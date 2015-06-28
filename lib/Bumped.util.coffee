@@ -2,6 +2,7 @@
 
 os      = require 'os'
 path    = require 'path'
+CSON    = require 'season'
 fs      = require 'fs-extra'
 dotProp = require 'dot-prop'
 exists  = require 'exists-file'
@@ -32,9 +33,14 @@ module.exports = class Util
     fileoutput = JSON.stringify(file, null, 2) + os.EOL
     fs.writeFile filepath, fileoutput, encoding: 'utf8', cb
 
-  saveJSON: (opts, cb) ->
-    filepath = path.resolve opts.filename
-    fs.writeFile filepath, opts.data, encoding: 'utf8', cb
+  loadCSON: (opts, cb) ->
+    fs.readFile opts.path, encoding: 'utf8', (err, data) ->
+      return cb err if err
+      cb null, CSON.parse data
+
+  saveCSON: (opts, cb) ->
+    data = CSON.stringify opts.data, null, 2
+    fs.writeFile opts.path, data, encoding: 'utf8', cb
 
   throwError: (message, cb) ->
     err = new Error()

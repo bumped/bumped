@@ -22,32 +22,31 @@ module.exports = class Bumped
     this
 
   start: ->
-    args = DEFAULT.args arguments
-    return args.cb() unless @config.rc.config
-    @load args.opts, args.cb
+    [opts, cb] = DEFAULT.args arguments
+    return cb() unless @config.rc.config
+    @load opts, cb
 
-  load: (opts, cb) ->
-    fs.readFile @config.rc.config, 'utf8', (err, config) =>
-      throw err if err
-      config = CSON.parse config
-      @config.rc.files = config.files
-      @semver.sync opts, cb
+  load: ->
+    [opts, cb] = DEFAULT.args arguments
+    @config.load => @semver.sync opts, cb
 
-  init: (opts, cb) =>
-    args = DEFAULT.args arguments
+  init: =>
+    [opts, cb] = DEFAULT.args arguments
 
     tasks = [
-      (next) => @config.autodetect args.opts, next
-      (next) => @config.save args.opts, next
-      (next) => @semver.sync args.opts, next
+      (next) => @config.autodetect opts, next
+      (next) => @config.save opts, next
+      (next) => @semver.sync opts, next
     ]
 
     async.waterfall tasks, (err, result) =>
-      @logger.errorHandler err, args.cb
-      @end args.opts, args.cb
+      @logger.errorHandler err, cb
+      @end opts, cb
 
-  end: (opts, cb) ->
-    return @semver.version opts, cb unless opts.outputMessage?
+  end: ->
+    [opts, cb] = DEFAULT.args arguments
+
+    return @semver.version opts, cb unless opts.outputMessage
 
     if @config.rc.files.length is 0
       @logger.warn MSG.NOT_AUTODETECTED()

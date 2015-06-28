@@ -2,7 +2,7 @@
   "name": "bumped",
   "description": "Makes easy release software.",
   "homepage": "https://github.com/bumped/bumped",
-  "version": "0.2.0",
+  "version": "0.2.16",
   "main": "./bin/index.js",
   "bin": "./bin/index.js",
   "author": {
@@ -30,6 +30,7 @@
     "fs-extra": "latest",
     "meow": "latest",
     "neo-async": "latest",
+    "object-assign": "latest",
     "rc": "latest",
     "season": "latest",
     "semver": "latest",

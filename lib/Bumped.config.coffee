@@ -13,7 +13,9 @@ module.exports = class Config
     @bumped = bumped
     @rc = require('rc') bumped.pkg.name, DEFAULT.structure(), null, (config) -> CSON.parse config
 
-  autodetect: (opts, cb) ->
+  autodetect: ->
+    [opts, cb] = DEFAULT.args arguments
+
     tasks = [
       (next) =>
         return next() unless @rc.config
@@ -30,7 +32,9 @@ module.exports = class Config
 
     async.waterfall tasks, cb
 
-  detect: (opts, cb) ->
+  detect: ->
+    [opts, cb] = DEFAULT.args arguments
+
     existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
       return cb err if err
       return cb exists unless opts.outputMessage
@@ -40,7 +44,9 @@ module.exports = class Config
         @bumped.logger.error MSG.NOT_DETECTED_FILE opts.file
       cb exists
 
-  add: (opts, cb) =>
+  add: =>
+    [opts, cb] = DEFAULT.args arguments
+
     if @hasFile opts.file
       message = MSG.ADD_ALREADY_FILE opts.file
       @bumped.logger.error message if opts.outputMessage
@@ -57,7 +63,9 @@ module.exports = class Config
     async.waterfall tasks, (err, result) =>
       cb err, @rc.files
 
-  remove: (opts, cb) =>
+  remove: =>
+    [opts, cb] = DEFAULT.args arguments
+
     unless @hasFile opts.file
       message = MSG.NOT_REMOVE_FILE opts.file
       @bumped.logger.error message if opts.outputMessage
@@ -71,30 +79,53 @@ module.exports = class Config
     async.waterfall tasks, (err, result) =>
       cb(err, @rc.files)
 
-  save: (opts, cb) =>
-    @bumped.util.saveJSON
-      filename: ".#{@bumped.pkg.name}rc"
-      data    : CSON.stringify(files: @rc.files, null, 2)
+  save: =>
+    [opts, cb] = DEFAULT.args arguments
+
+    # TODO: Update to save hooks
+    data = files: @rc.files
+
+    @bumped.util.saveCSON
+      path : ".#{@bumped.pkg.name}rc"
+      data : data
     , cb
 
-  detectFile: (opts, cb) ->
+  load: =>
+    [opts, cb] = DEFAULT.args arguments
+
+    @bumped.util.loadCSON
+      path: @bumped.config.rc.config
+    , (err, content) =>
+      throw err if err
+      # TODO: Update to load hooks
+      @bumped.config.rc.files = content.files
+      cb()
+
+  detectFile: ->
+    [opts, cb] = DEFAULT.args arguments
+
     @detect opts, (exists) ->
       return cb MSG.DETECTED_FILE opts.file unless exists
       cb()
 
-  addFile: (opts, cb) ->
+  addFile: ->
+    [opts, cb] = DEFAULT.args arguments
+
     @rc.files.push opts.file
     outputMessageType = opts.outputMessageType or 'info'
     @bumped.logger[outputMessageType] MSG.ADD_FILE opts.file if opts.outputMessage
     cb()
 
-  removeFile: (opts, cb) ->
+  removeFile: ->
+    [opts, cb] = DEFAULT.args arguments
+
     index = @rc.files.indexOf opts.file
     @rc.files.splice index, 1
     @bumped.logger.success MSG.REMOVE_FILE opts.file if opts.outputMessage
     cb()
 
-  set: (opts, cb) =>
+  set: =>
+    [opts, cb] = DEFAULT.args arguments
 
     setProperty = (file, done) =>
       @bumped.util.updateJSON

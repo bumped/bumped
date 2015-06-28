@@ -1,21 +1,28 @@
 'use strict'
 
 Args = require 'args-js'
+objectAssign = require('object-assign')
 
 module.exports =
 
   structure: ->
     return {
       files: []
+      plugins:
+        prerelease: []
+        postrelease: []
     }
 
   detect: ['package.json', 'bower.json']
 
-  opts:
-    outputMessage: true
+  defaulOptions: ->
+    return {
+      outputMessage: true
+    }
 
   args: ->
-    Args([
-      { opts :  Args.OBJECT   | Args.Optional, _default:  this.opts }
-      { cb   :  Args.FUNCTION | Args.Required                       }
+    args = Args([
+      { opts :  Args.OBJECT   | Args.Optional, _default:  this.defaulOptions() }
+      { cb   :  Args.FUNCTION | Args.Required                                  }
     ], arguments[0])
+    return [objectAssign(this.defaulOptions(), args.opts), args.cb]

@@ -38,25 +38,19 @@ var exit = function(err) {
 
 var commands = {
   init: partial(bumped.init, exit),
-
-  version: partial(bumped.semver.version, {
-    outputMessage: true
-  }, exit),
+  version: partial(bumped.semver.version, exit),
 
   release: partial(bumped.semver.release, {
-    outputMessage: true,
     version: cli.input[0]
   }, exit),
 
   add: partial(bumped.config.add, {
-    outputMessage: true,
     detect: true,
     save: true,
     file: cli.input[0]
   }, exit),
 
   remove: partial(bumped.config.remove, {
-    outputMessage: true,
     save: true,
     file: cli.input[0]
   }, exit),
@@ -66,7 +60,6 @@ var commands = {
     cli.input.shift();
     var value = cli.input.join(' ');
     return partial(bumped.config.set, {
-      outputMessage: true,
       property: property,
       value: value
     }, exit);
@@ -76,9 +69,10 @@ var commands = {
 var existCommand = Object.keys(commands).indexOf(command) > -1;
 
 if (existCommand) {
-  return bumped.start({
+  bumped.start({
     outputMessage: false
   }, function(err) {
+    if (err) throw err;
     return commands[command]();
   });
 }
