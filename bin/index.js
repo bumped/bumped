@@ -61,7 +61,7 @@ var commands = {
 var existCommand = Object.keys(commands).indexOf(command) > -1;
 
 if (existCommand) {
-  bumped.start({
+  return bumped.start({
     outputMessage: false
   }, function(err) {
     if (err) throw err;
