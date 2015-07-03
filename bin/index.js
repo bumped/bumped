@@ -1,23 +1,15 @@
 #!/usr/bin/env node
 'use strict';
 require('coffee-script').register();
+var fs = require('fs');
 var Bumped = require('./../lib/Bumped');
 var updateNotifier = require('update-notifier');
 var partial = require('fn-partial');
 var cli = require('meow')({
-      pkg: '../package.json',
-      help: [
-        'Usage',
-        '  $ bumped <version|minor|major|patch>',
-        '\n  options:',
-        '\t -d --directory\t directory where run the command',
-        '\n  examples:',
-        '\t bumped 1.0.1',
-        '\t bumped patch'
-      ].join('\n')
-    });
+  pkg: '../package.json',
+  help: fs.readFileSync(__dirname + '/help.txt', 'utf8')
+});
 
-console.log(); // so pretty
 updateNotifier({pkg: cli.pkg}).notify();
 if (cli.input.length === 0) cli.showHelp();
 
