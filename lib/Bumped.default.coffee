@@ -5,7 +5,7 @@ objectAssign = require('object-assign')
 
 module.exports =
 
-  structure: ->
+  scaffold: ->
     return {
       files: []
       plugins:
