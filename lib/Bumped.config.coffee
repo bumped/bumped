@@ -21,7 +21,7 @@ module.exports = class Config
         return next() unless @rc.config
         fs.remove @rc.config, next
       (next) =>
-        @_writeDefaultScaffold()
+        @_saveScaffold()
         async.each DEFAULT.detect, (file, done) =>
           @detect file: file, outputMessage: false, (exists) =>
             return done() unless exists
@@ -94,10 +94,9 @@ module.exports = class Config
 
     @bumped.util.loadCSON
       path: @bumped.config.rc.config
-    , (err, content) =>
+    , (err, filedata) =>
       throw err if err
-      # TODO: Update to load hooks
-      @bumped.config.rc.files = content.files
+      @_loadScaffold filedata
       cb()
 
   detectFile: ->
@@ -144,5 +143,9 @@ module.exports = class Config
   hasFile: (file) ->
     @rc.files.indexOf(file) isnt -1
 
-  _writeDefaultScaffold: ->
+  _saveScaffold: ->
     [@rc.files, @rc.plugins] = [DEFAULT.scaffold().files, DEFAULT.scaffold().plugins]
+
+  _loadScaffold: (filedata)->
+    @bumped.config.rc.files = filedata.files
+    @bumped.config.rc.plugins = filedata.plugins
