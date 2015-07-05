@@ -1,7 +1,7 @@
 'use strict'
 
-Args = require 'args-js'
-objectAssign = require('object-assign')
+Args         = require 'args-js'
+objectAssign = require 'object-assign'
 
 module.exports =
 
