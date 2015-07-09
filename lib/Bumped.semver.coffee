@@ -31,24 +31,19 @@ module.exports = class Semver
       next null, max
     , cb
 
-  release: =>
+  release: ->
     [opts, cb] = DEFAULT.args arguments
 
     return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
 
     if @isSemverWord opts.version
-      newVersion = semver.inc(@bumped._version, opts.version)
-      return @update version:newVersion, outputMessage: opts.outputMessage, cb
+      bumpedVersion = @_releasesBasedOnSemver
+    else
+      bumpedVersion = @_releasesBasedOnVersion
 
-    newVersion = opts.version
-    newVersion = semver.clean newVersion
-    newVersion = semver.valid newVersion
-
-    return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless newVersion?
-    unless semver.gt newVersion, @bumped._version
-      return @bumped.util.throwError MSG.NOT_GREATER_VERSION(opts.version, @bumped._version), cb
-
-    @update version:newVersion, outputMessage: opts.outputMessage, cb
+    bumpedVersion opts.version, (err, newVersion) =>
+      return @bumped.util.throwError err, cb if err
+      @update version:newVersion, outputMessage: opts.outputMessage, cb
 
   update: ->
     [opts, cb] = DEFAULT.args arguments
@@ -80,3 +75,13 @@ module.exports = class Semver
   isSemverWord: (word) ->
     [ 'major', 'premajor', 'minor', 'preminor'
       'patch', 'prepatch', 'prerelease' ].indexOf(word) isnt -1
+
+  _releasesBasedOnSemver: (keyword, cb) =>
+    cb null, semver.inc(@bumped._version, keyword)
+
+  _releasesBasedOnVersion: (version, cb) =>
+    version = semver.clean version
+    version = semver.valid version
+    return cb MSG.NOT_VALID_VERSION version unless version?
+    return cb MSG.NOT_GREATER_VERSION(version, @bumped._version) unless semver.gt version, @bumped._version
+    cb null, version

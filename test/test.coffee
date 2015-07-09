@@ -141,15 +141,10 @@ describe 'Bumped ::', ->
           require('./sample_directory/package.json').description.should.be.equal descriptionValue
           require('./sample_directory/component.json').description.should.be.equal descriptionValue
 
-  xdescribe 'hooks ::', ->
-    it 'exists a plugin section in the basic file scaffold', (done) ->
+  describe 'plugins ::', ->
+    it 'exists a plugins section in the basic file scaffold', (done) ->
       @bumped.init ->
         config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
         config = CSON.parse config
-        console.log config
         (config.plugins?).should.be.equal true
-        # (config.plugins).is.an.Object;
-        # (config.plugins).should.equal true
-        # (config.plugins.prerelease?).should.equal true
-        # (config.plugins.postrelease?).should.equal true
         done()
