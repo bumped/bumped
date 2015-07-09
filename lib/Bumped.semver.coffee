@@ -13,7 +13,8 @@ module.exports = class Semver
   constructor: (bumped) ->
     @bumped = bumped
 
-  sync: (opts, cb) =>
+  sync: =>
+    [opts, cb] = DEFAULT.args arguments
     async.compose(@max, @versions) (err, max) =>
       @bumped._version = max
       cb()
@@ -31,7 +32,7 @@ module.exports = class Semver
       next null, max
     , cb
 
-  release: ->
+  release: =>
     [opts, cb] = DEFAULT.args arguments
 
     return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
