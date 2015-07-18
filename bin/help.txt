@@ -32,5 +32,5 @@ set      Set or update a determinate property across the files
          You can set Strings, Arrays or Objects:
 
          $ bumped set name newName
-         $ bumped set keywords semver, management, cli
+         $ bumped set keywords [ semver, management, cli ]
          $ bumped set authors.name newAuthor
