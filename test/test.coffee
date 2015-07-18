@@ -7,17 +7,22 @@ fs     = require 'fs-extra'
 Bumped = require '../lib/Bumped'
 pkg    = require '../package.json'
 
-absolutePath = (filepath) -> path.resolve(__dirname, filepath)
+testPath = (filepath) -> path.resolve __dirname, filepath
+
+bumpedFactory = (folderName) ->
+  before (done) ->
+    src = testPath "fixtures/#{folderName}"
+    dest = testPath "#{folderName}"
+    fs.copy src, dest, =>
+      @bumped = new Bumped cwd: dest, logger: {color: true}
+      done()
+
+  after (done) ->
+    fs.remove testPath(folderName), done
 
 describe 'Bumped ::', ->
 
-  before ->
-    src = absolutePath 'fixtures/sample_directory'
-    dest = absolutePath 'sample_directory'
-    fs.copySync(src, dest)
-    @bumped = new Bumped(cwd: dest, logger: {color: true})
-
-  after -> fs.removeSync("#{process.cwd()}/.#{pkg.name}rc")
+  bumpedFactory 'sample_directory'
 
   describe 'init ::', ->
     it 'initialize a configuration file', (done) ->
@@ -142,6 +147,9 @@ describe 'Bumped ::', ->
           require('./sample_directory/component.json').description.should.be.equal descriptionValue
 
   describe 'plugins ::', ->
+
+    bumpedFactory 'plugin_directory'
+
     it 'exists a plugins section in the basic file scaffold', (done) ->
       @bumped.init ->
         config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
