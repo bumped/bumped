@@ -14,21 +14,26 @@ module.exports = class Bumped
 
   constructor: (opts = {}) ->
     process.chdir opts.cwd if opts.cwd?
+
     @pkg    = require '../package.json'
     @config = new Config this
     @semver = new Semver this
     @logger = new Logger opts.logger
     @util   = new Util this
+
     this
 
   start: ->
     [opts, cb] = DEFAULT.args arguments
     return cb() unless @config.rc.config
+
     @load opts, cb
 
   load: ->
     [opts, cb] = DEFAULT.args arguments
-    @config.load => @semver.sync opts, cb
+
+    tasks = [ @config.load ]
+    async.series tasks, => @semver.sync opts, cb
 
   init: =>
     [opts, cb] = DEFAULT.args arguments

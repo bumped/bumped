@@ -21,7 +21,7 @@ module.exports = class Config
         return next() unless @rc.config
         fs.remove @rc.config, next
       (next) =>
-        @_saveScaffold()
+        @saveScaffold()
         async.each DEFAULT.detect, (file, done) =>
           @detect file: file, outputMessage: false, (exists) =>
             return done() unless exists
@@ -96,7 +96,7 @@ module.exports = class Config
       path: @bumped.config.rc.config
     , (err, filedata) =>
       throw err if err
-      @_loadScaffold filedata
+      @loadScaffold filedata
       cb()
 
   detectFile: ->
@@ -143,9 +143,9 @@ module.exports = class Config
   hasFile: (file) ->
     @rc.files.indexOf(file) isnt -1
 
-  _saveScaffold: ->
+  saveScaffold: ->
     [@rc.files, @rc.plugins] = [DEFAULT.scaffold().files, DEFAULT.scaffold().plugins]
 
-  _loadScaffold: (filedata)->
+  loadScaffold: (filedata) ->
     @bumped.config.rc.files = filedata.files
     @bumped.config.rc.plugins = filedata.plugins
