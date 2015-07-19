@@ -2,9 +2,9 @@
 
 os      = require 'os'
 path    = require 'path'
+async   = require 'async'
 semver  = require 'semver'
 fs      = require 'fs-extra'
-async   = require 'neo-async'
 MSG     = require './Bumped.messages'
 DEFAULT = require './Bumped.default'
 
@@ -36,15 +36,30 @@ module.exports = class Semver
     [opts, cb] = DEFAULT.args arguments
 
     return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
+    @bumped._version ?= '0.0.0'
 
     if @isSemverWord opts.version
       bumpedVersion = @_releasesBasedOnSemver
     else
       bumpedVersion = @_releasesBasedOnVersion
 
-    bumpedVersion opts.version, (err, newVersion) =>
+    tasks = [
+      (next) =>
+        opts.type = 'prerelease'
+        @bumped.plugins.exec opts, next
+      (next) =>
+        bumpedVersion opts.version, next
+      (newVersion, next) =>
+        @bumped._oldVersion = @bumped._version
+        @update version:newVersion, outputMessage: opts.outputMessage, next
+      (next) =>
+        opts.type = 'postrelease'
+        @bumped.plugins.exec opts, next
+    ]
+
+    async.waterfall tasks, (err) =>
       return @bumped.util.throwError err, cb if err
-      @update version:newVersion, outputMessage: opts.outputMessage, cb
+      cb null, @bumped._version
 
   update: ->
     [opts, cb] = DEFAULT.args arguments
@@ -53,7 +68,7 @@ module.exports = class Semver
     async.each @bumped.config.rc.files, @save, (err) =>
       @bumped.logger.errorHandler err, cb
       @bumped.logger.success MSG.CREATED_VERSION @bumped._version if opts.outputMessage
-      cb null, @bumped._version
+      cb()
 
   save: (file, cb) =>
     @bumped.util.updateJSON

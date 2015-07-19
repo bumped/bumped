@@ -1,25 +1,20 @@
 files: [
   "package.json"
 ]
-plugins:
-  prerelease: [
 
-    sayHello:
+plugins:
+  prerelease:
+
+    'Saying hello':
       plugin: 'bumped-terminal'
-      description: 'Say hello'
       command: 'echo "hey man, hello!"'
 
-    helloWorld:
+    'executing hello world command':
       plugin: 'bumped-terminal'
-      description: 'executing hello world command'
       command: 'echo hello world'
 
-  ]
-  postrelease: [
+  postrelease:
 
-    sayGoodDay:
-      plugin: 'terminal'
-      description: 'Say good Day'
+    'Say good Day':
+      plugin: 'bumped-terminal'
       command: 'echo "have a good day (night)!"'
-
-  ]

@@ -1,8 +1,8 @@
 'use strict'
 
+async      = require 'async'
 CSON       = require 'season'
 fs         = require 'fs-extra'
-async      = require 'neo-async'
 existsFile = require 'exists-file'
 DEFAULT    = require './Bumped.default'
 MSG        = require './Bumped.messages'

@@ -29,7 +29,7 @@
     "fn-partial": "latest",
     "fs-extra": "latest",
     "meow": "latest",
-    "neo-async": "latest",
+    "async": "latest",
     "object-assign": "latest",
     "rc": "latest",
     "season": "latest",

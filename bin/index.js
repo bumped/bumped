@@ -16,7 +16,7 @@ if (cli.input.length === 0) cli.showHelp();
 var options = {
   logger: {
     color: true,
-    level: 'silly'
+    level: 'plugin'
   }
 };
 

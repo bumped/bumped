@@ -9,8 +9,8 @@ module.exports =
     return {
       files: []
       plugins:
-        prerelease: []
-        postrelease: []
+        prerelease: {}
+        postrelease: {}
     }
 
   detect: ['package.json', 'bower.json']
@@ -18,6 +18,33 @@ module.exports =
   defaulOptions: ->
     return {
       outputMessage: true
+    }
+
+  loggerTypes: ->
+    return {
+      line:
+        color: 'gray'
+      error:
+        level : 0
+        color : 'red'
+      warn:
+        level : 1
+        color : 'yellow'
+      success:
+        level : 2
+        color : 'green'
+      info:
+        level : 3
+        color : 'white'
+      verbose:
+        level : 4
+        color : 'cyan'
+      debug:
+        level : 5
+        color : 'blue'
+      plugin:
+        level : 6
+        color : 'magenta'
     }
 
   args: ->

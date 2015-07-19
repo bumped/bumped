@@ -1,12 +1,13 @@
 'use strict'
 
+async   = require 'async'
 CSON    = require 'season'
 fs      = require 'fs-extra'
-async   = require 'neo-async'
 Util    = require './Bumped.util'
 Semver  = require './Bumped.semver'
 Config  = require './Bumped.config'
 Logger  = require './Bumped.logger'
+Plugins = require './Bumped.plugins'
 DEFAULT = require './Bumped.default'
 MSG     = require './Bumped.messages'
 
@@ -20,20 +21,20 @@ module.exports = class Bumped
     @semver = new Semver this
     @logger = new Logger opts.logger
     @util   = new Util this
+    @plugins = new Plugins this
 
     this
 
   start: ->
     [opts, cb] = DEFAULT.args arguments
     return cb() unless @config.rc.config
-
     @load opts, cb
 
   load: ->
     [opts, cb] = DEFAULT.args arguments
 
     tasks = [ @config.load ]
-    async.series tasks, => @semver.sync opts, cb
+    async.waterfall tasks, => @semver.sync opts, cb
 
   init: =>
     [opts, cb] = DEFAULT.args arguments

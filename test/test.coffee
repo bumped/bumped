@@ -14,7 +14,11 @@ bumpedFactory = (folderName) ->
     src = testPath "fixtures/#{folderName}"
     dest = testPath "#{folderName}"
     fs.copy src, dest, =>
-      @bumped = new Bumped cwd: dest, logger: {color: true}
+      @bumped = new Bumped
+        cwd: dest
+        logger:
+          color: true
+
       done()
 
   after (done) ->
@@ -151,8 +155,14 @@ describe 'Bumped ::', ->
     bumpedFactory 'plugin_directory'
 
     it 'exists a plugins section in the basic file scaffold', (done) ->
-      @bumped.init ->
-        config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-        config = CSON.parse config
-        (config.plugins?).should.be.equal true
+      config = fs.readFileSync(@bumped.config.rc.config, encoding: 'utf8')
+      config = CSON.parse config
+      (config.plugins?.prerelease?).should.be.equal true
+      (config.plugins?.prerelease?).should.be.equal true
+      done()
+
+    it 'release a new version and hook pre releases plugins in order', (done) ->
+      @bumped.semver.release version: '1.0.0', (err, version) ->
+        done err if err
+        # (err?).should.be.equal true
         done()

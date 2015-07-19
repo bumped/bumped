@@ -13,17 +13,26 @@ module.exports = class Plugins
 
   constructor: (bumped) ->
     @bumped = bumped
-    [ @prerelease, @postrelease ] = @bumped.config.rc.plugins
+    @prerelease = @bumped.config.rc.plugins.prerelease
+    @postrelease = @bumped.config.rc.plugins.postrelease
     @cache = {}
 
-  execPreReleases: (opts, cb) ->
+  exec: (opts, cb) ->
+    type = @[opts.type]
+    return cb null if @isEmpty type
 
-    async.eachSeries @prerelease, (objt, next) ->
-      plugin = @cache[objt.plugin] ?= require objt.plugin
-      config = @prerelease.objt.key
-      plugin @bumped, config, next
-    , (err) =>
-      @abort err if err
-      cb()
+    async.forEachOfSeries type, (settings, name, next) =>
+      ## TODO: instead of require, use force-require
+      plugin = @cache[settings.plugin] ?= require settings.plugin
 
-  abort: (err) ->
+      console.log()
+      @bumped.logger.plugin "#{settings.plugin}: #{name}"
+      plugin @bumped, settings, next
+
+    , (err) ->
+      console.log()
+      cb err
+
+  isEmpty: (plugins) ->
+    return true unless plugins
+    Object.keys(plugins).length is 0
