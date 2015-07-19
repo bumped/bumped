@@ -46,7 +46,7 @@ module.exports = class Bumped
     ]
 
     async.waterfall tasks, (err, result) =>
-      @logger.errorHandler err, cb
+      return @logger.errorHandler err, cb if err
       @end opts, cb
 
   end: ->

@@ -5,9 +5,8 @@ objectAssign = require 'object-assign'
 DEFAULT      = require './Bumped.default'
 
 Acho::errorHandler = (err, cb) ->
-  if err
-    @error err.message
-    return cb err
+  @error err
+  cb err
 
 module.exports = (opts) ->
   opts = objectAssign {types: DEFAULT.loggerTypes()}, opts

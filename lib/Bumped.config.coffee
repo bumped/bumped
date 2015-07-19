@@ -132,11 +132,11 @@ module.exports = class Config
         value    : opts.value
       , done
 
-    return @bumped.util.throwError MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
-    return @bumped.util.throwError MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
+    return @bumped.logger.errorHandler MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
+    return @bumped.logger.errorHandler MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
 
     async.each @bumped.config.rc.files, setProperty, (err) =>
-      @bumped.logger.errorHandler err, cb
+      return @bumped.logger.errorHandler err, cb if err
       @bumped.logger.success MSG.SET_PROPERTY opts.property if opts.outputMessage
       cb null, opts
 

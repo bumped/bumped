@@ -35,7 +35,7 @@ module.exports = class Semver
   release: =>
     [opts, cb] = DEFAULT.args arguments
 
-    return @bumped.util.throwError MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
+    return @bumped.logger.errorHandler MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
     @bumped._version ?= '0.0.0'
 
     if @isSemverWord opts.version
@@ -58,7 +58,7 @@ module.exports = class Semver
     ]
 
     async.waterfall tasks, (err) =>
-      return @bumped.util.throwError err, cb if err
+      return @bumped.logger.errorHandler err, cb if err
       cb null, @bumped._version
 
   update: ->
@@ -66,7 +66,7 @@ module.exports = class Semver
 
     @bumped._version = opts.version
     async.each @bumped.config.rc.files, @save, (err) =>
-      @bumped.logger.errorHandler err, cb
+      return @bumped.logger.errorHandler err, cb if err
       @bumped.logger.success MSG.CREATED_VERSION @bumped._version if opts.outputMessage
       cb()
 
