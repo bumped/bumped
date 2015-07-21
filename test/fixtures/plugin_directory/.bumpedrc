@@ -9,12 +9,7 @@ plugins:
       plugin: 'bumped-terminal'
       command: 'echo "hey man, hello!"'
 
-    'executing hello world command':
-      plugin: 'bumped-terminal'
-      command: 'echo hello world'
-
   postrelease:
-
     'Say good Day':
       plugin: 'bumped-terminal'
       command: 'echo "have a good day (night)!"'

@@ -29,9 +29,7 @@ module.exports = class Plugins
       @bumped.logger.plugin "#{settings.plugin}: #{name}"
       plugin @bumped, settings, next
 
-    , (err) ->
-      console.log()
-      cb err
+    , cb
 
   isEmpty: (plugins) ->
     return true unless plugins
