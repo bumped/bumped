@@ -1,0 +1,6 @@
+files: [
+  "package.json"
+]
+plugins:
+  prerelease: {}
+  postrelease: {}
