@@ -12,6 +12,12 @@ module.exports = class Util
   constructor: (bumped) ->
     @bumped = bumped
 
+  ###*
+   * A sweet way to update JSON Arrays, Objects or String from String.
+   * @param  {Object}   opts [description]
+   * @param  {Function} cb   Standard NodeJS callback.
+   * @return {[type]}        Standard NodeJS callback.
+  ###
   updateJSON: (opts, cb) ->
     filepath = path.resolve opts.filename
     file = require filepath
@@ -41,8 +47,3 @@ module.exports = class Util
   saveCSON: (opts, cb) ->
     data = CSON.stringify opts.data, null, 2
     fs.writeFile opts.path, data, encoding: 'utf8', cb
-
-  throwError: (message, cb) ->
-    err = new Error()
-    err.message = message
-    @bumped.logger.errorHandler err, cb

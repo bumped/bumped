@@ -1,8 +1,8 @@
 'use strict'
 
+async      = require 'async'
 CSON       = require 'season'
 fs         = require 'fs-extra'
-async      = require 'neo-async'
 existsFile = require 'exists-file'
 DEFAULT    = require './Bumped.default'
 MSG        = require './Bumped.messages'
@@ -21,7 +21,7 @@ module.exports = class Config
         return next() unless @rc.config
         fs.remove @rc.config, next
       (next) =>
-        @_saveScaffold()
+        @saveScaffold()
         async.each DEFAULT.detect, (file, done) =>
           @detect file: file, outputMessage: false, (exists) =>
             return done() unless exists
@@ -96,7 +96,7 @@ module.exports = class Config
       path: @bumped.config.rc.config
     , (err, filedata) =>
       throw err if err
-      @_loadScaffold filedata
+      @loadScaffold filedata
       cb()
 
   detectFile: ->
@@ -132,20 +132,20 @@ module.exports = class Config
         value    : opts.value
       , done
 
-    return @bumped.util.throwError MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
-    return @bumped.util.throwError MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
+    return @bumped.logger.errorHandler MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
+    return @bumped.logger.errorHandler MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
 
     async.each @bumped.config.rc.files, setProperty, (err) =>
-      @bumped.logger.errorHandler err, cb
+      return @bumped.logger.errorHandler err, cb if err
       @bumped.logger.success MSG.SET_PROPERTY opts.property if opts.outputMessage
       cb null, opts
 
   hasFile: (file) ->
     @rc.files.indexOf(file) isnt -1
 
-  _saveScaffold: ->
+  saveScaffold: ->
     [@rc.files, @rc.plugins] = [DEFAULT.scaffold().files, DEFAULT.scaffold().plugins]
 
-  _loadScaffold: (filedata)->
+  loadScaffold: (filedata) ->
     @bumped.config.rc.files = filedata.files
     @bumped.config.rc.plugins = filedata.plugins

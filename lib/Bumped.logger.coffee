@@ -1,10 +1,13 @@
 'use strict'
 
-Acho = require 'acho'
+Acho         = require 'acho'
+objectAssign = require 'object-assign'
+DEFAULT      = require './Bumped.default'
 
 Acho::errorHandler = (err, cb) ->
-  if err
-    @error err.message
-    return cb err
+  @error err
+  cb err
 
-module.exports = Acho
+module.exports = (opts) ->
+  opts = objectAssign {types: DEFAULT.loggerTypes()}, opts
+  new Acho opts

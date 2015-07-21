@@ -6,15 +6,16 @@
   "main": "./bin/index.js",
   "bin": "./bin/index.js",
   "author": {
-    "email": "",
-    "name": "",
-    "url": "https://github.com/bumped"
+    "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
+    "url": "https://github.com/Kikobeats"
   },
   "repository": "bumped/bumped",
   "bugs": {
     "url": "https://github.com/bumped/bumped/issues"
   },
   "keywords": [
+    "bumped",
     "npm",
     "release",
     "semver",
@@ -23,13 +24,13 @@
   "dependencies": {
     "acho": "latest",
     "args-js": "latest",
+    "async": "latest",
     "coffee-script": "latest",
     "dot-prop": "latest",
     "exists-file": "latest",
     "fn-partial": "latest",
     "fs-extra": "latest",
     "meow": "latest",
-    "neo-async": "latest",
     "object-assign": "latest",
     "rc": "latest",
     "season": "latest",
@@ -37,6 +38,7 @@
     "update-notifier": "latest"
   },
   "devDependencies": {
+    "bumped-terminal": "~0.1.0",
     "mocha": "latest",
     "should": "latest"
   },

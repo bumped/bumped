@@ -7,17 +7,26 @@ fs     = require 'fs-extra'
 Bumped = require '../lib/Bumped'
 pkg    = require '../package.json'
 
-absolutePath = (filepath) -> path.resolve(__dirname, filepath)
+testPath = (filepath) -> path.resolve __dirname, filepath
+
+bumpedFactory = (folderName) ->
+  before (done) ->
+    src = testPath "fixtures/#{folderName}"
+    dest = testPath "#{folderName}"
+    fs.copy src, dest, =>
+      @bumped = new Bumped
+        cwd: dest
+        logger:
+          color: true
+
+      done()
+
+  after (done) ->
+    fs.remove testPath(folderName), done
 
 describe 'Bumped ::', ->
 
-  before ->
-    src = absolutePath 'fixtures/sample_directory'
-    dest = absolutePath 'sample_directory'
-    fs.copySync(src, dest)
-    @bumped = new Bumped(cwd: dest, logger: {color: true})
-
-  after -> fs.removeSync("#{process.cwd()}/.#{pkg.name}rc")
+  bumpedFactory 'sample_directory'
 
   describe 'init ::', ->
     it 'initialize a configuration file', (done) ->
@@ -142,9 +151,18 @@ describe 'Bumped ::', ->
           require('./sample_directory/component.json').description.should.be.equal descriptionValue
 
   describe 'plugins ::', ->
+
+    bumpedFactory 'plugin_directory'
+
     it 'exists a plugins section in the basic file scaffold', (done) ->
-      @bumped.init ->
-        config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-        config = CSON.parse config
-        (config.plugins?).should.be.equal true
+      config = fs.readFileSync(@bumped.config.rc.config, encoding: 'utf8')
+      config = CSON.parse config
+      (config.plugins?.prerelease?).should.be.equal true
+      (config.plugins?.prerelease?).should.be.equal true
+      done()
+
+    it 'release a new version and hook pre releases plugins in order', (done) ->
+      @bumped.semver.release version: '1.0.0', (err, version) ->
+        done err if err
+        # (err?).should.be.equal true
         done()
