@@ -1,6 +1,7 @@
 'use strict'
 
-async = require 'async'
+async        = require 'async'
+forceRequire = require 'force-require'
 
 ###*
  * Bumped.plugins
@@ -23,12 +24,10 @@ module.exports = class Plugins
 
     async.forEachOfSeries type, (settings, name, next) =>
       ## TODO: instead of require, use force-require
-      plugin = @cache[settings.plugin] ?= require settings.plugin
-
+      plugin = @cache[settings.plugin] ?= forceRequire settings.plugin
       console.log()
       @bumped.logger.plugin "#{settings.plugin}: #{name}"
       plugin @bumped, settings, next
-
     , cb
 
   isEmpty: (plugins) ->

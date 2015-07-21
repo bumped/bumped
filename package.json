@@ -29,6 +29,7 @@
     "dot-prop": "latest",
     "exists-file": "latest",
     "fn-partial": "latest",
+    "force-require": "latest",
     "fs-extra": "latest",
     "meow": "latest",
     "object-assign": "latest",
