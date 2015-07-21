@@ -4,7 +4,6 @@ files: [
 
 plugins:
   prerelease:
-
     'Saying hello':
       plugin: 'bumped-terminal'
       command: 'echo "hey man, hello!"'
