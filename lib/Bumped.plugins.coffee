@@ -23,7 +23,6 @@ module.exports = class Plugins
     return cb null if @isEmpty type
 
     async.forEachOfSeries type, (settings, name, next) =>
-      ## TODO: instead of require, use force-require
       plugin = @cache[settings.plugin] ?= forceRequire settings.plugin
       console.log()
       @bumped.logger.plugin "#{settings.plugin}: #{name}"
