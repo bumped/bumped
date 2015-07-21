@@ -29,6 +29,5 @@ module.exports = class Plugins
       plugin @bumped, settings, next
     , cb
 
-  isEmpty: (plugins) ->
-    return true unless plugins
+  isEmpty: (plugins = []) ->
     Object.keys(plugins).length is 0
