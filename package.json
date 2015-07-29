@@ -39,7 +39,7 @@
     "update-notifier": "latest"
   },
   "devDependencies": {
-    "bumped-terminal": "~0.1.0",
+    "bumped-terminal": "latest",
     "mocha": "latest",
     "should": "latest"
   },
