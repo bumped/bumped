@@ -41,7 +41,7 @@ describe 'Bumped ::', ->
         @bumped.semver.version (version) ->
           version.should.be.equal('0.2.0')
 
-    describe 'release', ->
+    describe 'release ::', ->
       it 'try to release a new version that is not valid', (done) ->
         @bumped.semver.release version:null, (err, version) ->
           (err?).should.be.equal true
