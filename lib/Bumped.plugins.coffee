@@ -31,6 +31,7 @@ module.exports = class Plugins
 
   print: (err, message, cb) ->
     return cb err if err
+    message = message.replace(/\n$/, '') # deletes last line break
     @bumped.logger.output message
     cb()
 
