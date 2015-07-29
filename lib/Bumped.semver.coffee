@@ -47,7 +47,7 @@ module.exports = class Semver
       (next) =>
         opts.type = 'prerelease'
         @bumped.plugins.exec opts, next
-      (next) =>
+      (next) ->
         bumpedVersion opts.version, next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version

@@ -25,9 +25,14 @@ module.exports = class Plugins
     async.forEachOfSeries type, (settings, name, next) =>
       plugin = @cache[settings.plugin] ?= forceRequire settings.plugin
       console.log()
-      @bumped.logger.plugin "#{settings.plugin}: #{name}"
-      plugin @bumped, settings, next
+      @bumped.logger.plugin "#{settings.plugin}: #{name}\n"
+      plugin @bumped, settings, (err, message) => @print err, message, next
     , cb
+
+  print: (err, message, cb) ->
+    return cb err if err
+    @bumped.logger.output message
+    cb()
 
   isEmpty: (plugins = []) ->
     Object.keys(plugins).length is 0
