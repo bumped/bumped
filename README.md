@@ -21,7 +21,7 @@
 - Separates the processes of creating and publishing software.
 - Syncronizes, unifies and publishes different software versions into the different package managers.
 - Easy to integrate it with both with your current and new projects.
-- Associated actions before or after publishing your software *(not yet, but soon!)*.
+- Provide a plugin system for associate action before and after release your software.
 
 **Bumped** synchronizes your software version across different package manager configuration files (npm, bower,...) and controls, edits and releases each of its versions to ensure all the files have the same version.
 
@@ -184,19 +184,11 @@ success	: Property 'keywords' set.
 
 Note that this setup the property across all the files.
 
-## What's next?
+## Plugins 
 
-The most interesting aspect in **Bumped** is the posibility to associate *hooks* before or after a release action. Usually, every time you releases a new version of your software, you always have to accomplish several tasks:
+Plugins system is the glorious part of Bumped. With them you can integrate the command in your workflow without effort.
 
-- Run a grunt/gulp task to generate a build.
-- Lint the code.
-- Create a tagged version using `git`.
-- Push the code to a `git` repository.
-- Check if you are using dependencies with vulnerabilities using [NSP](https://nodesecurity.io).
-
-And, basically, whatever that you need.
-
-Due to the core is stable and usable, I decided to release early without this new feature. I just need a little bit of time!
+* [Bumped-terminal](https://github.com/bumped/bumped-terminal): Executes whatever terminal command inside bumped as `prerelease` or `postrelease` action. 
 
 ## License
 
