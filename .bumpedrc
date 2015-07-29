@@ -1,0 +1,8 @@
+files: [
+  "package.json"
+]
+plugins:
+  postrelease:
+    'Commit the new version':
+      plugin: 'bumped-terminal'
+      command: 'git add . && git commit -m "$newVersion releases"'
