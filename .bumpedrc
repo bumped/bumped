@@ -3,6 +3,9 @@ files: [
 ]
 plugins:
   postrelease:
+    'Generating CHANGELOG file':
+      plugin: 'bumped-changelog'
+
     'Commit the new version':
       plugin: 'bumped-terminal'
       command: 'git add . && git commit -m "$newVersion releases"'
