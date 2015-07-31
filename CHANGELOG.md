@@ -1,7 +1,18 @@
+<a name="0.4.5"></a>
+## 0.4.5 (2015-07-31)
+
+
+* little refactor to prevent \n for empty messages
+ ([91361b6](https://github.com/bumped/bumped/commit/91361b6))
+
+
+
 <a name="0.4.4"></a>
 ## 0.4.4 (2015-07-30)
 
 
+* 0.4.4 releases
+ ([e901ca9](https://github.com/bumped/bumped/commit/e901ca9))
 * little refactor improving output messages
  ([9d57dca](https://github.com/bumped/bumped/commit/9d57dca))
 * updated settings
