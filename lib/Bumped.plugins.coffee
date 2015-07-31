@@ -28,10 +28,11 @@ module.exports = class Plugins
       plugin @bumped, settings, (err, message) => @print err, message, next
     , cb
 
-  print: (err, message = '', cb) ->
+  print: (err, message, cb) ->
     return cb err if err
-    message = message.replace /\n$/, '' # deletes last line break
-    @bumped.logger.output message
+    if message?
+      message = message.replace /\n$/, '' # deletes last line break
+      @bumped.logger.output message
     cb()
 
   isEmpty: (plugins = []) ->
