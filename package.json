@@ -27,10 +27,12 @@
     "async": "latest",
     "coffee-script": "latest",
     "dot-prop": "latest",
+    "elegant-spinner": "latest",
     "exists-file": "latest",
     "fn-partial": "latest",
     "force-require": "latest",
     "fs-extra": "latest",
+    "log-update": "latest",
     "meow": "latest",
     "object-assign": "latest",
     "rc": "latest",
@@ -47,9 +49,9 @@
     "npm": ">= 1.4.0"
   },
   "scripts": {
+    "posttest": "mv .bumpedrc_backup .bumpedrc ",
     "pretest": "mv .bumpedrc .bumpedrc_backup",
-    "test": "sh test/test.sh",
-    "posttest": "mv .bumpedrc_backup .bumpedrc "
+    "test": "sh test/test.sh"
   },
   "license": "MIT"
 }

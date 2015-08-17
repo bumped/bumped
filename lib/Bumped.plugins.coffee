@@ -1,7 +1,8 @@
 'use strict'
 
-async        = require 'async'
-forceRequire = require 'force-require'
+async          = require 'async'
+Animation      = require './Bumped.animation'
+forceRequire   = require 'force-require'
 
 ###*
  * Bumped.plugins
@@ -24,8 +25,16 @@ module.exports = class Plugins
 
     async.forEachOfSeries type, (settings, name, next) =>
       plugin = @cache[settings.plugin] ?= forceRequire settings.plugin
-      @bumped.logger.plugin "#{settings.plugin}: #{name}"
-      plugin @bumped, settings, (err, message) => @print err, message, next
+
+      animation = new Animation
+        logger: @bumped.logger
+        logLevel: 'plugin'
+        text: "#{settings.plugin}: #{name}"
+
+      animation.start =>
+        plugin @bumped, settings, (err, message) =>
+          animation.stop =>
+            @print err, message, next
     , cb
 
   print: (err, message, cb) ->
