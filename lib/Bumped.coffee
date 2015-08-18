@@ -16,11 +16,11 @@ module.exports = class Bumped
   constructor: (opts = {}) ->
     process.chdir opts.cwd if opts.cwd?
 
-    @pkg    = require '../package.json'
+    @pkg = require '../package.json'
     @config = new Config this
     @semver = new Semver this
     @logger = new Logger opts.logger
-    @util   = new Util this
+    @util = new Util this
     @plugins = new Plugins this
 
     this
