@@ -1,7 +1,22 @@
+<a name="0.5.0"></a>
+# 0.5.0 (2015-08-18)
+
+
+* added plugins feedback animation
+ ([dbe4bfb](https://github.com/bumped/bumped/commit/dbe4bfb))
+* meh
+ ([d8b37ba](https://github.com/bumped/bumped/commit/d8b37ba))
+* sort dependencies
+ ([4c4e565](https://github.com/bumped/bumped/commit/4c4e565))
+
+
+
 <a name="0.4.5"></a>
 ## 0.4.5 (2015-07-31)
 
 
+* 0.4.5 releases
+ ([f48619c](https://github.com/bumped/bumped/commit/f48619c))
 * little refactor to prevent \n for empty messages
  ([91361b6](https://github.com/bumped/bumped/commit/91361b6))
 
