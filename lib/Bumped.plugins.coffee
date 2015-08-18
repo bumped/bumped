@@ -1,8 +1,8 @@
 'use strict'
 
-async          = require 'async'
-Animation      = require './Bumped.animation'
-forceRequire   = require 'force-require'
+async        = require 'async'
+forceRequire = require 'force-require'
+Animation    = require './Bumped.animation'
 
 ###*
  * Bumped.plugins
