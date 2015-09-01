@@ -12,7 +12,7 @@
 [![Dependency status](http://img.shields.io/david/bumped/bumped.svg?style=flat-square)](https://david-dm.org/bumped/bumped)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/bumped/bumped.svg?style=flat-square)](https://david-dm.org/bumped/bumped#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/bumped.svg?style=flat-square)](https://www.npmjs.org/package/bumped)
-[![Gittip](http://img.shields.io/gittip/kikobeats.svg?style=flat-square)](https://www.gittip.com/kikobeats)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
 > Makes easy release software.
 
