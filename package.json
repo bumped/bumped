@@ -30,7 +30,7 @@
     "elegant-spinner": "latest",
     "exists-file": "latest",
     "fn-partial": "latest",
-    "force-require": "latest",
+    "force-resolve": "latest",
     "fs-extra": "latest",
     "log-update": "latest",
     "meow": "latest",

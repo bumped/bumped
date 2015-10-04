@@ -1,8 +1,10 @@
 'use strict'
 
-async        = require 'async'
-forceRequire = require 'force-require'
-Animation    = require './Bumped.animation'
+path           = require 'path'
+async          = require 'async'
+forceResolve   = require 'force-resolve'
+updateNotifier = require 'update-notifier'
+Animation      = require './Bumped.animation'
 
 ###*
  * Bumped.plugins
@@ -24,7 +26,9 @@ module.exports = class Plugins
     return cb null if @isEmpty type
 
     async.forEachOfSeries type, (settings, name, next) =>
-      plugin = @cache[settings.plugin] ?= forceRequire settings.plugin
+      pluginPath = forceResolve(settings.plugin)[0]
+      @notifyPlugin pluginPath
+      plugin = @cache[settings.plugin] ?= require pluginPath
 
       animation = new Animation
         logger: @bumped.logger
@@ -46,3 +50,7 @@ module.exports = class Plugins
 
   isEmpty: (plugins = []) ->
     Object.keys(plugins).length is 0
+
+  notifyPlugin: (pluginPath) ->
+    pkgPath = path.join pluginPath, 'package.json'
+    updateNotifier({pkg: require(pkgPath)}).notify()
