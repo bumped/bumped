@@ -25,7 +25,7 @@ module.exports = class Plugins
     type = @[opts.type]
     return cb null if @isEmpty type
 
-    async.forEachOfSeries type, (settings, name, next) =>
+    async.forEachOfSeries type, (settings, description, next) =>
       pluginPath = forceResolve(settings.plugin)[0]
       @notifyPlugin pluginPath
       plugin = @cache[settings.plugin] ?= require pluginPath
@@ -33,7 +33,7 @@ module.exports = class Plugins
       animation = new Animation
         logger: @bumped.logger
         logLevel: 'plugin'
-        text: "#{settings.plugin}: #{name}"
+        text: "#{settings.plugin}: #{description}"
 
       animation.start =>
         plugin @bumped, settings, (err, message) =>

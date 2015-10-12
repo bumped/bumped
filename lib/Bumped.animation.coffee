@@ -32,4 +32,5 @@ module.exports = class Animation
 
   stop: (cb) =>
     @running = false
+    process.stdin.write '\n'
     setTimeout cb, @interval

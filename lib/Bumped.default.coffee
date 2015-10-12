@@ -23,7 +23,7 @@ module.exports =
   loggerTypes: ->
     return {
       line:
-        color: 'gray'
+        color: 'white'
       error:
         level : 0
         color : 'red'
