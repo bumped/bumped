@@ -2,7 +2,7 @@
   "name": "bumped",
   "description": "Makes easy release software.",
   "homepage": "https://github.com/bumped/bumped",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "./bin/index.js",
   "bin": "./bin/index.js",
   "author": {
