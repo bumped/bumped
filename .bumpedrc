@@ -3,9 +3,13 @@ files: [
 ]
 plugins:
   postrelease:
+
+    'Linting config files':
+      plugin: 'bumped-finepack'
+
     'Generating CHANGELOG file':
       plugin: 'bumped-changelog'
 
-    'Commit the new version':
+    'Committing the new version':
       plugin: 'bumped-terminal'
       command: 'git add . && git commit -m "$newVersion releases"'
