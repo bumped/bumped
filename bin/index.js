@@ -13,14 +13,7 @@ var cli = require('meow')({
 updateNotifier({pkg: cli.pkg}).notify();
 if (cli.input.length === 0) cli.showHelp();
 
-var options = {
-  logger: {
-    color: true,
-    level: 'plugin'
-  }
-};
-
-var bumped = new Bumped(options);
+var bumped = new Bumped();
 var command = cli.input.shift();
 
 var exit = function(err) {
@@ -65,6 +58,7 @@ if (existCommand) {
     outputMessage: false
   }, function(err) {
     if (err) throw err;
+    process.stdout.write('\n');
     return commands[command]();
   });
 }

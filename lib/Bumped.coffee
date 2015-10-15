@@ -7,7 +7,7 @@ Util    = require './Bumped.util'
 Semver  = require './Bumped.semver'
 Config  = require './Bumped.config'
 Logger  = require './Bumped.logger'
-Plugins = require './Bumped.plugins'
+Plugin = require './Bumped.plugin'
 DEFAULT = require './Bumped.default'
 MSG     = require './Bumped.messages'
 
@@ -21,7 +21,7 @@ module.exports = class Bumped
     @semver = new Semver this
     @logger = new Logger opts.logger
     @util = new Util this
-    @plugins = new Plugins this
+    @plugin = new Plugin this
 
     this
 

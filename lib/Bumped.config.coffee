@@ -137,7 +137,7 @@ module.exports = class Config
 
     async.each @bumped.config.rc.files, setProperty, (err) =>
       return @bumped.logger.errorHandler err, cb if err
-      @bumped.logger.success MSG.SET_PROPERTY opts.property if opts.outputMessage
+      @bumped.logger.success MSG.SET_PROPERTY opts.property, opts.value if opts.outputMessage
       cb null, opts
 
   hasFile: (file) ->

@@ -7,30 +7,14 @@ chalk         = require 'acho/node_modules/chalk'
 module.exports = class Animation
 
   constructor: (params = {}) ->
-    @frame = eleganSpinner()
-    @interval = params.interval or 30
-
-    @logger = params.logger
-    @logLevel = params.logLevel
-
     @text = params.text
+    @logger = params.logger
 
   start: (cb) ->
     @running = true
-    message = @logger[@logLevel] @text, 'raw'
-    color = @logger.types.line.color
+    @logger.plugin @text
+    cb()
 
-    @_intervalObject = setInterval =>
-      if @running
-        logUpdate("#{message} #{chalk[color](@frame())}")
-      else
-        logUpdate message
-        clearInterval @_intervalObject
-    , @interval
-
-    setTimeout cb, @interval
-
-  stop: (cb) =>
+  stop: (cb) ->
     @running = false
-    process.stdin.write '\n'
-    setTimeout cb, @interval
+    cb()

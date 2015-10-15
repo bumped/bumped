@@ -20,10 +20,14 @@ module.exports =
       outputMessage: true
     }
 
-  loggerTypes: ->
-    return {
+  logger:
+    color: true
+    align: false
+    keyword: 'bumped'
+    level: 'plugin'
+    types:
       line:
-        color: 'white'
+        color: 'gray'
       error:
         level : 0
         color : 'red'
@@ -45,7 +49,6 @@ module.exports =
       plugin:
         level : 6
         color : 'magenta'
-    }
 
   args: ->
     args = Args([

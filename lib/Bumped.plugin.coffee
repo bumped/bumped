@@ -4,6 +4,7 @@ path           = require 'path'
 async          = require 'async'
 forceResolve   = require 'force-resolve'
 updateNotifier = require 'update-notifier'
+DEFAULT        = require './Bumped.default'
 Animation      = require './Bumped.animation'
 
 ###*
@@ -13,7 +14,7 @@ Animation      = require './Bumped.animation'
  * Modules follow a duck type interface and are sorted.
  * If any plugin throw and error, automatically stop the rest of the plugins.
 ###
-module.exports = class Plugins
+module.exports = class Plugin
 
   constructor: (bumped) ->
     @bumped = bumped
@@ -30,15 +31,11 @@ module.exports = class Plugins
       @notifyPlugin pluginPath
       plugin = @cache[settings.plugin] ?= require pluginPath
 
-      animation = new Animation
-        logger: @bumped.logger
-        logLevel: 'plugin'
-        text: "#{settings.plugin}: #{description}"
-
-      animation.start =>
-        plugin @bumped, settings, (err, message) =>
-          animation.stop =>
-            @print err, message, next
+      @bumped.logger.keyword = settings.plugin
+      @bumped.logger.success description
+      plugin @bumped, settings: settings, logger: @bumped.logger, (err, message) =>
+        @bumped.logger.keyword = DEFAULT.logger.keyword
+        @print err, message, next
     , cb
 
   print: (err, message, cb) ->

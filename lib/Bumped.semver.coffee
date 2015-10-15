@@ -46,7 +46,7 @@ module.exports = class Semver
     tasks = [
       (next) =>
         opts.type = 'prerelease'
-        @bumped.plugins.exec opts, next
+        @bumped.plugin.exec opts, next
       (next) ->
         bumpedVersion opts.version, next
       (newVersion, next) =>
@@ -54,7 +54,7 @@ module.exports = class Semver
         @update version:newVersion, outputMessage: opts.outputMessage, next
       (next) =>
         opts.type = 'postrelease'
-        @bumped.plugins.exec opts, next
+        @bumped.plugin.exec opts, next
     ]
 
     async.waterfall tasks, (err) =>
