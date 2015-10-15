@@ -2,6 +2,7 @@
 
 Args         = require 'args-js'
 objectAssign = require 'object-assign'
+chalk        = require 'acho/node_modules/chalk'
 
 module.exports =
 
@@ -21,8 +22,13 @@ module.exports =
     }
 
   logger:
+    outputType: (type, diff = '') ->
+      now = new Date()
+      date = "#{now.getHours()}:#{now.getMinutes()}:#{now.getSeconds()}"
+      "#{chalk.white('[')}#{chalk.gray(date)}#{chalk.white(']')} #{@keyword} "
     color: true
     align: false
+    diff: false
     keyword: 'bumped'
     level: 'plugin'
     types:

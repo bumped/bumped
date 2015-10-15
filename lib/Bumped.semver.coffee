@@ -5,6 +5,7 @@ path    = require 'path'
 async   = require 'async'
 semver  = require 'semver'
 fs      = require 'fs-extra'
+ms      = require 'pretty-ms'
 MSG     = require './Bumped.messages'
 DEFAULT = require './Bumped.default'
 
@@ -51,12 +52,13 @@ module.exports = class Semver
         bumpedVersion opts.version, next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version
-        @update version:newVersion, outputMessage: opts.outputMessage, next
+        @update start: now, version:newVersion, outputMessage: opts.outputMessage, next
       (next) =>
         opts.type = 'postrelease'
         @bumped.plugin.exec opts, next
     ]
 
+    now = new Date()
     async.waterfall tasks, (err) =>
       return @bumped.logger.errorHandler err, cb if err
       cb null, @bumped._version
@@ -66,8 +68,16 @@ module.exports = class Semver
 
     @bumped._version = opts.version
     async.each @bumped.config.rc.files, @save, (err) =>
+
       return @bumped.logger.errorHandler err, cb if err
+
+      if opts.start
+        end = ms(new Date() - opts.start)
+        @bumped.logger.keyword = "#{@bumped.logger.keyword} +#{end}"
+
+
       @bumped.logger.success MSG.CREATED_VERSION @bumped._version if opts.outputMessage
+      @bumped.logger.keyword = DEFAULT.logger.keyword
       cb()
 
   save: (file, cb) =>

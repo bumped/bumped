@@ -1,5 +1,7 @@
 'use strict'
 
+chalk = require 'acho/node_modules/chalk'
+
 module.exports =
 
   # Positive
@@ -8,8 +10,8 @@ module.exports =
   ADD_ALREADY_FILE    : (file) -> "'#{file}' is already added."
   REMOVE_FILE         : (file) -> "'#{file}' has been removed."
   DETECTED_FILE       : (file) -> "Detected '#{file}' in the directory."
-  CREATED_VERSION     : (version) -> "Releases version '#{version}'."
-  CURRENT_VERSION     : (version) -> "Current version is '#{version}'."
+  CREATED_VERSION     : (version) -> "Releases version #{chalk.green(version)}."
+  CURRENT_VERSION     : (version) -> "Current version is #{chalk.white(version)}."
   SET_PROPERTY        : (property, value) -> "property '#{property}' set as '#{value}'."
 
   # Negative

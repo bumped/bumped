@@ -35,6 +35,7 @@
     "log-update": "latest",
     "meow": "latest",
     "object-assign": "latest",
+    "pretty-ms": "latest",
     "rc": "latest",
     "season": "latest",
     "semver": "latest",
