@@ -2,7 +2,7 @@
 
 Args         = require 'args-js'
 objectAssign = require 'object-assign'
-chalk        = require 'acho/node_modules/chalk'
+chalk        = require 'chalk'
 
 module.exports =
 

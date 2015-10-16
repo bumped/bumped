@@ -25,6 +25,7 @@
     "acho": "latest",
     "args-js": "latest",
     "async": "latest",
+    "chalk": "latest",
     "coffee-script": "latest",
     "dot-prop": "latest",
     "exists-file": "latest",

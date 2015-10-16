@@ -1,9 +1,9 @@
 'use strict'
 
-ms            = require 'pretty-ms'
-DEFAULT       = require './Bumped.default'
-MSG           = require './Bumped.messages'
-chalk         = require 'acho/node_modules/chalk'
+chalk   = require 'chalk'
+ms      = require 'pretty-ms'
+DEFAULT = require './Bumped.default'
+MSG     = require './Bumped.messages'
 
 TYPE_SHORTCUT =
   prerelease: 'pre'

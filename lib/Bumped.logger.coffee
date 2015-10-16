@@ -3,7 +3,7 @@
 Acho         = require 'acho'
 objectAssign = require 'object-assign'
 DEFAULT      = require './Bumped.default'
-chalk        = require 'acho/node_modules/chalk'
+chalk        = require 'chalk'
 
 # Extending with error handler
 Acho::errorHandler = (err, cb) ->

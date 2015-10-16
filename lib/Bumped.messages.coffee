@@ -1,6 +1,6 @@
 'use strict'
 
-chalk = require 'acho/node_modules/chalk'
+chalk = require 'chalk'
 
 module.exports =
 

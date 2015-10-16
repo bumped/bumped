@@ -7,7 +7,7 @@ Util    = require './Bumped.util'
 Semver  = require './Bumped.semver'
 Config  = require './Bumped.config'
 Logger  = require './Bumped.logger'
-Plugin = require './Bumped.plugin'
+Plugin  = require './Bumped.plugin'
 DEFAULT = require './Bumped.default'
 MSG     = require './Bumped.messages'
 
