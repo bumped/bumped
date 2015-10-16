@@ -1,13 +1,13 @@
 'use strict'
 
-os      = require 'os'
-path    = require 'path'
-async   = require 'async'
-semver  = require 'semver'
-fs      = require 'fs-extra'
-ms      = require 'pretty-ms'
-MSG     = require './Bumped.messages'
-DEFAULT = require './Bumped.default'
+path      = require 'path'
+async     = require 'async'
+semver    = require 'semver'
+fs        = require 'fs-extra'
+ms        = require 'pretty-ms'
+DEFAULT   = require './Bumped.default'
+MSG       = require './Bumped.messages'
+Animation = require './Bumped.animation'
 
 module.exports = class Semver
 
@@ -47,7 +47,8 @@ module.exports = class Semver
     tasks = [
       (next) =>
         opts.type = 'prerelease'
-        @bumped.plugin.exec opts, next
+        @bumped.plugin.exec opts, (err) ->
+          next(MSG.NOT_RELEASED() if err)
       (next) ->
         bumpedVersion opts.version, next
       (newVersion, next) =>
@@ -71,12 +72,12 @@ module.exports = class Semver
 
       return @bumped.logger.errorHandler err, cb if err
 
-      if opts.start
-        end = ms(new Date() - opts.start)
-        @bumped.logger.keyword = "#{@bumped.logger.keyword} +#{end}"
+      Animation.end
+        logger  : @bumped.logger
+        version : @bumped._version
+        start   : opts.start
+        outputMessage: opts.outputMessage
 
-
-      @bumped.logger.success MSG.CREATED_VERSION @bumped._version if opts.outputMessage
       @bumped.logger.keyword = DEFAULT.logger.keyword
       cb()
 
@@ -92,7 +93,7 @@ module.exports = class Semver
 
     if opts.outputMessage
       if @bumped._version?
-        @bumped.logger.info MSG.CURRENT_VERSION @bumped._version
+        @bumped.logger.success MSG.CURRENT_VERSION @bumped._version
       else
         @bumped.logger.warn MSG.NOT_CURRENT_VERSION()
 

@@ -4,7 +4,7 @@ path           = require 'path'
 async          = require 'async'
 forceResolve   = require 'force-resolve'
 updateNotifier = require 'update-notifier'
-DEFAULT        = require './Bumped.default'
+cloneDeep      = require 'lodash.clonedeep'
 Animation      = require './Bumped.animation'
 
 ###*
@@ -31,19 +31,19 @@ module.exports = class Plugin
       @notifyPlugin pluginPath
       plugin = @cache[settings.plugin] ?= require pluginPath
 
-      @bumped.logger.keyword = settings.plugin
-      @bumped.logger.success description
-      plugin @bumped, settings: settings, logger: @bumped.logger, (err, message) =>
-        @bumped.logger.keyword = DEFAULT.logger.keyword
-        @print err, message, next
+      pluginObjt = cloneDeep settings
+      pluginObjt.logger = @bumped.logger
+
+      animation = new Animation
+        text: description
+        logger: @bumped.logger
+        plugin: settings.plugin
+
+      animation.start =>
+        plugin @bumped, pluginObjt, (err) ->
+          animation.stop err, next
     , cb
 
-  print: (err, message, cb) ->
-    return cb err if err
-    if message?
-      message = message.replace /\n$/, '' # deletes last line break
-      @bumped.logger.output message
-    cb()
 
   isEmpty: (plugins = []) ->
     Object.keys(plugins).length is 0

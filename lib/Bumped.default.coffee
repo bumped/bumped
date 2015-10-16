@@ -33,7 +33,7 @@ module.exports =
     level: 'plugin'
     types:
       line:
-        color: 'gray'
+        color: 'white'
       error:
         level : 0
         color : 'red'
