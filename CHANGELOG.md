@@ -1,7 +1,16 @@
+<a name="0.5.3"></a>
+## 0.5.3 (2015-10-16)
+
+
+* avoiding innecessary information ([dd6c2d0](https://github.com/bumped/bumped/commit/dd6c2d0))
+
+
+
 <a name="0.5.2"></a>
 ## 0.5.2 (2015-10-16)
 
 
+* 0.5.2 releases ([97a50dc](https://github.com/bumped/bumped/commit/97a50dc))
 * better grammar ([85dee69](https://github.com/bumped/bumped/commit/85dee69))
 * new log approach. renamed 'plugins' into 'plugin' ([bde4e8e](https://github.com/bumped/bumped/commit/bde4e8e))
 * new log skin ([8600578](https://github.com/bumped/bumped/commit/8600578))
