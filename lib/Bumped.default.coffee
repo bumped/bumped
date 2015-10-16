@@ -22,10 +22,7 @@ module.exports =
     }
 
   logger:
-    outputType: (type, diff = '') ->
-      now = new Date()
-      date = "#{now.getHours()}:#{now.getMinutes()}:#{now.getSeconds()}"
-      "#{chalk.white('[')}#{chalk.gray(date)}#{chalk.white(']')} #{@keyword} "
+    outputType: (type, diff = '') -> "#{@keyword} "
     color: true
     align: false
     diff: false
