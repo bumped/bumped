@@ -5,6 +5,10 @@ DEFAULT       = require './Bumped.default'
 MSG           = require './Bumped.messages'
 chalk         = require 'acho/node_modules/chalk'
 
+TYPE_SHORTCUT =
+  prerelease: 'pre'
+  postrelease: 'post'
+
 module.exports = class Animation
 
   constructor: (params = {}) ->
@@ -13,8 +17,12 @@ module.exports = class Animation
   start: (cb) ->
     @start = new Date()
     @running = true
-    @logger.keyword = @plugin
+
+    shortcut = TYPE_SHORTCUT[@type]
+    name = @plugin.replace /bumped-/, ''
+    @logger.keyword = "#{shortcut} #{name}"
     @logger.success "Starting '#{chalk.cyan(@text)}'..."
+
     cb()
 
   stop: (err, cb) ->
@@ -34,5 +42,4 @@ module.exports = class Animation
     if opts.outputMessage
       diff = ms(new Date() - opts.start)
       message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(diff)}."
-      process.stdout.write '\n'
       opts.logger.success message
