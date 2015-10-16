@@ -2,15 +2,20 @@
   "name": "bumped",
   "description": "Makes easy release software.",
   "homepage": "https://github.com/bumped/bumped",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "main": "./bin/index.js",
-  "bin": "./bin/index.js",
+  "bin": {
+    "bumped": "./bin/index.js"
+  },
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
-  "repository": "bumped/bumped",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bumped/bumped.git"
+  },
   "bugs": {
     "url": "https://github.com/bumped/bumped/issues"
   },
@@ -54,5 +59,7 @@
     "pretest": "mv .bumpedrc .bumpedrc_backup",
     "test": "sh test/test.sh"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "_id": "bumped@0.5.1",
+  "readme": "ERROR: No README data found!"
 }

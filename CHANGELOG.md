@@ -1,7 +1,22 @@
+<a name="0.5.2"></a>
+## 0.5.2 (2015-10-16)
+
+
+* better grammar ([85dee69](https://github.com/bumped/bumped/commit/85dee69))
+* new log approach. renamed 'plugins' into 'plugin' ([bde4e8e](https://github.com/bumped/bumped/commit/bde4e8e))
+* new log skin ([8600578](https://github.com/bumped/bumped/commit/8600578))
+* output time ([bccb6f1](https://github.com/bumped/bumped/commit/bccb6f1))
+* UI consistency ([f525656](https://github.com/bumped/bumped/commit/f525656))
+* Update README.md ([5e39e46](https://github.com/bumped/bumped/commit/5e39e46))
+* using your own chalk dependency ([f14fd81](https://github.com/bumped/bumped/commit/f14fd81))
+
+
+
 <a name="0.5.1"></a>
 ## 0.5.1 (2015-10-12)
 
 
+* 0.5.1 releases ([04c58b3](https://github.com/bumped/bumped/commit/04c58b3))
 * added finepack plugin ([96cd5a3](https://github.com/bumped/bumped/commit/96cd5a3))
 * bye black style, welcome white ([b03e946](https://github.com/bumped/bumped/commit/b03e946))
 * notifications for new plugins versions available ([e7fa304](https://github.com/bumped/bumped/commit/e7fa304))
