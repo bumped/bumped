@@ -1,8 +1,10 @@
-<a name="0.5.3"></a>
-## 0.5.3 (2015-10-16)
+<a name="0.5.4"></a>
+## 0.5.4 (2015-10-17)
 
 
+* 0.5.3 releases ([57926e8](https://github.com/bumped/bumped/commit/57926e8))
 * avoiding innecessary information ([dd6c2d0](https://github.com/bumped/bumped/commit/dd6c2d0))
+* little UI changes ([e7fcf12](https://github.com/bumped/bumped/commit/e7fcf12))
 
 
 
