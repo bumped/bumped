@@ -27,12 +27,8 @@ module.exports = class Animation
 
   stop: (err, cb) ->
     @running = false
-
-    if err
-      @logger.error err.message
-      process.stdout.write '\n'
-    else
-      end = ms(new Date() - @start)
+    unless err
+      end = ms new Date() - @start
       @logger.success "Finished '#{chalk.cyan(@text)}' after #{chalk.magenta(end)}."
 
     @logger.keyword = DEFAULT.logger.keyword
