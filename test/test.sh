@@ -15,6 +15,7 @@ run() {
   "$PWD"/node_modules/.bin/mocha \
   -b \
   --compilers coffee:coffee-script/register \
+  --require coffee-coverage/register-istanbul \
   --require should \
   --reporter spec \
   --timeout 120000 \

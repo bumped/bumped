@@ -47,6 +47,9 @@
     "update-notifier": "latest"
   },
   "devDependencies": {
+    "coffee-coverage": "~0.6.3",
+    "coveralls": "~2.11.4",
+    "istanbul": "~0.4.0",
     "mocha": "latest",
     "should": "latest"
   },
@@ -57,7 +60,7 @@
   "scripts": {
     "posttest": "mv .bumpedrc_backup .bumpedrc ",
     "pretest": "mv .bumpedrc .bumpedrc_backup",
-    "test": "sh test/test.sh"
+    "test": "sh test/test.sh && istanbul report text-summary lcov"
   },
   "license": "MIT",
   "_id": "bumped@0.5.3",
