@@ -23,10 +23,14 @@ module.exports = class Plugin
     @cache = {}
 
   exec: (opts, cb) ->
+
     pluginType = @[opts.type]
+    pluginList = Object.keys pluginType
+
     return cb null if @isEmpty pluginType
 
     async.forEachOfSeries pluginType, (settings, description, next) =>
+      position = pluginList.indexOf description
       pluginPath = forceResolve(settings.plugin)[0]
       @notifyPlugin pluginPath
       plugin = @cache[settings.plugin] ?= require pluginPath
@@ -35,10 +39,15 @@ module.exports = class Plugin
       pluginObjt.logger = @bumped.logger
 
       animation = new Animation
-        text: description
-        logger: @bumped.logger
-        plugin: settings.plugin
-        type: opts.type
+        text          : description
+        logger        : @bumped.logger
+        plugin        : settings.plugin
+        type          : opts.type
+        isPostRelease : opts.type is 'postrelease'
+        isPreRelease  : opts.type is 'prerelease'
+        position      : position
+        isFirst       : position is 0
+        isLast        : position is pluginList.length - 1
 
       animation.start =>
         plugin @bumped, pluginObjt, (err) ->

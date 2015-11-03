@@ -30,6 +30,7 @@ module.exports = class Animation
     unless err
       end = ms new Date() - @start
       @logger.success "Finished '#{chalk.cyan(@text)}' after #{chalk.magenta(end)}."
+      process.stdout.write '\n' unless @isLast and @isPostRelease
 
     @logger.keyword = DEFAULT.logger.keyword
     cb err
@@ -39,3 +40,4 @@ module.exports = class Animation
       diff = ms(new Date() - opts.start)
       message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(diff)}."
       opts.logger.success message
+      process.stdout.write '\n'
