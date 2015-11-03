@@ -47,9 +47,9 @@
     "update-notifier": "latest"
   },
   "devDependencies": {
-    "coffee-coverage": "~0.7.0",
-    "coveralls": "~2.11.4",
-    "istanbul": "~0.4.0",
+    "coffee-coverage": "latest",
+    "coveralls": "latest",
+    "istanbul": "latest",
     "mocha": "latest",
     "should": "latest"
   },
