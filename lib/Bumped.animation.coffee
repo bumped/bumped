@@ -20,7 +20,7 @@ module.exports = class Animation
 
     shortcut = TYPE_SHORTCUT[@type]
     name = @plugin.replace /bumped-/, ''
-    @logger.keyword = "#{shortcut} #{name}"
+    @logger.keyword = "#{chalk.magenta(shortcut)} #{@logger.keyword}"
     @logger.success "Starting '#{chalk.cyan(@text)}'..."
 
     cb()
