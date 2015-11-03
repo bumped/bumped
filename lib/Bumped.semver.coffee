@@ -53,7 +53,7 @@ module.exports = class Semver
         bumpedVersion opts.version, next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version
-        @update start: now, version:newVersion, outputMessage: opts.outputMessage, next
+        @update start: now, version: newVersion, outputMessage: opts.outputMessage, next
       (next) =>
         opts.type = 'postrelease'
         @bumped.plugin.exec opts, next
