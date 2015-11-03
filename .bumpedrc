@@ -1,11 +1,15 @@
 files: [
-  "package.json"
+  'package.json'
 ]
+
 plugins:
-  postrelease:
+
+  prerelease:
 
     'Linting config files':
       plugin: 'bumped-finepack'
+
+  postrelease:
 
     'Generating CHANGELOG file':
       plugin: 'bumped-changelog'
@@ -13,3 +17,11 @@ plugins:
     'Committing the new version':
       plugin: 'bumped-terminal'
       command: 'git add . && git commit -m "$newVersion releases"'
+
+    'Publishing at Github':
+      plugin: 'bumped-terminal'
+      command: 'git tag $newVersion && git push --tags && git push origin master'
+
+    'Publishing at NPM':
+      plugin: 'bumped-terminal'
+      command: 'npm publish'
