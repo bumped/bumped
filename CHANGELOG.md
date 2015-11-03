@@ -1,8 +1,26 @@
+<a name="0.5.5"></a>
+## 0.5.5 (2015-11-03)
+
+
+### chore
+
+* chore(package): update coffee-coverage to version 0.7.0 ([3a44890](https://github.com/bumped/bumped/commit/3a44890))
+
+* fixed missing space ([22256cf](https://github.com/bumped/bumped/commit/22256cf))
+* improve line breaks in the output ([a03fa0f](https://github.com/bumped/bumped/commit/a03fa0f))
+* integrates with coveralls ([39fb1cb](https://github.com/bumped/bumped/commit/39fb1cb))
+* little style change ([5da22ef](https://github.com/bumped/bumped/commit/5da22ef))
+* Merge pull request #4 from bumped/greenkeeper-coffee-coverage-0.7.0 ([c1600ca](https://github.com/bumped/bumped/commit/c1600ca))
+* updated settings ([ae8658a](https://github.com/bumped/bumped/commit/ae8658a))
+
+
+
 <a name="0.5.4"></a>
 ## 0.5.4 (2015-10-17)
 
 
 * 0.5.3 releases ([57926e8](https://github.com/bumped/bumped/commit/57926e8))
+* 0.5.4 releases ([b76a3d0](https://github.com/bumped/bumped/commit/b76a3d0))
 * avoiding innecessary information ([dd6c2d0](https://github.com/bumped/bumped/commit/dd6c2d0))
 * little UI changes ([e7fcf12](https://github.com/bumped/bumped/commit/e7fcf12))
 
