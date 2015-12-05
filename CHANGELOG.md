@@ -1,3 +1,15 @@
+<a name="0.5.6"></a>
+## 0.5.6 (2015-12-05)
+
+
+* removed coveralls ([f6a04af](https://github.com/bumped/bumped/commit/f6a04af))
+* Update .travis.yml ([6570e57](https://github.com/bumped/bumped/commit/6570e57))
+* updated Acho interface ([4720ce6](https://github.com/bumped/bumped/commit/4720ce6))
+* updated devDependencies version ([2a26711](https://github.com/bumped/bumped/commit/2a26711))
+* updated travis node builds ([10b1660](https://github.com/bumped/bumped/commit/10b1660))
+
+
+
 <a name="0.5.5"></a>
 ## 0.5.5 (2015-11-03)
 
@@ -6,6 +18,7 @@
 
 * chore(package): update coffee-coverage to version 0.7.0 ([3a44890](https://github.com/bumped/bumped/commit/3a44890))
 
+* 0.5.5 releases ([35440ba](https://github.com/bumped/bumped/commit/35440ba))
 * fixed missing space ([22256cf](https://github.com/bumped/bumped/commit/22256cf))
 * improve line breaks in the output ([a03fa0f](https://github.com/bumped/bumped/commit/a03fa0f))
 * integrates with coveralls ([39fb1cb](https://github.com/bumped/bumped/commit/39fb1cb))
