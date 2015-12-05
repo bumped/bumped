@@ -1,16 +1,17 @@
 'use strict'
 
 Acho         = require 'acho'
-objectAssign = require 'object-assign'
-DEFAULT      = require './Bumped.default'
 chalk        = require 'chalk'
-
-# Extending with error handler
-Acho::errorHandler = (err, cb) ->
-  @error err
-  cb err
+DEFAULT      = require './Bumped.default'
+existsAssign = require 'existential-assign'
 
 module.exports = (opts) ->
-  opts = objectAssign DEFAULT.logger, opts
-  logger = new Acho opts
+  opts = existsAssign DEFAULT.logger, opts
+  logger = Acho opts
+
+  # Extending with error handler
+  logger.errorHandler = (err, cb) ->
+    @error err
+    cb err
+
   logger

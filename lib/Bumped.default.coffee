@@ -1,8 +1,8 @@
 'use strict'
 
-Args         = require 'args-js'
-objectAssign = require 'object-assign'
 chalk        = require 'chalk'
+Args         = require 'args-js'
+existsAssign = require 'existential-assign'
 
 module.exports =
 
@@ -58,4 +58,4 @@ module.exports =
       { opts :  Args.OBJECT   | Args.Optional, _default:  this.defaulOptions() }
       { cb   :  Args.FUNCTION | Args.Required                                  }
     ], arguments[0])
-    return [objectAssign(this.defaulOptions(), args.opts), args.cb]
+    return [existsAssign(this.defaulOptions(), args.opts), args.cb]

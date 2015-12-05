@@ -8,8 +8,8 @@
     "bumped": "./bin/index.js"
   },
   "author": {
-    "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
   "repository": {
@@ -33,13 +33,13 @@
     "chalk": "latest",
     "coffee-script": "latest",
     "dot-prop": "latest",
+    "existential-assign": "latest",
     "exists-file": "latest",
     "fn-partial": "latest",
     "force-resolve": "latest",
     "fs-extra": "latest",
     "lodash.clonedeep": "latest",
     "meow": "latest",
-    "object-assign": "latest",
     "pretty-ms": "latest",
     "rc": "latest",
     "season": "latest",
