@@ -1,10 +1,7 @@
 # bumped
 
 <h1 align="center">
-  <br>
   <img src="http://g.recordit.co/o7FToAr1Gf.gif" alt="bumped">
-  <br>
-  <br>
 </h1>
 
 ![Last version](https://img.shields.io/github/tag/bumped/bumped.svg?style=flat-square)
