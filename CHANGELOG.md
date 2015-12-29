@@ -1,7 +1,19 @@
+<a name="0.5.7"></a>
+## 0.5.7 (2015-12-29)
+
+
+* Add gif ✨💄 ([b5836f5](https://github.com/bumped/bumped/commit/b5836f5))
+* Better error handler ([2ba899d](https://github.com/bumped/bumped/commit/2ba899d))
+* Delete extra space ([c0d02ad](https://github.com/bumped/bumped/commit/c0d02ad))
+* Fix style ([0091b95](https://github.com/bumped/bumped/commit/0091b95))
+
+
+
 <a name="0.5.6"></a>
 ## 0.5.6 (2015-12-05)
 
 
+* 0.5.6 releases ([beafb02](https://github.com/bumped/bumped/commit/beafb02))
 * removed coveralls ([f6a04af](https://github.com/bumped/bumped/commit/f6a04af))
 * Update .travis.yml ([6570e57](https://github.com/bumped/bumped/commit/6570e57))
 * updated Acho interface ([4720ce6](https://github.com/bumped/bumped/commit/4720ce6))
