@@ -21,8 +21,8 @@ module.exports = class Util
   updateJSON: (opts, cb) ->
     filepath = path.resolve opts.filename
     file = require filepath
-    firstChar = opts.value.charAt(0);
-    lastChar = opts.value.charAt(opts.value.length - 1);
+    firstChar = opts.value.charAt(0)
+    lastChar = opts.value.charAt(opts.value.length - 1)
     isArray = (firstChar is '[') and (lastChar is ']')
     isDotProp = opts.property.split('.').length > 1
 
@@ -32,7 +32,7 @@ module.exports = class Util
       items = items.map (item) -> item.trim()
       file[opts.property] = items
     else if isDotProp
-      dotProp.set(file, opts.property, opts.value);
+      dotProp.set(file, opts.property, opts.value)
     else
       file[opts.property] = opts.value
 

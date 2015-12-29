@@ -21,7 +21,6 @@ module.exports = class Animation
     shortcut = TYPE_SHORTCUT[@type]
     process.stdout.write '\n' if @type is 'postrelease'
 
-    name = @plugin.replace /bumped-/, ''
     @logger.keyword = "#{chalk.magenta(shortcut)} #{@logger.keyword}"
     @logger.success "Starting '#{chalk.cyan(@text)}'..."
 
