@@ -19,6 +19,8 @@ module.exports = class Animation
     @running = true
 
     shortcut = TYPE_SHORTCUT[@type]
+    process.stdout.write '\n' if @type is 'postrelease'
+
     name = @plugin.replace /bumped-/, ''
     @logger.keyword = "#{chalk.magenta(shortcut)} #{@logger.keyword}"
     @logger.success "Starting '#{chalk.cyan(@text)}'..."
@@ -27,12 +29,13 @@ module.exports = class Animation
 
   stop: (err, cb) ->
     @running = false
-    unless err
-      end = ms new Date() - @start
-      @logger.success "Finished '#{chalk.cyan(@text)}' after #{chalk.magenta(end)}."
-      process.stdout.write '\n' unless @isLast and @isPostRelease
+    return @logger.errorHandler err, lineBreak: false, cb if err
 
+    end = ms new Date() - @start
+    @logger.success "Finished '#{chalk.cyan(@text)}' after #{chalk.magenta(end)}."
+    process.stdout.write '\n' unless @isLast and @isPostRelease
     @logger.keyword = DEFAULT.logger.keyword
+
     cb err
 
   @end: (opts) ->
@@ -40,4 +43,4 @@ module.exports = class Animation
       diff = ms(new Date() - opts.start)
       message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(diff)}."
       opts.logger.success message
-      process.stdout.write '\n'
+      opts.logger.keyword = DEFAULT.logger.keyword

@@ -15,13 +15,33 @@ module.exports =
   SET_PROPERTY        : (property, value) -> "property '#{property}' set as '#{value}'."
 
   # Negative
-  NOT_REMOVE_FILE     : (file) -> "#{file} can't be removed because previously hasn't been added."
-  NOT_DETECTED_FILE   : (file) -> "'#{file}' hasn't been detected in the directory."
-  NOT_VALID_VERSION   : (version) -> "Version '#{version}' provided to release is not valid."
-  NOT_GREATER_VERSION : (last, old) -> "Version '#{last}' is not greater that the current '#{old}' version."
-  NOT_CURRENT_VERSION : -> "There isn't version declared."
-  NOT_AUTODETECTED    : -> "It has been impossible to detect files automatically."
-  NOT_AUTODETECTED_2  : -> "Try to add manually with 'add' command."
-  NOT_SET_PROPERTY    : -> "You need to provide the property and the value to be set."
-  NOT_SET_VERSION     : -> "Use 'bumped release' instead."
-  NOT_RELEASED        : -> "Something is wrong. Resolve red messages to continue."
+  NOT_REMOVE_FILE     : (file) ->
+    message: "#{file} can't be removed because previously hasn't been added."
+    code: 2
+  NOT_DETECTED_FILE   : (file) ->
+    message: "'#{file}' hasn't been detected in the directory."
+    code: 3
+  NOT_VALID_VERSION   : (version) ->
+    message: "Version '#{version}' provided to release is not valid."
+    code: 4
+  NOT_GREATER_VERSION : (last, old) ->
+    message: "Version '#{last}' is not greater that the current '#{old}' version."
+    code: 5
+  NOT_CURRENT_VERSION : ->
+    message: "There isn't version declared."
+    code: 6
+  NOT_AUTODETECTED    : ->
+    message: "It has been impossible to detect files automatically."
+    code: 7
+  NOT_AUTODETECTED_2  : ->
+    message: "Try to add manually with 'add' command."
+    code: 8
+  NOT_SET_PROPERTY    : ->
+    message: "You need to provide the property and the value to be set."
+    code: 9
+  NOT_SET_VERSION     : ->
+    message: "Use 'bumped release' instead."
+    code: 10
+  NOT_RELEASED        : ->
+    message: "Something is wrong. Resolve #{chalk.red('red')} messages to continue."
+    code: 11

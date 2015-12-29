@@ -69,7 +69,6 @@ module.exports = class Semver
 
     @bumped._version = opts.version
     async.each @bumped.config.rc.files, @save, (err) =>
-
       return @bumped.logger.errorHandler err, cb if err
 
       Animation.end
@@ -78,7 +77,6 @@ module.exports = class Semver
         start   : opts.start
         outputMessage: opts.outputMessage
 
-      @bumped.logger.keyword = DEFAULT.logger.keyword
       cb()
 
   save: (file, cb) =>
