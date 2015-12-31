@@ -17,13 +17,11 @@ module.exports = class Animation
   start: (cb) ->
     @start = new Date()
     @running = true
-
     shortcut = TYPE_SHORTCUT[@type]
-    process.stdout.write '\n' if @type is 'postrelease'
+    process.stdout.write '\n' if @isPostRelease
 
     @logger.keyword = "#{chalk.magenta(shortcut)} #{@logger.keyword}"
     @logger.success "Starting '#{chalk.cyan(@text)}'..."
-
     cb()
 
   stop: (err, cb) ->
@@ -32,7 +30,7 @@ module.exports = class Animation
 
     end = ms new Date() - @start
     @logger.success "Finished '#{chalk.cyan(@text)}' after #{chalk.magenta(end)}."
-    process.stdout.write '\n' unless @isLast and @isPostRelease
+    process.stdout.write '\n' if @isPreRelease
     @logger.keyword = DEFAULT.logger.keyword
 
     cb err
