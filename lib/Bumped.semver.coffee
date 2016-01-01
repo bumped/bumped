@@ -69,7 +69,7 @@ module.exports = class Semver
     [opts, cb] = DEFAULT.args arguments
 
     @bumped._version = opts.version
-    timespan = timeSpan
+    timespan = timeSpan()
 
     async.each @bumped.config.rc.files, @save, (err) =>
       return @bumped.logger.errorHandler err, cb if err
