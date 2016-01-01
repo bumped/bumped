@@ -54,7 +54,7 @@ module.exports = class Semver
         bumpedVersion opts.version, next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version
-        @update version: newVersion, outputMessage: opts.outputMessage, next
+        @update version: newVersion, next
       (next) =>
         opts.type = 'postrelease'
         @bumped.plugin.exec opts, next
@@ -77,7 +77,6 @@ module.exports = class Semver
         logger   : @bumped.logger
         version  : @bumped._version
         timespan : timespan
-        outputMessage: opts.outputMessage
 
       cb()
 
@@ -91,11 +90,10 @@ module.exports = class Semver
   version: =>
     [opts, cb] = DEFAULT.args arguments
 
-    if opts.outputMessage
-      if @bumped._version?
-        @bumped.logger.success MSG.CURRENT_VERSION @bumped._version
-      else
-        @bumped.logger.warn MSG.NOT_CURRENT_VERSION()
+    if @bumped._version?
+      @bumped.logger.success MSG.CURRENT_VERSION @bumped._version
+    else
+      @bumped.logger.warn MSG.NOT_CURRENT_VERSION()
 
     return cb @bumped._version
 

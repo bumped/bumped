@@ -11,7 +11,7 @@ MSG     = require './Bumped.messages'
 
 module.exports = class Bumped
 
-  constructor: (opts = {}) ->
+  constructor: (opts) ->
     process.chdir opts.cwd if opts.cwd?
 
     @pkg = require '../package.json'
@@ -50,9 +50,7 @@ module.exports = class Bumped
   end: ->
     [opts, cb] = DEFAULT.args arguments
 
-    return @semver.version opts, cb unless opts.outputMessage
     @logger.warn MSG.NOT_AUTODETECTED() if @config.rc.files.length is 0
-
     @semver.version opts, =>
-      @logger.success MSG.CONFIG_CREATED() if opts.outputMessage
+      @logger.success MSG.CONFIG_CREATED()
       cb()

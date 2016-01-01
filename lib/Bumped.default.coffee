@@ -16,11 +16,6 @@ module.exports =
 
   detect: ['package.json', 'bower.json']
 
-  defaulOptions: ->
-    return {
-      outputMessage: true
-    }
-
   logger:
     outputType: (type, diff = '') -> "#{@keyword} "
     color: true
@@ -55,7 +50,7 @@ module.exports =
 
   args: ->
     args = Args([
-      { opts :  Args.OBJECT   | Args.Optional, _default:  this.defaulOptions() }
-      { cb   :  Args.FUNCTION | Args.Required                                  }
+      { opts :  Args.OBJECT   | Args.Optional }
+      { cb   :  Args.FUNCTION | Args.Required               }
     ], arguments[0])
-    return [existsAssign(this.defaulOptions(), args.opts), args.cb]
+    return [args.opts, args.cb]

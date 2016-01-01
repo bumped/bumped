@@ -38,10 +38,8 @@ module.exports = class Animation
     cb err
 
   @end: (opts) ->
-    # TODO: remove outputMessage
-    if opts.outputMessage
-      end = ms opts.timespan()
-      message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(end)}."
-      opts.logger.success message
-      # TODO: Necessary?
-      opts.logger.keyword = DEFAULT.logger.keyword
+    end = ms opts.timespan()
+    message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(end)}."
+    opts.logger.success message
+    # TODO: Necessary?
+    opts.logger.keyword = DEFAULT.logger.keyword

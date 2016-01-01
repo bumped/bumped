@@ -55,9 +55,7 @@ var commands = {
 var existCommand = Object.keys(commands).indexOf(command) > -1
 
 if (existCommand) {
-  return bumped.start({
-    outputMessage: false
-  }, function (err) {
+  return bumped.start(function (err) {
     if (err) throw err
     process.stdout.write('\n')
     return commands[command]()

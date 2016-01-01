@@ -15,7 +15,6 @@ module.exports = class Config
 
   autodetect: ->
     [opts, cb] = DEFAULT.args arguments
-
     tasks = [
       (next) =>
         return next() unless @rc.config
@@ -23,9 +22,9 @@ module.exports = class Config
       (next) =>
         @saveScaffold()
         async.each DEFAULT.detect, (file, done) =>
-          @detect file: file, outputMessage: false, (exists) =>
+          @detect file: file, (exists) =>
             return done() unless exists
-            @bumped.logger.success MSG.DETECTED_FILE file if opts.outputMessage
+            @bumped.logger.success MSG.DETECTED_FILE file
             @add file: file, done
         , next
     ]
@@ -37,7 +36,7 @@ module.exports = class Config
 
     existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
       return cb err if err
-      return cb exists unless opts.outputMessage
+
       if exists
         @bumped.logger.success MSG.DETECTED_FILE opts.file
       else
@@ -49,7 +48,7 @@ module.exports = class Config
 
     if @hasFile opts.file
       message = MSG.NOT_ALREADY_ADD_FILE opts.file
-      @bumped.logger.errorHandler message if opts.outputMessage
+      @bumped.logger.errorHandler message
       return cb message, @rc.files
 
     opts.outputMessageType = 'success'
@@ -68,7 +67,7 @@ module.exports = class Config
 
     unless @hasFile opts.file
       message = MSG.NOT_REMOVE_FILE opts.file
-      @bumped.logger.errorHandler message if opts.outputMessage
+      @bumped.logger.errorHandler message
       return cb message, @rc.files
 
     tasks = [
@@ -111,7 +110,7 @@ module.exports = class Config
 
     @rc.files.push opts.file
     outputMessageType = opts.outputMessageType or 'info'
-    @bumped.logger[outputMessageType] MSG.ADD_FILE opts.file if opts.outputMessage
+    @bumped.logger[outputMessageType] MSG.ADD_FILE opts.file
     cb()
 
   removeFile: ->
@@ -119,7 +118,7 @@ module.exports = class Config
 
     index = @rc.files.indexOf opts.file
     @rc.files.splice index, 1
-    @bumped.logger.success MSG.REMOVE_FILE opts.file if opts.outputMessage
+    @bumped.logger.success MSG.REMOVE_FILE opts.file
     cb()
 
   set: =>
@@ -137,7 +136,7 @@ module.exports = class Config
 
     async.each @bumped.config.rc.files, setProperty, (err) =>
       return @bumped.logger.errorHandlerHandler err, cb if err
-      @bumped.logger.success MSG.SET_PROPERTY opts.property, opts.value if opts.outputMessage
+      @bumped.logger.success MSG.SET_PROPERTY opts.property, opts.value
       cb null, opts
 
   hasFile: (file) ->
