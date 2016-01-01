@@ -44,6 +44,7 @@
     "rc": "latest",
     "season": "latest",
     "semver": "latest",
+    "time-span": "latest",
     "update-notifier": "latest"
   },
   "devDependencies": {
