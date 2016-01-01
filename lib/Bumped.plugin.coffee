@@ -23,14 +23,10 @@ module.exports = class Plugin
     @cache = {}
 
   exec: (opts, cb) ->
-
     pluginType = @[opts.type]
-    pluginList = Object.keys pluginType
-
     return cb null if @isEmpty pluginType
 
     async.forEachOfSeries pluginType, (settings, description, next) =>
-      position = pluginList.indexOf description
       pluginPath = forceResolve(settings.plugin)[0]
       @notifyPlugin pluginPath
       plugin = @cache[settings.plugin] ?= require pluginPath
