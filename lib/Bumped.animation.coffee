@@ -12,7 +12,7 @@ TYPE_SHORTCUT =
 
 module.exports = class Animation
 
-  constructor: (params = {}) ->
+  constructor: (params) ->
     @[param] = value for param, value of params
     @isPostRelease = @type is 'postrelease'
     @isPreRelease  = @type is 'prerelease'
