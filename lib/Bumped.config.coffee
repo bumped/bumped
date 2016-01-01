@@ -41,15 +41,15 @@ module.exports = class Config
       if exists
         @bumped.logger.success MSG.DETECTED_FILE opts.file
       else
-        @bumped.logger.error MSG.NOT_DETECTED_FILE opts.file
+        @bumped.logger.errorHandler MSG.NOT_DETECTED_FILE opts.file
       cb exists
 
   add: =>
     [opts, cb] = DEFAULT.args arguments
 
     if @hasFile opts.file
-      message = MSG.ADD_ALREADY_FILE opts.file
-      @bumped.logger.error message if opts.outputMessage
+      message = MSG.NOT_ALREADY_ADD_FILE opts.file
+      @bumped.logger.errorHandler message if opts.outputMessage
       return cb message, @rc.files
 
     opts.outputMessageType = 'success'
@@ -68,7 +68,7 @@ module.exports = class Config
 
     unless @hasFile opts.file
       message = MSG.NOT_REMOVE_FILE opts.file
-      @bumped.logger.error message if opts.outputMessage
+      @bumped.logger.errorHandler message if opts.outputMessage
       return cb message, @rc.files
 
     tasks = [
@@ -132,11 +132,11 @@ module.exports = class Config
         value    : opts.value
       , done
 
-    return @bumped.logger.errorHandler MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
-    return @bumped.logger.errorHandler MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
+    return @bumped.logger.errorHandlerHandler MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
+    return @bumped.logger.errorHandlerHandler MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
 
     async.each @bumped.config.rc.files, setProperty, (err) =>
-      return @bumped.logger.errorHandler err, cb if err
+      return @bumped.logger.errorHandlerHandler err, cb if err
       @bumped.logger.success MSG.SET_PROPERTY opts.property, opts.value if opts.outputMessage
       cb null, opts
 
