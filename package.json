@@ -55,8 +55,8 @@
     "npm": ">= 1.4.0"
   },
   "scripts": {
-    "posttest": "mv .bumpedrc_backup .bumpedrc ",
-    "pretest": "mv .bumpedrc .bumpedrc_backup",
+    "posttest": "cp .bumpedrc_original .bumpedrc",
+    "pretest": "cp .bumpedrc_original .bumpedrc",
     "test": "sh test/test.sh"
   },
   "license": "MIT",
