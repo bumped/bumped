@@ -23,7 +23,7 @@ module.exports = class Animation
     process.stdout.write '\n' if @isPostRelease
 
     @logger.keyword = "#{chalk.magenta(shortcut)} #{@logger.keyword}"
-    @logger.success "Starting '#{chalk.cyan(@text)}'..."
+    @logger.success "Starting #{chalk.cyan(@text)}..."
     cb()
 
   stop: (err, cb) ->
@@ -31,7 +31,7 @@ module.exports = class Animation
     return @logger.errorHandler err, lineBreak: false, cb if err
 
     end = ms new Date() - @start
-    @logger.success "Finished '#{chalk.cyan(@text)}' after #{chalk.magenta(end)}."
+    @logger.success "Finished #{chalk.cyan(@text)} after #{chalk.magenta(end)}."
     process.stdout.write '\n' if @isPreRelease
     @logger.keyword = DEFAULT.logger.keyword
 
