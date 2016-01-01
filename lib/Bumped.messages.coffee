@@ -28,7 +28,7 @@ module.exports =
     message: "Version #{chalk.red(version)} provided to release is not valid."
     code: 5
   NOT_GREATER_VERSION  : (last, old) ->
-    message: "Version #{chalk.red(last)} is not greater that the current #{chalk.red(old)} version."
+    message: "Version #{chalk.red(last)} is not greater that the current #{chalk.green(old)} version."
     code: 6
   NOT_CURRENT_VERSION  : ->
     message: "There isn't version declared."
