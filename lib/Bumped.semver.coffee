@@ -8,6 +8,7 @@ ms        = require 'pretty-ms'
 DEFAULT   = require './Bumped.default'
 MSG       = require './Bumped.messages'
 Animation = require './Bumped.animation'
+timeSpan  = require 'time-span'
 
 module.exports = class Semver
 
@@ -53,7 +54,7 @@ module.exports = class Semver
         bumpedVersion opts.version, next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version
-        @update start: now, version: newVersion, outputMessage: opts.outputMessage, next
+        @update version: newVersion, outputMessage: opts.outputMessage, next
       (next) =>
         opts.type = 'postrelease'
         @bumped.plugin.exec opts, next
@@ -68,13 +69,15 @@ module.exports = class Semver
     [opts, cb] = DEFAULT.args arguments
 
     @bumped._version = opts.version
+    timespan = timeSpan
+
     async.each @bumped.config.rc.files, @save, (err) =>
       return @bumped.logger.errorHandler err, cb if err
 
       Animation.end
-        logger  : @bumped.logger
-        version : @bumped._version
-        start   : opts.start
+        logger   : @bumped.logger
+        version  : @bumped._version
+        timespan : timespan
         outputMessage: opts.outputMessage
 
       cb()

@@ -1,9 +1,10 @@
 'use strict'
 
-chalk   = require 'chalk'
-ms      = require 'pretty-ms'
-DEFAULT = require './Bumped.default'
-MSG     = require './Bumped.messages'
+chalk    = require 'chalk'
+ms       = require 'pretty-ms'
+timeSpan = require 'time-span'
+DEFAULT  = require './Bumped.default'
+MSG      = require './Bumped.messages'
 
 TYPE_SHORTCUT =
   prerelease: 'pre'
@@ -17,7 +18,7 @@ module.exports = class Animation
     @isPreRelease  = @type is 'prerelease'
 
   start: (cb) ->
-    @start = new Date()
+    @timespan = timeSpan()
     @running = true
     shortcut = TYPE_SHORTCUT[@type]
     process.stdout.write '\n' if @isPostRelease
@@ -29,8 +30,7 @@ module.exports = class Animation
   stop: (err, cb) ->
     @running = false
     return @logger.errorHandler err, lineBreak: false, cb if err
-
-    end = ms new Date() - @start
+    end = ms @timespan()
     @logger.success "Finished #{chalk.cyan(@text)} after #{chalk.magenta(end)}."
     process.stdout.write '\n' if @isPreRelease
     @logger.keyword = DEFAULT.logger.keyword
@@ -39,7 +39,8 @@ module.exports = class Animation
 
   @end: (opts) ->
     if opts.outputMessage
-      diff = ms(new Date() - opts.start)
-      message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(diff)}."
+      end = ms opts.timespan()
+      message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(end)}."
       opts.logger.success message
+      # TODO: Necessary?
       opts.logger.keyword = DEFAULT.logger.keyword
