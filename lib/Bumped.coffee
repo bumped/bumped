@@ -1,8 +1,6 @@
 'use strict'
 
 async   = require 'async'
-CSON    = require 'season'
-fs      = require 'fs-extra'
 Util    = require './Bumped.util'
 Semver  = require './Bumped.semver'
 Config  = require './Bumped.config'
@@ -53,10 +51,7 @@ module.exports = class Bumped
     [opts, cb] = DEFAULT.args arguments
 
     return @semver.version opts, cb unless opts.outputMessage
-
-    if @config.rc.files.length is 0
-      @logger.warn MSG.NOT_AUTODETECTED()
-      @logger.warn MSG.NOT_AUTODETECTED_2()
+    @logger.warn MSG.NOT_AUTODETECTED() if @config.rc.files.length is 0
 
     @semver.version opts, =>
       @logger.success MSG.CONFIG_CREATED() if opts.outputMessage

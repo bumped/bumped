@@ -13,6 +13,8 @@ module.exports = class Animation
 
   constructor: (params = {}) ->
     @[param] = value for param, value of params
+    @isPostRelease = opts.type is 'postrelease'
+    @isPreRelease  = opts.type is 'prerelease'
 
   start: (cb) ->
     @start = new Date()

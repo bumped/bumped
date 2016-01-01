@@ -1,7 +1,6 @@
 'use strict'
 
 Acho         = require 'acho'
-chalk        = require 'chalk'
 DEFAULT      = require './Bumped.default'
 existsAssign = require 'existential-assign'
 

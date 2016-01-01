@@ -31,17 +31,14 @@ module.exports =
     message: "There isn't version declared."
     code: 6
   NOT_AUTODETECTED    : ->
-    message: "It has been impossible to detect files automatically."
+    message: "It has been impossible to detect files automatically. Try to add manually with 'add' command."
     code: 7
-  NOT_AUTODETECTED_2  : ->
-    message: "Try to add manually with 'add' command."
-    code: 8
   NOT_SET_PROPERTY    : ->
     message: "You need to provide the property and the value to be set."
-    code: 9
+    code: 8
   NOT_SET_VERSION     : ->
     message: "Use 'bumped release' instead."
-    code: 10
+    code: 9
   NOT_RELEASED        : ->
     message: "Something is wrong. Resolve #{chalk.red('red')} messages to continue."
-    code: 11
+    code: 10

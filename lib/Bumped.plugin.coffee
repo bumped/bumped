@@ -39,15 +39,10 @@ module.exports = class Plugin
       pluginObjt.logger = @bumped.logger
 
       animation = new Animation
-        text          : description
-        logger        : @bumped.logger
-        plugin        : settings.plugin
-        type          : opts.type
-        isPostRelease : opts.type is 'postrelease'
-        isPreRelease  : opts.type is 'prerelease'
-        position      : position
-        isFirst       : position is 0
-        isLast        : position is pluginList.length - 1
+        text   : description
+        logger : @bumped.logger
+        plugin : settings.plugin
+        type   : opts.type
 
       animation.start =>
         plugin @bumped, pluginObjt, (err) ->
