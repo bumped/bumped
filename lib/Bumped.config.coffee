@@ -51,8 +51,6 @@ module.exports = class Config
       @bumped.logger.errorHandler message
       return cb message, @rc.files
 
-    opts.outputMessageType = 'success'
-
     tasks = [
       (next) => unless opts.detect then next() else @detectFile opts, next
       (next) => @addFile opts, next
@@ -109,8 +107,7 @@ module.exports = class Config
     [opts, cb] = DEFAULT.args arguments
 
     @rc.files.push opts.file
-    outputMessageType = opts.outputMessageType or 'info'
-    @bumped.logger[outputMessageType] MSG.ADD_FILE opts.file
+    @bumped.logger.success MSG.ADD_FILE opts.file
     cb()
 
   removeFile: ->
