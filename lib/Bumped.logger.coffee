@@ -8,6 +8,7 @@ optsDefault =
   lineBreak: true
 
 errorHandler = (err, opts, cb) ->
+
   if (arguments.length is 2)
     cb = opts
     opts = optsDefault

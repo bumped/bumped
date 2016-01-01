@@ -5,10 +5,10 @@ async     = require 'async'
 semver    = require 'semver'
 fs        = require 'fs-extra'
 ms        = require 'pretty-ms'
+timeSpan  = require 'time-span'
 DEFAULT   = require './Bumped.default'
 MSG       = require './Bumped.messages'
 Animation = require './Bumped.animation'
-timeSpan  = require 'time-span'
 
 module.exports = class Semver
 
@@ -60,7 +60,6 @@ module.exports = class Semver
         @bumped.plugin.exec opts, next
     ]
 
-    now = new Date()
     async.waterfall tasks, (err) =>
       return @bumped.logger.errorHandler err, cb if err
       cb null, @bumped._version
