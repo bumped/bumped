@@ -5,7 +5,6 @@ async     = require 'async'
 semver    = require 'semver'
 fs        = require 'fs-extra'
 ms        = require 'pretty-ms'
-timeSpan  = require 'time-span'
 DEFAULT   = require './Bumped.default'
 MSG       = require './Bumped.messages'
 Animation = require './Bumped.animation'
@@ -35,7 +34,6 @@ module.exports = class Semver
     , cb
 
   release: =>
-    timespan = timeSpan()
     [opts, cb] = DEFAULT.args arguments
     return @bumped.logger.errorHandler MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
 
@@ -51,7 +49,7 @@ module.exports = class Semver
         bumpedVersion opts.version, next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version
-        @update version: newVersion, timespan: timespan, next
+        @update version: newVersion, next
       (next) =>
         opts.type = 'postrelease'
         @bumped.plugin.exec opts, next
@@ -72,7 +70,6 @@ module.exports = class Semver
       Animation.end
         logger   : @bumped.logger
         version  : @bumped._version
-        timespan : opts.timespan
 
       cb()
 

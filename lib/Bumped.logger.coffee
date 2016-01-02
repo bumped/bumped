@@ -24,8 +24,6 @@ errorHandler = (err, opts, cb) ->
   err = if Array.isArray(err) then err else [err]
   err.forEach printErrorMessage
 
-  # TODO: Necessary?
-  # @keyword = DEFAULT.logger.keyword
   cb err
 
 module.exports = (opts) ->
