@@ -33,7 +33,7 @@ module.exports = class Animation
     end = ms @timespan()
     @logger.success "Finished #{chalk.cyan(@text)} after #{chalk.magenta(end)}."
     process.stdout.write '\n' if @isPreRelease
-    @logger.keyword = DEFAULT.logger.keyword
+    #@logger.keyword = DEFAULT.logger.keyword
 
     cb err
 
@@ -42,4 +42,4 @@ module.exports = class Animation
     message = "#{MSG.CREATED_VERSION(opts.version)} after #{chalk.magenta(end)}."
     opts.logger.success message
     # TODO: Necessary?
-    opts.logger.keyword = DEFAULT.logger.keyword
+    #opts.logger.keyword = DEFAULT.logger.keyword

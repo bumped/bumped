@@ -93,7 +93,7 @@ module.exports = class Semver
     if @bumped._version?
       @bumped.logger.success MSG.CURRENT_VERSION @bumped._version
     else
-      @bumped.logger.warn MSG.NOT_CURRENT_VERSION()
+      @bumped.logger.errorHandler MSG.NOT_CURRENT_VERSION(), lineBreak:false
 
     return cb @bumped._version
 

@@ -31,7 +31,7 @@ module.exports =
     message: "Version #{chalk.red(last)} is not greater that the current #{chalk.green(old)} version."
     code: 6
   NOT_CURRENT_VERSION  : ->
-    message: "There isn't version declared."
+    message: "There isn't version declared. Maybe you need to init first?"
     code: 7
   NOT_AUTODETECTED     : ->
     message: "It has been impossible to detect files automatically. Try to add manually with 'add' command."

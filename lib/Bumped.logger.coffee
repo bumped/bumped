@@ -9,7 +9,7 @@ optsDefault =
 
 errorHandler = (err, opts, cb) ->
 
-  if (arguments.length is 2)
+  if (arguments.length is 2 and typeof arguments[1] is 'function')
     cb = opts
     opts = optsDefault
   else
@@ -25,7 +25,7 @@ errorHandler = (err, opts, cb) ->
   err.forEach printErrorMessage
 
   # TODO: Necessary?
-  @keyword = DEFAULT.logger.keyword
+  # @keyword = DEFAULT.logger.keyword
   cb err
 
 module.exports = (opts) ->

@@ -11,8 +11,8 @@ MSG     = require './Bumped.messages'
 
 module.exports = class Bumped
 
-  constructor: (opts) ->
-    process.chdir opts.cwd if opts.cwd?
+  constructor: (opts = {}) ->
+    process.chdir opts.cwd if opts.cwd
 
     @pkg = require '../package.json'
     @config = new Config this
