@@ -54,12 +54,13 @@ var commands = {
 
 var existCommand = Object.keys(commands).indexOf(command) > -1
 
-if (existCommand) {
-  return bumped.start(function (err) {
-    if (err) throw err
-    process.stdout.write('\n')
-    return commands[command]()
-  })
-}
+if (!existCommand) return cli.showHelp()
 
-cli.showHelp()
+process.stdout.write('\n')
+
+if (command === 'init') return commands[command]()
+
+return bumped.start(function (err) {
+  if (err) throw err
+  return commands[command]()
+})
