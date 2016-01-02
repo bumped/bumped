@@ -11,21 +11,25 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @rc = require('rc') bumped.pkg.name, DEFAULT.scaffold(), null, (config) -> CSON.parse config
+    @rc = require('rc') bumped.pkg.name, DEFAULT.scaffold(), null, (config) ->
+      CSON.parse config
 
   autodetect: ->
     [opts, cb] = DEFAULT.args arguments
+
     tasks = [
       (next) =>
+        # TODO: Necessary?
         return next() unless @rc.config
         fs.remove @rc.config, next
       (next) =>
-        @saveScaffold()
-        async.each DEFAULT.detect, (file, done) =>
-          @detect file: file, (exists) =>
-            return done() unless exists
-            @bumped.logger.success MSG.DETECTED_FILE file
-            @add file: file, done
+        @rc.files =  DEFAULT.scaffold().files
+        @rc.plugins = DEFAULT.scaffold().plugins
+
+        async.each DEFAULT.detect, (file, next) =>
+          @detect file:file, (exists) =>
+            return next() unless exists
+            @add file: file, next
         , next
     ]
 
@@ -36,11 +40,7 @@ module.exports = class Config
 
     existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
       return cb err if err
-
-      if exists
-        @bumped.logger.success MSG.DETECTED_FILE opts.file
-      else
-        @bumped.logger.errorHandler MSG.NOT_DETECTED_FILE opts.file
+      @bumped.logger.success MSG.DETECTED_FILE opts.file if exists
       cb exists
 
   add: =>
@@ -138,9 +138,6 @@ module.exports = class Config
 
   hasFile: (file) ->
     @rc.files.indexOf(file) isnt -1
-
-  saveScaffold: ->
-    [@rc.files, @rc.plugins] = [DEFAULT.scaffold().files, DEFAULT.scaffold().plugins]
 
   loadScaffold: (filedata) ->
     @bumped.config.rc.files = filedata.files

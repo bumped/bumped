@@ -17,31 +17,27 @@ module.exports =
   NOT_ALREADY_ADD_FILE : (file) ->
     message: "File #{chalk.red(file)} is already added."
     code: 2
-
   NOT_REMOVE_FILE      : (file) ->
     message: "File #{chalk.red(file)} can't be removed because previously hasn't been added."
     code: 3
-  NOT_DETECTED_FILE    : (file) ->
-    message: "File #{chalk.red(file)} hasn't been detected in the directory."
-    code: 4
   NOT_VALID_VERSION    : (version) ->
     message: "Version #{chalk.red(version)} provided to release is not valid."
-    code: 5
+    code: 4
   NOT_GREATER_VERSION  : (last, old) ->
     message: "Version #{chalk.red(last)} is not greater that the current #{chalk.green(old)} version."
-    code: 6
+    code: 5
   NOT_CURRENT_VERSION  : ->
     message: "There isn't version declared. Maybe you need to init first?"
-    code: 7
+    code: 6
   NOT_AUTODETECTED     : ->
     message: "It has been impossible to detect files automatically. Try to add manually with 'add' command."
-    code: 8
+    code: 7
   NOT_SET_PROPERTY     : ->
     message: "You need to provide the property and the value to be set."
-    code: 9
+    code: 8
   NOT_SET_VERSION      : ->
     message: "Use 'bumped release' instead."
-    code: 10
+    code: 9
   NOT_RELEASED         : ->
     message: "Something is wrong. Resolve #{chalk.red('red')} messages to continue."
-    code: 11
+    code: 10
