@@ -35,15 +35,12 @@ module.exports = class Semver
     , cb
 
   release: =>
+    timespan = timeSpan()
     [opts, cb] = DEFAULT.args arguments
-
     return @bumped.logger.errorHandler MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
-    @bumped._version ?= '0.0.0'
 
-    if @isSemverWord opts.version
-      bumpedVersion = @_releasesBasedOnSemver
-    else
-      bumpedVersion = @_releasesBasedOnVersion
+    @bumped._version ?= '0.0.0'
+    bumpedVersion = if @isSemverWord opts.version then @_releasesBasedOnSemver else @_releasesBasedOnVersion
 
     tasks = [
       (next) =>
@@ -54,7 +51,7 @@ module.exports = class Semver
         bumpedVersion opts.version, next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version
-        @update version: newVersion, next
+        @update version: newVersion, timespan: timespan, next
       (next) =>
         opts.type = 'postrelease'
         @bumped.plugin.exec opts, next
@@ -68,7 +65,6 @@ module.exports = class Semver
     [opts, cb] = DEFAULT.args arguments
 
     @bumped._version = opts.version
-    timespan = timeSpan()
 
     async.each @bumped.config.rc.files, @save, (err) =>
       return @bumped.logger.errorHandler err, cb if err
@@ -76,7 +72,7 @@ module.exports = class Semver
       Animation.end
         logger   : @bumped.logger
         version  : @bumped._version
-        timespan : timespan
+        timespan : opts.timespan
 
       cb()
 
