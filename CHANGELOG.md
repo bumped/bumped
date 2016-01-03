@@ -1,7 +1,38 @@
+<a name="0.6.0"></a>
+# 0.6.0 (2016-01-03)
+
+
+* Add better pre and post test scripts ([f171a05](https://github.com/bumped/bumped/commit/f171a05))
+* Add bumped-http ([b87202b](https://github.com/bumped/bumped/commit/b87202b))
+* Add time-span dep ([9c34143](https://github.com/bumped/bumped/commit/9c34143))
+* Delete outputMessage param ([8c0bd13](https://github.com/bumped/bumped/commit/8c0bd13))
+* Delete outputMessageType param ([3a8ad53](https://github.com/bumped/bumped/commit/3a8ad53))
+* Delete unnecessary code ([ba159a1](https://github.com/bumped/bumped/commit/ba159a1))
+* Delete unnecessary variable ([4e50f30](https://github.com/bumped/bumped/commit/4e50f30))
+* Fix color ([91b3e91](https://github.com/bumped/bumped/commit/91b3e91))
+* Fix global timespan ([95b8954](https://github.com/bumped/bumped/commit/95b8954))
+* Fix messages ([0490f3e](https://github.com/bumped/bumped/commit/0490f3e))
+* Fix newline ([174892d](https://github.com/bumped/bumped/commit/174892d))
+* Fix tests scripts ([4c277e0](https://github.com/bumped/bumped/commit/4c277e0))
+* Fix timespan fn ([cf609ce](https://github.com/bumped/bumped/commit/cf609ce))
+* Little refactor ([6159c1f](https://github.com/bumped/bumped/commit/6159c1f))
+* More simple ([6376eed](https://github.com/bumped/bumped/commit/6376eed))
+* Refactor ([a0af84e](https://github.com/bumped/bumped/commit/a0af84e))
+* Refactor bin ([8ff47ff](https://github.com/bumped/bumped/commit/8ff47ff))
+* Remove global timespan ([cdc2ec8](https://github.com/bumped/bumped/commit/cdc2ec8))
+* Remove unnecessary ([36368bb](https://github.com/bumped/bumped/commit/36368bb))
+* Remove unnecessary code ([6bbd36c](https://github.com/bumped/bumped/commit/6bbd36c))
+* WIP ([c2124fa](https://github.com/bumped/bumped/commit/c2124fa))
+* WIP ([682c388](https://github.com/bumped/bumped/commit/682c388))
+* WIP ([ed3b579](https://github.com/bumped/bumped/commit/ed3b579))
+
+
+
 <a name="0.5.7"></a>
 ## 0.5.7 (2015-12-29)
 
 
+* 0.5.7 releases ([8e8f8d7](https://github.com/bumped/bumped/commit/8e8f8d7))
 * Add gif ✨💄 ([b5836f5](https://github.com/bumped/bumped/commit/b5836f5))
 * Better error handler ([2ba899d](https://github.com/bumped/bumped/commit/2ba899d))
 * Delete extra space ([c0d02ad](https://github.com/bumped/bumped/commit/c0d02ad))

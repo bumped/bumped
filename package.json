@@ -2,7 +2,7 @@
   "name": "bumped",
   "description": "Makes easy release software.",
   "homepage": "https://github.com/bumped/bumped",
-  "version": "0.5.7",
+  "version": "0.6.0",
   "main": "./bin/index.js",
   "bin": {
     "bumped": "./bin/index.js"
@@ -62,5 +62,5 @@
   },
   "license": "MIT",
   "readme": "ERROR: No README data found!",
-  "_id": "bumped@0.5.6"
+  "_id": "bumped@0.5.7"
 }
