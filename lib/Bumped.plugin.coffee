@@ -4,7 +4,7 @@ path           = require 'path'
 async          = require 'async'
 forceResolve   = require 'force-resolve'
 updateNotifier = require 'update-notifier'
-cloneDeep      = require 'lodash.clonedeep'
+clone          = require 'lodash.clonedeep'
 Animation      = require './Bumped.animation'
 
 ###*
@@ -31,7 +31,7 @@ module.exports = class Plugin
       @notifyPlugin pluginPath
       plugin = @cache[settings.plugin] ?= require pluginPath
 
-      pluginObjt = cloneDeep settings
+      pluginObjt = clone settings
       pluginObjt.logger = @bumped.logger
 
       animation = new Animation

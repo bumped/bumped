@@ -1,8 +1,6 @@
 'use strict'
 
-chalk        = require 'chalk'
-Args         = require 'args-js'
-existsAssign = require 'existential-assign'
+Args = require 'args-js'
 
 module.exports =
 
