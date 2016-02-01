@@ -38,6 +38,7 @@
     "fn-partial": "~0.12.12",
     "force-resolve": "~1.0.2",
     "fs-extra": "~0.26.5",
+    "json-future": "~1.1.5",
     "lodash.clonedeep": "~4.0.3",
     "meow": "~3.7.0",
     "pretty-ms": "~2.1.0",
