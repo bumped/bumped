@@ -27,33 +27,32 @@
     "version"
   ],
   "dependencies": {
-    "acho": "latest",
-    "args-js": "latest",
-    "async": "latest",
-    "chalk": "latest",
-    "coffee-script": "latest",
-    "dot-prop": "latest",
-    "existential-assign": "latest",
-    "exists-file": "latest",
-    "fn-partial": "latest",
-    "force-resolve": "latest",
-    "fs-extra": "latest",
-    "lodash.clonedeep": "latest",
-    "meow": "latest",
-    "pretty-ms": "latest",
-    "rc": "latest",
-    "season": "latest",
-    "semver": "latest",
-    "time-span": "latest",
-    "update-notifier": "latest"
+    "acho": "~2.5.1",
+    "args-js": "~0.10.11",
+    "async": "~1.5.2",
+    "chalk": "~1.1.1",
+    "coffee-script": "~1.10.0",
+    "dot-prop": "~2.2.0",
+    "existential-assign": "~1.2.3",
+    "exists-file": "~1.0.0",
+    "fn-partial": "~0.12.12",
+    "force-resolve": "~1.0.2",
+    "fs-extra": "~0.26.5",
+    "lodash.clonedeep": "~4.0.3",
+    "meow": "~3.7.0",
+    "pretty-ms": "~2.1.0",
+    "rc": "~1.1.6",
+    "season": "~5.3.0",
+    "semver": "~5.1.0",
+    "time-span": "~1.0.0",
+    "update-notifier": "~0.6.0"
   },
   "devDependencies": {
     "mocha": "latest",
     "should": "latest"
   },
   "engines": {
-    "node": ">= 0.10.0",
-    "npm": ">= 1.4.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "pretest": "rm .bumpedrc || exit 0",
