@@ -1,11 +1,15 @@
 'use strict'
 
-path   = require 'path'
-CSON   = require 'season'
-should = require 'should'
-fs     = require 'fs-extra'
-Bumped = require '../lib/Bumped'
-pkg    = require '../package.json'
+path       = require 'path'
+CSON       = require 'season'
+should     = require 'should'
+fs         = require 'fs-extra'
+jsonFuture = require 'json-future'
+Bumped     = require '../lib/Bumped'
+pkg        = require '../package.json'
+
+loadJSON = (relativePath) ->
+  jsonFuture.load path.resolve(relativePath)
 
 testPath = (filepath) -> path.resolve __dirname, filepath
 
@@ -61,14 +65,14 @@ describe 'Bumped ::', ->
         @bumped.semver.release version:'1.0.0', (err, version) ->
           (err?).should.be.equal false
           version.should.be.equal('1.0.0')
-          require('./sample_directory/bower.json').version.should.be.equal('1.0.0')
+          loadJSON('./bower.json').version.should.be.equal('1.0.0')
           done()
 
       it 'release a new version that is valid based in a semver keyword', (done) ->
         @bumped.semver.release version:'minor', (err, version) ->
           (err?).should.be.equal false
           version.should.be.equal('1.1.0')
-          require('./sample_directory/bower.json').version.should.be.equal('1.1.0')
+          loadJSON('./bower.json').version.should.be.equal('1.1.0')
           done()
   describe 'config ::', ->
     describe 'add ::', ->
@@ -146,9 +150,9 @@ describe 'Bumped ::', ->
           outputMessage: true
         , (err) ->
           (err?).should.be.equal false
-          require('./sample_directory/bower.json').description.should.be.equal descriptionValue
-          require('./sample_directory/package.json').description.should.be.equal descriptionValue
-          require('./sample_directory/component.json').description.should.be.equal descriptionValue
+          loadJSON('./bower.json').description.should.be.equal descriptionValue
+          loadJSON('./package.json').description.should.be.equal descriptionValue
+          loadJSON('./component.json').description.should.be.equal descriptionValue
 
   describe 'plugins ::', ->
 
