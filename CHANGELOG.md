@@ -1,3 +1,15 @@
+<a name="0.6.2"></a>
+## 0.6.2 (2016-02-02)
+
+
+### chore
+
+* chore(package): update acho to version 2.5.3 ([664f9f7](https://github.com/bumped/bumped/commit/664f9f7))
+
+* Merge pull request #6 from bumped/greenkeeper-acho-2.5.3 ([3bd4648](https://github.com/bumped/bumped/commit/3bd4648))
+
+
+
 <a name="0.6.1"></a>
 ## 0.6.1 (2016-02-02)
 
@@ -7,6 +19,7 @@
 * Delete unused vars ([ff9a2cb](https://github.com/bumped/bumped/commit/ff9a2cb))
 * Fix test ([5f9f3bf](https://github.com/bumped/bumped/commit/5f9f3bf))
 * lock dependencies ([143d61f](https://github.com/bumped/bumped/commit/143d61f))
+* Release 0.6.1 ([03f0721](https://github.com/bumped/bumped/commit/03f0721))
 * update settings ([3a5c217](https://github.com/bumped/bumped/commit/3a5c217))
 
 
