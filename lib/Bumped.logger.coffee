@@ -1,8 +1,8 @@
 'use strict'
 
-Acho         = require 'acho'
-DEFAULT      = require './Bumped.default'
-existsAssign = require 'existential-assign'
+Acho          = require 'acho'
+DEFAULT       = require './Bumped.default'
+existsDefault = require 'existential-default'
 
 optsDefault =
   lineBreak: true
@@ -27,7 +27,7 @@ errorHandler = (err, opts, cb) ->
   cb err
 
 module.exports = (opts) ->
-  opts = existsAssign DEFAULT.logger, opts
+  opts = existsDefault opts, DEFAULT.logger
   logger = Acho opts
   logger.errorHandler = errorHandler
   logger
