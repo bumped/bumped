@@ -58,9 +58,7 @@
   "scripts": {
     "pretest": "rm .bumpedrc || exit 0",
     "posttest": "cp .bumpedrc_backup .bumpedrc",
-    "test": "sh test/test.sh"
+    "test": "mocha"
   },
-  "license": "MIT",
-  "readme": "ERROR: No README data found!",
-  "_id": "bumped@0.5.7"
+  "license": "MIT"
 }
