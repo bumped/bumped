@@ -2,7 +2,7 @@
   "name": "bumped",
   "description": "Makes easy release software.",
   "homepage": "https://github.com/bumped/bumped",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "main": "./bin/index.js",
   "bin": {
     "bumped": "./bin/index.js"
@@ -56,8 +56,8 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "pretest": "rm .bumpedrc || exit 0",
     "posttest": "cp .bumpedrc_backup .bumpedrc",
+    "pretest": "rm .bumpedrc || exit 0",
     "test": "mocha"
   },
   "license": "MIT"

@@ -1,7 +1,21 @@
+<a name="0.6.1"></a>
+## 0.6.1 (2016-02-02)
+
+
+* change dependency ([e7759ec](https://github.com/bumped/bumped/commit/e7759ec))
+* Change util.updateJSON to avoid caching ([a70ad5a](https://github.com/bumped/bumped/commit/a70ad5a))
+* Delete unused vars ([ff9a2cb](https://github.com/bumped/bumped/commit/ff9a2cb))
+* Fix test ([5f9f3bf](https://github.com/bumped/bumped/commit/5f9f3bf))
+* lock dependencies ([143d61f](https://github.com/bumped/bumped/commit/143d61f))
+* update settings ([3a5c217](https://github.com/bumped/bumped/commit/3a5c217))
+
+
+
 <a name="0.6.0"></a>
 # 0.6.0 (2016-01-03)
 
 
+* 0.6.0 releases ([cfa0848](https://github.com/bumped/bumped/commit/cfa0848))
 * Add better pre and post test scripts ([f171a05](https://github.com/bumped/bumped/commit/f171a05))
 * Add bumped-http ([b87202b](https://github.com/bumped/bumped/commit/b87202b))
 * Add time-span dep ([9c34143](https://github.com/bumped/bumped/commit/9c34143))
@@ -23,8 +37,8 @@
 * Remove unnecessary ([36368bb](https://github.com/bumped/bumped/commit/36368bb))
 * Remove unnecessary code ([6bbd36c](https://github.com/bumped/bumped/commit/6bbd36c))
 * WIP ([c2124fa](https://github.com/bumped/bumped/commit/c2124fa))
-* WIP ([682c388](https://github.com/bumped/bumped/commit/682c388))
 * WIP ([ed3b579](https://github.com/bumped/bumped/commit/ed3b579))
+* WIP ([682c388](https://github.com/bumped/bumped/commit/682c388))
 
 
 
