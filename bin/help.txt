@@ -1,36 +1,45 @@
-Usage: $ bumped <command>
+Usage:
+  $ bumped <command>
 
-commands:
+Commands
+  init     Initializes a new .bumpedrc file in the current directory.
+           Bumped detects configuration files as package.json or
+           bower.json by default, but you can add files with 'add' as well.
 
-init     Initializes a new .bumpedrc file in the current directory.
-         Bumped detects configuration files as package.json or
-         bower.json by default, but you can add files with 'add' as well.
+  add      Add a new file in your current configuration.
+           When you add a file, the shared version between the configuration
+           files is recalculated to get the more high version possible.
 
-add      Add a new file in your current configuration.
-         When you add a file, the shared version between the configuration
-         files is recalculated to get the more high version possible.
+  version  Prints the current synchronized version.
 
-version  Prints the current synchronized version.
+  release  Bumped a new version of your software, updating the
+           version in your configuration files.
 
-release  Bumped a new version of your software, updating the
-         version in your configuration files.
+           bumped supports different release keywords styles, namely:
 
-         You can do it specifying the version that you want to release:
+           semver:
+            $ bumped release <major|premajor|minor|preminor|patch|prepatch|prerelease>
 
-         $ bumped release 1.0.1
+           nature:
+            $ bumped release <breaking|feature|fix>
 
-         Or pecifying semver keyword:
+           numeric:
+            $ bumped release <[0-9].[0-9].[0-9]>
 
-         $ bumped release <major|premajor|minor|preminor|patch|prepatch|prerelease>
+  remove   Removes a file declared in the configuration file.
+           The synchronized version is recalculated.
 
-remove   Removes a file declared in the configuration file.
-         The synchronized version is recalculated.
+  set      Set or update a determinate property across the files
+           declared in your configuration files.
 
-set      Set or update a determinate property across the files
-         declared in your configuration files.
+           You can set Strings, Arrays or Objects:
 
-         You can set Strings, Arrays or Objects:
+           $ bumped set name newName
+           $ bumped set keywords [ semver, management, cli ]
+           $ bumped set authors.name newAuthor
 
-         $ bumped set name newName
-         $ bumped set keywords [ semver, management, cli ]
-         $ bumped set authors.name newAuthor
+Example
+  $ bumped init
+  $ bumped release 1.0.0
+  $ bumped release breaking
+  $ bumped release major
