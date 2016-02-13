@@ -1,3 +1,22 @@
+<a name="0.7.0"></a>
+# 0.7.0 (2016-02-13)
+
+
+### chore
+
+* chore(package): update lodash.clonedeep to version 4.1.0 ([1875ce7](https://github.com/bumped/bumped/commit/1875ce7))
+
+* Add support different semver style ([33c4946](https://github.com/bumped/bumped/commit/33c4946))
+* Add unit tests ([6fdae45](https://github.com/bumped/bumped/commit/6fdae45))
+* Better docs ([776e1d0](https://github.com/bumped/bumped/commit/776e1d0))
+* Fix #9 ([b56b45f](https://github.com/bumped/bumped/commit/b56b45f)), closes [#9](https://github.com/bumped/bumped/issues/9)
+* Fix tests ([5ef5e57](https://github.com/bumped/bumped/commit/5ef5e57))
+* Fix typo ([563d4be](https://github.com/bumped/bumped/commit/563d4be))
+* Merge pull request #7 from bumped/greenkeeper-lodash.clonedeep-4.1.0 ([d8bc22d](https://github.com/bumped/bumped/commit/d8bc22d))
+* Update README.md ([3f51408](https://github.com/bumped/bumped/commit/3f51408))
+
+
+
 <a name="0.6.2"></a>
 ## 0.6.2 (2016-02-02)
 
@@ -7,6 +26,7 @@
 * chore(package): update acho to version 2.5.3 ([664f9f7](https://github.com/bumped/bumped/commit/664f9f7))
 
 * Merge pull request #6 from bumped/greenkeeper-acho-2.5.3 ([3bd4648](https://github.com/bumped/bumped/commit/3bd4648))
+* Release 0.6.2 ([bdb00e7](https://github.com/bumped/bumped/commit/bdb00e7))
 
 
 
