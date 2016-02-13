@@ -42,4 +42,4 @@ Example
   $ bumped init
   $ bumped release 1.0.0
   $ bumped release breaking
-  $ bumped release major
+  $ bumped release premajor beta

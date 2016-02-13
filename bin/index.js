@@ -27,7 +27,8 @@ var commands = {
   version: partial(bumped.semver.version, exit),
 
   release: partial(bumped.semver.release, {
-    version: cli.input[0]
+    version: cli.input[0],
+    prefix: cli.input[1]
   }, exit),
 
   add: partial(bumped.config.add, {

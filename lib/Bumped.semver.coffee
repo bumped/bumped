@@ -38,7 +38,7 @@ module.exports = class Semver
 
     @bumped._version ?= '0.0.0'
     semverStyle = @detect opts.version
-    bumpedVersion = @releaseBasedOn semverStyle
+    releaseVersion = @releaseBasedOn semverStyle
 
     tasks = [
       (next) =>
@@ -46,7 +46,10 @@ module.exports = class Semver
         @bumped.plugin.exec opts, (err) ->
           next(MSG.NOT_RELEASED() if err)
       (next) ->
-        bumpedVersion opts.version, next
+        releaseVersion
+          version: opts.version
+          prefix: opts.prefix
+        , next
       (newVersion, next) =>
         @bumped._oldVersion = @bumped._version
         @update version: newVersion, next
@@ -100,11 +103,11 @@ module.exports = class Semver
     return @_releaseBasedOnNatureSemver if type is 'nature'
     @_releasesBasedOnVersion
 
-  _releaseBasedOnNatureSemver: (keyword, cb) =>
-    cb null, semver.inc(@bumped._version, DEFAULT.keywords.adapter[keyword])
+  _releaseBasedOnNatureSemver: (opts, cb) =>
+    cb null, semver.inc(@bumped._version, DEFAULT.keywords.adapter[opts.version])
 
-  _releasesBasedOnSemver: (keyword, cb) =>
-    cb null, semver.inc(@bumped._version, keyword)
+  _releasesBasedOnSemver: (opts, cb) =>
+    cb null, semver.inc(@bumped._version, opts.version, opts.prefix)
 
   _releasesBasedOnVersion: (version, cb) =>
     version = semver.clean version
