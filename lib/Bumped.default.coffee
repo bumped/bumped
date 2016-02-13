@@ -12,6 +12,14 @@ module.exports =
         postrelease: {}
     }
 
+  keywords:
+    semver: ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease']
+    nature: ['breaking', 'feature', 'fix']
+    adapter:
+      breaking: 'major'
+      feature: 'minor'
+      fix: 'patch'
+
   detect: ['package.json', 'bower.json']
 
   logger:

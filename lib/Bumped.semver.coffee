@@ -3,6 +3,7 @@
 path      = require 'path'
 async     = require 'async'
 semver    = require 'semver'
+util      = require './Bumped.util'
 DEFAULT   = require './Bumped.default'
 MSG       = require './Bumped.messages'
 Animation = require './Bumped.animation'
@@ -36,7 +37,8 @@ module.exports = class Semver
     return @bumped.logger.errorHandler MSG.NOT_VALID_VERSION(opts.version), cb unless opts.version
 
     @bumped._version ?= '0.0.0'
-    bumpedVersion = if @isSemverWord opts.version then @_releasesBasedOnSemver else @_releasesBasedOnVersion
+    semverStyle = @detect opts.version
+    bumpedVersion = @releaseBasedOn semverStyle
 
     tasks = [
       (next) =>
@@ -72,7 +74,7 @@ module.exports = class Semver
       cb()
 
   save: (file, cb) =>
-    @bumped.util.updateJSON
+    util.updateJSON
       filename : file
       property : 'version'
       value    : @bumped._version
@@ -88,9 +90,18 @@ module.exports = class Semver
 
     return cb @bumped._version
 
-  isSemverWord: (word) ->
-    [ 'major', 'premajor', 'minor', 'preminor'
-      'patch', 'prepatch', 'prerelease' ].indexOf(word) isnt -1
+  detect: (word) ->
+    return 'semver' if util.includes DEFAULT.keywords.semver, word
+    return 'nature' if util.includes DEFAULT.keywords.nature, word
+    'numeric'
+
+  releaseBasedOn: (type) =>
+    return @_releasesBasedOnSemver if type is 'semver'
+    return @_releaseBasedOnNatureSemver if type is 'nature'
+    @_releasesBasedOnVersion
+
+  _releaseBasedOnNatureSemver: (keyword, cb) =>
+    cb null, semver.inc(@bumped._version, DEFAULT.keywords.adapter(keyword))
 
   _releasesBasedOnSemver: (keyword, cb) =>
     cb null, semver.inc(@bumped._version, keyword)

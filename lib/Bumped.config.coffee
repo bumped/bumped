@@ -4,6 +4,7 @@ async      = require 'async'
 CSON       = require 'season'
 fs         = require 'fs-extra'
 existsFile = require 'exists-file'
+util       = require './Bumped.util'
 DEFAULT    = require './Bumped.default'
 MSG        = require './Bumped.messages'
 
@@ -79,7 +80,7 @@ module.exports = class Config
   save: =>
     [opts, cb] = DEFAULT.args arguments
 
-    @bumped.util.saveCSON
+    util.saveCSON
       path : ".#{@bumped.pkg.name}rc"
       data :
         files: @rc.files
@@ -89,7 +90,7 @@ module.exports = class Config
   load: =>
     [opts, cb] = DEFAULT.args arguments
 
-    @bumped.util.loadCSON
+    util.loadCSON
       path: @bumped.config.rc.config
     , (err, filedata) =>
       throw err if err
@@ -122,7 +123,7 @@ module.exports = class Config
     [opts, cb] = DEFAULT.args arguments
 
     setProperty = (file, done) =>
-      @bumped.util.updateJSON
+      util.updateJSON
         filename : file
         property : opts.property
         value    : opts.value

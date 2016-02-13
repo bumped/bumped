@@ -1,7 +1,6 @@
 'use strict'
 
 async   = require 'async'
-Util    = require './Bumped.util'
 Semver  = require './Bumped.semver'
 Config  = require './Bumped.config'
 Logger  = require './Bumped.logger'
@@ -18,7 +17,6 @@ module.exports = class Bumped
     @config = new Config this
     @semver = new Semver this
     @logger = new Logger opts.logger
-    @util = new Util this
     @plugin = new Plugin this
 
     this

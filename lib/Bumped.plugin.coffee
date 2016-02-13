@@ -6,6 +6,7 @@ forceResolve   = require 'force-resolve'
 updateNotifier = require 'update-notifier'
 clone          = require 'lodash.clonedeep'
 Animation      = require './Bumped.animation'
+isEmpty        = require('./Bumped.util').isEmpty
 
 ###*
  * Bumped.plugins
@@ -24,7 +25,7 @@ module.exports = class Plugin
 
   exec: (opts, cb) ->
     pluginType = @[opts.type]
-    return cb null if @isEmpty pluginType
+    return cb null if isEmpty Object.keys pluginType
 
     async.forEachOfSeries pluginType, (settings, description, next) =>
       pluginPath = forceResolve(settings.plugin)[0]
@@ -44,10 +45,6 @@ module.exports = class Plugin
         plugin @bumped, pluginObjt, (err) ->
           animation.stop err, next
     , cb
-
-
-  isEmpty: (plugins = []) ->
-    Object.keys(plugins).length is 0
 
   notifyPlugin: (pluginPath) ->
     pkgPath = path.join pluginPath, 'package.json'

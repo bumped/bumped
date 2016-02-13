@@ -6,10 +6,7 @@ fs         = require 'fs-extra'
 dotProp    = require 'dot-prop'
 jsonFuture = require 'json-future'
 
-module.exports = class Util
-
-  constructor: (bumped) ->
-    @bumped = bumped
+module.exports =
 
   ###*
    * A sweet way to update JSON Arrays, Objects or String from String.
@@ -46,3 +43,6 @@ module.exports = class Util
   saveCSON: (opts, cb) ->
     data = CSON.stringify opts.data, null, 2
     fs.writeFile opts.path, data, encoding: 'utf8', cb
+
+  isEmpty: (arr) -> arr.length is 0
+  includes: (arr, word) -> arr.indexOf(word) isnt -1
