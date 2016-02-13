@@ -101,7 +101,7 @@ module.exports = class Semver
     @_releasesBasedOnVersion
 
   _releaseBasedOnNatureSemver: (keyword, cb) =>
-    cb null, semver.inc(@bumped._version, DEFAULT.keywords.adapter(keyword))
+    cb null, semver.inc(@bumped._version, DEFAULT.keywords.adapter[keyword])
 
   _releasesBasedOnSemver: (keyword, cb) =>
     cb null, semver.inc(@bumped._version, keyword)
