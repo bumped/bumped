@@ -24,6 +24,12 @@
 
 Because writing software is hard enough, we must make the publishing process of software simple and effective.
 
+Consider read this excellent list of articles for expand your vision about releasing process:
+
+* [Semantic Pedantic by Jeremy Ashkenas](https://gist.github.com/jashkenas/cbd2b088e20279ae2c8e).
+* [Maintaining Open Source Projects by thoughtbot](https://robots.thoughtbot.com/maintaining-open-source-projects-versioning).
+* [Software Versions are Broken by Eric Elliot](https://medium.com/javascript-scene/software-versions-are-broken-3d2dc0da0783#.wvzd0qcp8).
+
 ## Install
 
 ```bash
