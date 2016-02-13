@@ -109,8 +109,8 @@ module.exports = class Semver
   _releasesBasedOnSemver: (opts, cb) =>
     cb null, semver.inc(@bumped._version, opts.version, opts.prefix)
 
-  _releasesBasedOnVersion: (version, cb) =>
-    version = semver.clean version
+  _releasesBasedOnVersion: (opts, cb) =>
+    version = semver.clean opts.version
     version = semver.valid version
     return cb MSG.NOT_VALID_VERSION version unless version?
     return cb MSG.NOT_GREATER_VERSION(version, @bumped._version) unless semver.gt version, @bumped._version
