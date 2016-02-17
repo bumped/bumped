@@ -39,7 +39,7 @@
     "force-resolve": "~1.0.2",
     "fs-extra": "~0.26.5",
     "json-future": "~1.1.5",
-    "lodash.clonedeep": "~4.2.0",
+    "lodash.clonedeep": "~4.3.0",
     "meow": "~3.7.0",
     "pretty-ms": "~2.1.0",
     "rc": "~1.1.6",
