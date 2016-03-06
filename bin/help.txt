@@ -1,7 +1,7 @@
-Usage:
+Usage
   $ bumped <command>
 
-Commands:
+Commands
   init     Initializes a new .bumpedrc file in the current directory.
            Bumped detects configuration files as package.json or
            bower.json by default, but you can add files with 'add' as well.
@@ -38,7 +38,7 @@ Commands:
            $ bumped set keywords [ semver, management, cli ]
            $ bumped set authors.name newAuthor
 
-Example:
+Example
   $ bumped init
   $ bumped release 1.0.0
   $ bumped release breaking
