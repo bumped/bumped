@@ -1,3 +1,25 @@
+<a name="0.7.1"></a>
+## 0.7.1 (2016-03-16)
+
+
+### chore
+
+* chore(package): update dot-prop to version 2.3.0 ([8f06fbb](https://github.com/bumped/bumped/commit/8f06fbb))
+* chore(package): update dot-prop to version 2.4.0 ([fcb962c](https://github.com/bumped/bumped/commit/fcb962c))
+* chore(package): update lodash.clonedeep to version 4.2.0 ([5c998c8](https://github.com/bumped/bumped/commit/5c998c8))
+* chore(package): update lodash.clonedeep to version 4.3.0 ([c8201ef](https://github.com/bumped/bumped/commit/c8201ef))
+
+* Delete ':' from help command ([c3eb5ae](https://github.com/bumped/bumped/commit/c3eb5ae))
+* fix typo ([09cc6d6](https://github.com/bumped/bumped/commit/09cc6d6))
+* Improve global installation of packages ([e5cf7e0](https://github.com/bumped/bumped/commit/e5cf7e0))
+* Merge pull request #10 from bumped/greenkeeper-lodash.clonedeep-4.2.0 ([a13d44d](https://github.com/bumped/bumped/commit/a13d44d))
+* Merge pull request #11 from bumped/greenkeeper-lodash.clonedeep-4.3.0 ([faf74dd](https://github.com/bumped/bumped/commit/faf74dd))
+* Merge pull request #12 from bumped/greenkeeper-dot-prop-2.3.0 ([ec17539](https://github.com/bumped/bumped/commit/ec17539))
+* Merge pull request #13 from bumped/greenkeeper-dot-prop-2.4.0 ([46464ec](https://github.com/bumped/bumped/commit/46464ec))
+* Setup spawn process correctly ([7b4f725](https://github.com/bumped/bumped/commit/7b4f725))
+
+
+
 <a name="0.7.0"></a>
 # 0.7.0 (2016-02-13)
 
@@ -13,6 +35,7 @@
 * Fix tests ([5ef5e57](https://github.com/bumped/bumped/commit/5ef5e57))
 * Fix typo ([563d4be](https://github.com/bumped/bumped/commit/563d4be))
 * Merge pull request #7 from bumped/greenkeeper-lodash.clonedeep-4.1.0 ([d8bc22d](https://github.com/bumped/bumped/commit/d8bc22d))
+* Release 0.7.0 ([93bc0e6](https://github.com/bumped/bumped/commit/93bc0e6))
 * Update README.md ([3f51408](https://github.com/bumped/bumped/commit/3f51408))
 
 
