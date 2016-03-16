@@ -12,10 +12,9 @@ Animation      = require './Bumped.animation'
 isEmpty        = require('./Bumped.util').isEmpty
 
 npmInstallGlobal = (pkg) ->
-  origCwd = process.cwd()
-  process.chdir globalNpmPath
-  spawnSync('npm', [ 'install', pkg ], stdio: 'inherit')
-  process.chdir origCwd
+  spawnSync 'npm', [ 'install', pkg ],
+    stdio: 'inherit'
+    cwd: globalNpmPath
 
 ###*
  * Bumped.plugin
