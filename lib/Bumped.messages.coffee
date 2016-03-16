@@ -12,6 +12,8 @@ module.exports =
   CREATED_VERSION : (version) -> "Releases version #{chalk.green(version)}."
   CURRENT_VERSION : (version) -> "Current version is #{chalk.green(version)}."
   SET_PROPERTY    : (property, value) -> "Property #{chalk.green(property)} set as #{chalk.green(value)}."
+  INSTALLING_PLUGIN : (plugin) -> "Plugin #{chalk.green(plugin)} not detected on the system."
+  INSTALLING_PLUGIN_2 : -> "Installing it as global, might take a while."
 
   # Negative
   NOT_ALREADY_ADD_FILE : (file) ->

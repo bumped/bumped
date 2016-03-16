@@ -2,14 +2,23 @@
 
 path           = require 'path'
 async          = require 'async'
-forceResolve   = require 'force-resolve'
+resolveUp      = require 'resolve-up'
+spawnSync      = require 'spawn-sync'
+globalNpmPath  = require 'global-modules'
 updateNotifier = require 'update-notifier'
 clone          = require 'lodash.clonedeep'
+MSG            = require './Bumped.messages'
 Animation      = require './Bumped.animation'
 isEmpty        = require('./Bumped.util').isEmpty
 
+npmInstallGlobal = (pkg) ->
+  origCwd = process.cwd()
+  process.chdir globalNpmPath
+  spawnSync('npm', [ 'install', pkg ], stdio: 'inherit')
+  process.chdir origCwd
+
 ###*
- * Bumped.plugins
+ * Bumped.plugin
  *
  * Module to call each plugin declared for the user in the configuration file.
  * Modules follow a duck type interface and are sorted.
@@ -23,12 +32,20 @@ module.exports = class Plugin
     @postrelease = @bumped.config.rc.plugins.postrelease
     @cache = {}
 
+  pluginPath: (plugin) ->
+    pluginPath = resolveUp plugin
+    return pluginPath[0] if pluginPath.length > 0
+    @bumped.logger.warn MSG.INSTALLING_PLUGIN plugin
+    @bumped.logger.warn MSG.INSTALLING_PLUGIN_2()
+    npmInstallGlobal plugin
+    path.resolve globalNpmPath, plugin
+
   exec: (opts, cb) ->
     pluginType = @[opts.type]
     return cb null if isEmpty Object.keys pluginType
 
     async.forEachOfSeries pluginType, (settings, description, next) =>
-      pluginPath = forceResolve(settings.plugin)[0]
+      pluginPath = @pluginPath settings.plugin
       @notifyPlugin pluginPath
       plugin = @cache[settings.plugin] ?= require pluginPath
 
