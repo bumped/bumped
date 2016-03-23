@@ -39,17 +39,24 @@ module.exports = class Plugin
     npmInstallGlobal plugin
     path.resolve globalNpmPath, plugin
 
+  buildOptions: (opts) ->
+    obj = clone opts
+    obj.logger = @bumped.logger
+    obj.path = @pluginPath opts.plugin
+    obj
+
   exec: (opts, cb) ->
     pluginType = @[opts.type]
     return cb null if isEmpty Object.keys pluginType
 
     async.forEachOfSeries pluginType, (settings, description, next) =>
-      pluginPath = @pluginPath settings.plugin
-      @notifyPlugin pluginPath
-      plugin = @cache[settings.plugin] ?= require pluginPath
+      pluginOptions = @buildOptions settings
 
-      pluginObjt = clone settings
-      pluginObjt.logger = @bumped.logger
+      if @cache[settings.plugin]
+        plugin = @cache[settings.plugin]
+      else
+        plugin = @cache[settings.plugin] = require pluginOptions.path
+        @notifyPlugin pluginOptions.path
 
       animation = new Animation
         text   : description
@@ -58,7 +65,7 @@ module.exports = class Plugin
         type   : opts.type
 
       animation.start =>
-        plugin @bumped, pluginObjt, (err) ->
+        plugin @bumped, pluginOptions, (err) ->
           animation.stop err, next
     , cb
 
