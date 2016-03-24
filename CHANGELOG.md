@@ -1,3 +1,9 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/bumped/bumped/compare/0.7.1...v0.8.0) (2016-03-24)
+
+
+
+
 <a name="0.7.1"></a>
 ## 0.7.1 (2016-03-16)
 
