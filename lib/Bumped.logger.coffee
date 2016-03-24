@@ -16,8 +16,8 @@ errorHandler = (err, opts, cb) ->
     cb = opts
     opts = optsDefault
   else
-    opts or= optsDefault
-    cb or= noop
+    opts = existsDefault opts, optsDefault
+    cb = existsDefault cb, noop
 
   return cb err if @level is 'silent'
   err = MSG.NOT_PROPERLY_FINISHED err if isBoolean err
