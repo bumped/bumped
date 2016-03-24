@@ -6,6 +6,7 @@ MSG           = require './Bumped.messages'
 existsDefault = require 'existential-default'
 noop          = require('./Bumped.util').noop
 isArray       = require('./Bumped.util').isArray
+isBoolean     = require('./Bumped.util').isBoolean
 
 optsDefault =
   lineBreak: true
@@ -19,7 +20,7 @@ errorHandler = (err, opts, cb) ->
     cb or= noop
 
   return cb err if @level is 'silent'
-  err = MSG.NOT_PROPERLY_FINISHED err if typeof err is 'boolean'
+  err = MSG.NOT_PROPERLY_FINISHED err if isBoolean err
 
   printErrorMessage = (err) => @error err.message or err
   process.stdout.write '\n' if opts.lineBreak
