@@ -44,5 +44,7 @@ module.exports =
     data = CSON.stringify opts.data, null, 2
     fs.writeFile opts.path, data, encoding: 'utf8', cb
 
+  isArray: Array.isArray
   isEmpty: (arr) -> arr.length is 0
   includes: (arr, word) -> arr.indexOf(word) isnt -1
+  noop: ->

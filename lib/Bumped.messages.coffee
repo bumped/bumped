@@ -40,6 +40,6 @@ module.exports =
   NOT_SET_VERSION      : ->
     message: "Use 'bumped release' instead."
     code: 9
-  NOT_RELEASED         : ->
+  NOT_PROPERLY_FINISHED: (status) ->
     message: "Something is wrong. Resolve #{chalk.red('red')} messages to continue."
     code: 10

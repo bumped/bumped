@@ -43,8 +43,7 @@ module.exports = class Semver
     tasks = [
       (next) =>
         opts.type = 'prerelease'
-        @bumped.plugin.exec opts, (err) ->
-          next(MSG.NOT_RELEASED() if err)
+        @bumped.plugin.exec opts, next
       (next) ->
         releaseVersion
           version: opts.version

@@ -29,13 +29,16 @@ module.exports = class Animation
 
   stop: (err, cb) ->
     @running = false
-    return @logger.errorHandler err, lineBreak: false, cb if err
+
+    if err
+      @logger.keyword = DEFAULT.logger.keyword
+      return cb err
+
     end = ms @timespan()
     @logger.success "Finished #{chalk.cyan(@text)} after #{chalk.magenta(end)}."
     process.stdout.write '\n' if @isPreRelease
     @logger.keyword = DEFAULT.logger.keyword
-
-    cb err
+    cb()
 
   @end: (opts) ->
     opts.logger.success MSG.CREATED_VERSION(opts.version)
