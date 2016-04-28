@@ -36,7 +36,7 @@
     "existential-default": "~1.2.1",
     "exists-file": "~1.0.0",
     "fn-partial": "~0.12.12",
-    "fs-extra": "~0.29.0",
+    "fs-extra": "~0.30.0",
     "global-modules": "~0.2.1",
     "json-future": "~1.1.5",
     "lodash.clonedeep": "~4.3.2",
