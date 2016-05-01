@@ -24,7 +24,7 @@ module.exports =
 
   logger:
     keyword: 'bumped'
-    level: 'plugin'
+    level: 'all'
     types:
       error:
         level : 0
@@ -35,18 +35,6 @@ module.exports =
       success:
         level : 2
         color : 'green'
-      info:
-        level : 3
-        color : 'white'
-      verbose:
-        level : 4
-        color : 'cyan'
-      debug:
-        level : 5
-        color : 'blue'
-      plugin:
-        level : 6
-        color : 'magenta'
 
   args: ->
     args = Args([
