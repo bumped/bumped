@@ -1,3 +1,22 @@
+<a name="0.8.1"></a>
+## 0.8.1 (2016-05-01)
+
+* Simplifiest logging levels ([fcbee83](https://github.com/bumped/bumped/commit/fcbee83))
+* Update to Acho v3 ([0f407f4](https://github.com/bumped/bumped/commit/0f407f4))
+* chore(package): update acho to version 2.6.0 ([973d592](https://github.com/bumped/bumped/commit/973d592))
+* chore(package): update acho to version 2.7.0 ([f308c6b](https://github.com/bumped/bumped/commit/f308c6b))
+* chore(package): update acho to version 2.8.0 ([65a82fb](https://github.com/bumped/bumped/commit/65a82fb))
+* chore(package): update chalk to version 1.1.2 ([2ed1e25](https://github.com/bumped/bumped/commit/2ed1e25))
+* chore(package): update existential-default to version 1.2.1 ([4fce3c5](https://github.com/bumped/bumped/commit/4fce3c5))
+* chore(package): update existential-default to version 1.3.1 ([5070d94](https://github.com/bumped/bumped/commit/5070d94))
+* chore(package): update fs-extra to version 0.27.0 ([a0e6896](https://github.com/bumped/bumped/commit/a0e6896))
+* chore(package): update fs-extra to version 0.28.0 ([0fa78d0](https://github.com/bumped/bumped/commit/0fa78d0))
+* chore(package): update fs-extra to version 0.29.0 ([6402fdc](https://github.com/bumped/bumped/commit/6402fdc))
+* chore(package): update fs-extra to version 0.30.0 ([96f2352](https://github.com/bumped/bumped/commit/96f2352))
+* chore(package): update lodash.clonedeep to version 4.3.2 ([22dee04](https://github.com/bumped/bumped/commit/22dee04))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/bumped/bumped/compare/0.7.1...v0.8.0) (2016-03-24)
 
