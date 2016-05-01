@@ -23,15 +23,9 @@ module.exports =
   detect: ['package.json', 'bower.json']
 
   logger:
-    outputType: (type, diff = '') -> "#{@keyword} "
-    color: true
-    align: false
-    diff: false
     keyword: 'bumped'
     level: 'plugin'
     types:
-      line:
-        color: 'white'
       error:
         level : 0
         color : 'red'
