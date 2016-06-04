@@ -8,7 +8,6 @@ module.exports =
   CONFIG_CREATED  : -> 'Config file created!.'
   ADD_FILE        : (file) -> "File #{chalk.green(file)} has been added."
   REMOVE_FILE     : (file) -> "File #{chalk.green(file)} has been removed."
-  DETECTED_FILE   : (file) -> "Detected #{chalk.green(file)} in the directory."
   CREATED_VERSION : (version) -> "Releases version #{chalk.green(version)}."
   CURRENT_VERSION : (version) -> "Current version is #{chalk.green(version)}."
   SET_PROPERTY    : (property, value) -> "Property #{chalk.green(property)} set as #{chalk.green(value)}."

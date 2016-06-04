@@ -51,7 +51,6 @@ module.exports = class Config
       return cb message, @rc.files
 
     tasks = [
-      (next) => unless opts.detect then next() else @detectFile opts, next
       (next) => @addFile opts, next
       (next) => unless opts.save then next() else @save opts, next
     ]
@@ -93,13 +92,6 @@ module.exports = class Config
     , (err, filedata) =>
       throw err if err
       @loadScaffold filedata
-      cb()
-
-  detectFile: ->
-    [opts, cb] = DEFAULT.args arguments
-
-    @detect opts, (exists) ->
-      return cb MSG.DETECTED_FILE opts.file unless exists
       cb()
 
   addFile: ->
