@@ -1,3 +1,10 @@
+<a name="0.9.1"></a>
+## 0.9.1 (2016-06-04)
+
+* Unify errorHandler interface ([585807d](https://github.com/bumped/bumped/commit/585807d))
+
+
+
 <a name="0.9.0"></a>
 # 0.9.0 (2016-06-04)
 
