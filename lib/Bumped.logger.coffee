@@ -24,7 +24,8 @@ errorHandler = (err, opts, cb) ->
 
   printErrorMessage = (err) => @error err.message or err
   process.stdout.write '\n' if opts.lineBreak
-  err = if isArray err then err else [err]
+  err = [err] unless isArray(err)
+
   err.forEach printErrorMessage
   cb err
 
