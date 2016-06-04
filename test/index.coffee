@@ -107,18 +107,18 @@ describe 'Bumped ::', ->
       it 'try to add a file that is already added', (done) ->
         @bumped.config.add
           file: 'package.json'
-        , (err, files) ->
+        , (err) =>
           (err?).should.be.equal true
-          files.length.should.be.equal 2
+          @bumped.config.rc.files.length.should.be.equal 2
           done()
 
       it 'prevent add a file that doesn\'t exist in the directory', (done) ->
         @bumped.config.add
           file: 'testing.json'
           detect: true
-        , (err, files) ->
+        , (err) =>
           (err?).should.be.equal true
-          files.length.should.be.equal 2
+          @bumped.config.rc.files.length.should.be.equal 2
           done()
 
       it 'add a file that exist in the directory and then save it', (done) ->
@@ -141,9 +141,9 @@ describe 'Bumped ::', ->
         @bumped.config.remove
           file: 'unicorn.json'
           save: true
-        , (err, files) ->
+        , (err) =>
           (err?).should.be.equal true
-          files.length.should.be.equal 3
+          @bumped.config.rc.files.length.should.be.equal 3
           done()
 
       it 'remove a previous declared file', (done) ->
@@ -151,9 +151,9 @@ describe 'Bumped ::', ->
         @bumped.config.remove
           file: 'component.json'
           save: true
-        , (err, files) ->
+        , (err) =>
           (err?).should.be.equal false
-          files.length.should.be.equal 2
+          @bumped.config.rc.files.length.should.be.equal 2
           config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
           config = CSON.parse config
           config.files.length.should.be.equal 2

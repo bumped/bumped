@@ -45,8 +45,7 @@ module.exports = class Config
 
     if @hasFile opts.file
       message = MSG.NOT_ALREADY_ADD_FILE opts.file
-      @bumped.logger.errorHandler message, lineBreak:false
-      return cb message, @rc.files
+      return @bumped.logger.errorHandler message, lineBreak:false, cb
 
     tasks = [
       (next) =>
@@ -54,8 +53,7 @@ module.exports = class Config
       (exists, next) =>
         return @addFile opts, next if exists
         message = MSG.NOT_ADD_FILE opts.file
-        @bumped.logger.errorHandler message, lineBreak:false
-        return cb message, @rc.files
+        return @bumped.logger.errorHandler message, lineBreak:false, cb
       (next) =>
         unless opts.save then next() else @save opts, next
     ]
@@ -68,8 +66,7 @@ module.exports = class Config
 
     unless @hasFile opts.file
       message = MSG.NOT_REMOVE_FILE opts.file
-      @bumped.logger.errorHandler message, lineBreak:false
-      return cb message, @rc.files
+      return @bumped.logger.errorHandler message, lineBreak:false, cb
 
     tasks = [
       (next) => @removeFile opts, next
