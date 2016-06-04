@@ -1,3 +1,22 @@
+<a name="0.9.0"></a>
+# 0.9.0 (2016-06-04)
+
+* Fix little style issues ([8e8aa7f](https://github.com/bumped/bumped/commit/8e8aa7f))
+* Fix typo ([30e0e0a](https://github.com/bumped/bumped/commit/30e0e0a))
+* Force set key ([3e4126d](https://github.com/bumped/bumped/commit/3e4126d))
+* Handle correctly trying to add files that doesn't exists ([c179d41](https://github.com/bumped/bumped/commit/c179d41))
+* Handle set exception cases ([127f8fb](https://github.com/bumped/bumped/commit/127f8fb))
+* Little refactor ([42aa80b](https://github.com/bumped/bumped/commit/42aa80b))
+* Remove detectFile method ([38ce440](https://github.com/bumped/bumped/commit/38ce440))
+* Remove duplicate check ([cc3031b](https://github.com/bumped/bumped/commit/cc3031b))
+* Require version key just for first file declared ([aaca2d0](https://github.com/bumped/bumped/commit/aaca2d0))
+* Standarize predicate ([1a09085](https://github.com/bumped/bumped/commit/1a09085))
+* chore(package): update dot-prop to version 3.0.0 ([1452da8](https://github.com/bumped/bumped/commit/1452da8))
+* chore(package): update exists-file to version 2.0.0 ([4d3d9c5](https://github.com/bumped/bumped/commit/4d3d9c5))
+* chore(package): update update-notifier to version 0.7.0 ([c9f0ecd](https://github.com/bumped/bumped/commit/c9f0ecd))
+
+
+
 <a name="0.8.1"></a>
 ## 0.8.1 (2016-05-01)
 
