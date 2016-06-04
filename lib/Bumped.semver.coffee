@@ -20,9 +20,10 @@ module.exports = class Semver
       cb()
 
   versions: (cb) =>
-    async.map @bumped.config.rc.files, (file, next) ->
+    async.reduce @bumped.config.rc.files, [], (accumulator, file, next) ->
       version = require(path.resolve file).version
-      next null, version
+      accumulator.push(version) if version?
+      next(null, accumulator)
     , cb
 
   max: (versions, cb) ->
@@ -66,7 +67,7 @@ module.exports = class Semver
 
     @bumped._version = opts.version
 
-    async.each @bumped.config.rc.files, @save, (err) =>
+    async.forEachOf @bumped.config.rc.files, @save, (err) =>
       return @bumped.logger.errorHandler err, cb if err
 
       Animation.end
@@ -75,11 +76,12 @@ module.exports = class Semver
 
       cb()
 
-  save: (file, cb) =>
+  save: (file, index, cb) =>
     util.updateJSON
       filename : file
       property : 'version'
       value    : @bumped._version
+      force    : index is 0
     , cb
 
   version: =>

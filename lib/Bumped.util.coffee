@@ -30,7 +30,7 @@ module.exports =
       else if isDotProp
         dotProp.set(file, opts.property, opts.value)
       else
-        file[opts.property] = opts.value
+        file[opts.property] = opts.value if file[opts.property]? or opts.force
 
       jsonFuture.saveAsync(opts.filename, file, cb)
 
