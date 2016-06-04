@@ -126,7 +126,8 @@ module.exports = class Config
       , done
 
     message = null
-    message = MSG.NOT_SET_PROPERTY() unless opts.property or opts.value
+    message = MSG.NOT_SET_PROPERTY() if util.size(opts.value) is 0
+    message = MSG.NOT_SET_PROPERTY() if util.size(opts.property) is 0
     message = MSG.NOT_SET_VERSION() if opts.property is 'version'
     return @bumped.logger.errorHandler message, lineBreak:false, cb if message
 

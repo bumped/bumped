@@ -55,3 +55,7 @@ module.exports =
     arr.indexOf(word) isnt -1
 
   noop: ->
+
+  size: (arr) ->
+    return 0 unless arr
+    arr.length
