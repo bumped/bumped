@@ -28,9 +28,7 @@ module.exports = class Config
         @rc.plugins = DEFAULT.scaffold().plugins
 
         async.each DEFAULT.detect, (file, next) =>
-          @detect file:file, (err, exists) =>
-            return next err if err or not exists
-            @add file: file, next
+          @add file: file, next
         , next
     ]
 
@@ -53,13 +51,15 @@ module.exports = class Config
     opts
 
     tasks = [
-      (next) => @detect opts, next,
+      (next) =>
+        @detect opts, next,
       (exists, next) =>
         return @addFile opts, next if exists
         message = MSG.NOT_ADD_FILE opts.file
         @bumped.logger.errorHandler message, lineBreak:false
         return cb message, @rc.files
-      (next) => unless opts.save then next() else @save opts, next
+      (next) =>
+        unless opts.save then next() else @save opts, next
     ]
 
     async.waterfall tasks, (err, result) =>
