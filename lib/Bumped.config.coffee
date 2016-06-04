@@ -47,7 +47,7 @@ module.exports = class Config
 
     if @hasFile opts.file
       message = MSG.NOT_ALREADY_ADD_FILE opts.file
-      @bumped.logger.errorHandler message
+      @bumped.logger.errorHandler message, lineBreak:false
       return cb message, @rc.files
 
     opts
@@ -57,7 +57,7 @@ module.exports = class Config
       (exists, next) =>
         return @addFile opts, next if exists
         message = MSG.NOT_ADD_FILE opts.file
-        @bumped.logger.errorHandler message
+        @bumped.logger.errorHandler message, lineBreak:false
         return cb message, @rc.files
       (next) => unless opts.save then next() else @save opts, next
     ]
@@ -70,7 +70,7 @@ module.exports = class Config
 
     unless @hasFile opts.file
       message = MSG.NOT_REMOVE_FILE opts.file
-      @bumped.logger.errorHandler message
+      @bumped.logger.errorHandler message, lineBreak:false
       return cb message, @rc.files
 
     tasks = [
@@ -119,7 +119,7 @@ module.exports = class Config
   set: =>
     [opts, cb] = DEFAULT.args arguments
 
-    setProperty = (file, done) =>
+    setProperty = (file, done) ->
       util.updateJSON
         filename : file
         property : opts.property
@@ -127,11 +127,13 @@ module.exports = class Config
         force    : true
       , done
 
-    return @bumped.logger.errorHandlerHandler MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
-    return @bumped.logger.errorHandlerHandler MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
+    message = null
+    message = MSG.NOT_SET_PROPERTY() unless opts.property or opts.value
+    message = MSG.NOT_SET_VERSION() if opts.property is 'version'
+    return @bumped.logger.errorHandler message, lineBreak:false, cb if message
 
     async.each @bumped.config.rc.files, setProperty, (err) =>
-      return @bumped.logger.errorHandlerHandler err, cb if err
+      return @bumped.logger.errorHandler err, cb if err
       @bumped.logger.success MSG.SET_PROPERTY opts.property, opts.value
       cb null, opts
 
