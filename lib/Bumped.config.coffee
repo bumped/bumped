@@ -124,6 +124,7 @@ module.exports = class Config
         filename : file
         property : opts.property
         value    : opts.value
+        force    : true
       , done
 
     return @bumped.logger.errorHandlerHandler MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value

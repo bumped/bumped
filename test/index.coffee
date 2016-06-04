@@ -161,7 +161,7 @@ describe 'Bumped ::', ->
 
     describe 'set ::', ->
 
-      it 'change a property across the files', ->
+      it 'change a property across the files', (done) ->
         descriptionValue = 'a new description for the project'
         @bumped.config.set
           property: 'description'
@@ -170,7 +170,7 @@ describe 'Bumped ::', ->
           (err?).should.be.equal false
           loadJSON('./bower.json').description.should.be.equal descriptionValue
           loadJSON('./package.json').description.should.be.equal descriptionValue
-          loadJSON('./component.json').description.should.be.equal descriptionValue
+          done()
 
   describe 'plugins ::', ->
 
