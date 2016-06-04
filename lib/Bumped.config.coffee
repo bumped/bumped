@@ -1,5 +1,6 @@
 'use strict'
 
+path       = require 'path'
 async      = require 'async'
 CSON       = require 'season'
 fs         = require 'fs-extra'
@@ -20,7 +21,6 @@ module.exports = class Config
 
     tasks = [
       (next) =>
-        # TODO: Necessary?
         return next() unless @rc.config
         fs.remove @rc.config, next
       (next) =>
@@ -28,9 +28,7 @@ module.exports = class Config
         @rc.plugins = DEFAULT.scaffold().plugins
 
         async.each DEFAULT.detect, (file, next) =>
-          @detect file:file, (exists) =>
-            return next() unless exists
-            @add file: file, next
+          @add file: file, next
         , next
     ]
 
@@ -39,23 +37,27 @@ module.exports = class Config
   detect: ->
     [opts, cb] = DEFAULT.args arguments
 
-    existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
-      return cb err if err
-      @bumped.logger.success MSG.DETECTED_FILE opts.file if exists
-      cb exists
+    filePath = path.join(process.cwd(), opts.file)
+    existsFile filePath, cb
 
   add: =>
     [opts, cb] = DEFAULT.args arguments
 
     if @hasFile opts.file
       message = MSG.NOT_ALREADY_ADD_FILE opts.file
-      @bumped.logger.errorHandler message
+      @bumped.logger.errorHandler message, lineBreak:false
       return cb message, @rc.files
 
     tasks = [
-      (next) => unless opts.detect then next() else @detectFile opts, next
-      (next) => @addFile opts, next
-      (next) => unless opts.save then next() else @save opts, next
+      (next) =>
+        @detect opts, next,
+      (exists, next) =>
+        return @addFile opts, next if exists
+        message = MSG.NOT_ADD_FILE opts.file
+        @bumped.logger.errorHandler message, lineBreak:false
+        return cb message, @rc.files
+      (next) =>
+        unless opts.save then next() else @save opts, next
     ]
 
     async.waterfall tasks, (err, result) =>
@@ -66,7 +68,7 @@ module.exports = class Config
 
     unless @hasFile opts.file
       message = MSG.NOT_REMOVE_FILE opts.file
-      @bumped.logger.errorHandler message
+      @bumped.logger.errorHandler message, lineBreak:false
       return cb message, @rc.files
 
     tasks = [
@@ -97,13 +99,6 @@ module.exports = class Config
       @loadScaffold filedata
       cb()
 
-  detectFile: ->
-    [opts, cb] = DEFAULT.args arguments
-
-    @detect opts, (exists) ->
-      return cb MSG.DETECTED_FILE opts.file unless exists
-      cb()
-
   addFile: ->
     [opts, cb] = DEFAULT.args arguments
 
@@ -122,18 +117,22 @@ module.exports = class Config
   set: =>
     [opts, cb] = DEFAULT.args arguments
 
-    setProperty = (file, done) =>
+    setProperty = (file, done) ->
       util.updateJSON
         filename : file
         property : opts.property
         value    : opts.value
+        force    : true
       , done
 
-    return @bumped.logger.errorHandlerHandler MSG.NOT_SET_PROPERTY(), cb unless opts.property or opts.value
-    return @bumped.logger.errorHandlerHandler MSG.NOT_SET_VERSION(), cb if opts.property is 'version'
+    message = null
+    message = MSG.NOT_SET_PROPERTY() if util.size(opts.value) is 0
+    message = MSG.NOT_SET_PROPERTY() if util.size(opts.property) is 0
+    message = MSG.NOT_SET_VERSION() if opts.property is 'version'
+    return @bumped.logger.errorHandler message, lineBreak:false, cb if message
 
     async.each @bumped.config.rc.files, setProperty, (err) =>
-      return @bumped.logger.errorHandlerHandler err, cb if err
+      return @bumped.logger.errorHandler err, cb if err
       @bumped.logger.success MSG.SET_PROPERTY opts.property, opts.value
       cb null, opts
 

@@ -1,6 +1,5 @@
 'use strict'
 
-path       = require 'path'
 CSON       = require 'season'
 fs         = require 'fs-extra'
 dotProp    = require 'dot-prop'
@@ -31,7 +30,7 @@ module.exports =
       else if isDotProp
         dotProp.set(file, opts.property, opts.value)
       else
-        file[opts.property] = opts.value
+        file[opts.property] = opts.value if file[opts.property]? or opts.force
 
       jsonFuture.saveAsync(opts.filename, file, cb)
 
@@ -44,8 +43,19 @@ module.exports =
     data = CSON.stringify opts.data, null, 2
     fs.writeFile opts.path, data, encoding: 'utf8', cb
 
-  isBoolean: (n) -> typeof n is 'boolean'
+  isBoolean: (n) ->
+    typeof n is 'boolean'
+
   isArray: Array.isArray
-  isEmpty: (arr) -> arr.length is 0
-  includes: (arr, word) -> arr.indexOf(word) isnt -1
+
+  isEmpty: (arr) ->
+    arr.length is 0
+
+  includes: (arr, word) ->
+    arr.indexOf(word) isnt -1
+
   noop: ->
+
+  size: (arr) ->
+    return 0 unless arr
+    arr.length

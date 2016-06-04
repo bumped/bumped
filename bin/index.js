@@ -18,8 +18,9 @@ var command = cli.input.shift()
 
 var exit = function (err) {
   if (!err) return process.exit()
+  if (!Array.isArray(err)) err = [err]
   var code = err[err.length - 1].code || 1
-  return process.exit(code)
+  return process.exit(code || 1)
 }
 
 var commands = {
