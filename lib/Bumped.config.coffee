@@ -1,5 +1,6 @@
 'use strict'
 
+path       = require 'path'
 async      = require 'async'
 CSON       = require 'season'
 fs         = require 'fs-extra'
@@ -20,7 +21,6 @@ module.exports = class Config
 
     tasks = [
       (next) =>
-        # TODO: Necessary?
         return next() unless @rc.config
         fs.remove @rc.config, next
       (next) =>
@@ -28,8 +28,8 @@ module.exports = class Config
         @rc.plugins = DEFAULT.scaffold().plugins
 
         async.each DEFAULT.detect, (file, next) =>
-          @detect file:file, (exists) =>
-            return next() unless exists
+          @detect file:file, (err, exists) =>
+            return next err if err or not exists
             @add file: file, next
         , next
     ]
@@ -39,10 +39,8 @@ module.exports = class Config
   detect: ->
     [opts, cb] = DEFAULT.args arguments
 
-    existsFile "#{process.cwd()}/#{opts.file}", (err, exists) =>
-      return cb err if err
-      @bumped.logger.success MSG.DETECTED_FILE opts.file if exists
-      cb exists
+    filePath = path.join(process.cwd(), opts.file)
+    existsFile filePath, cb
 
   add: =>
     [opts, cb] = DEFAULT.args arguments
