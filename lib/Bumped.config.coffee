@@ -50,8 +50,15 @@ module.exports = class Config
       @bumped.logger.errorHandler message
       return cb message, @rc.files
 
+    opts
+
     tasks = [
-      (next) => @addFile opts, next
+      (next) => @detect opts, next,
+      (exists, next) =>
+        return @addFile opts, next if exists
+        message = MSG.NOT_ADD_FILE opts.file
+        @bumped.logger.errorHandler message
+        return cb message, @rc.files
       (next) => unless opts.save then next() else @save opts, next
     ]
 
