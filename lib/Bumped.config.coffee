@@ -48,8 +48,6 @@ module.exports = class Config
       @bumped.logger.errorHandler message, lineBreak:false
       return cb message, @rc.files
 
-    opts
-
     tasks = [
       (next) =>
         @detect opts, next,
