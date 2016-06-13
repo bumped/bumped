@@ -6,6 +6,7 @@
 
 ![Last version](https://img.shields.io/github/tag/bumped/bumped.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/bumped/bumped/master.svg?style=flat-square)](https://travis-ci.org/bumped/bumped)
+[![Coverage Status](https://img.shields.io/coveralls/bumped/bumped.svg?style=flat-square)](https://coveralls.io/github/bumped/bumped)
 [![Dependency status](http://img.shields.io/david/bumped/bumped.svg?style=flat-square)](https://david-dm.org/bumped/bumped)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/bumped/bumped.svg?style=flat-square)](https://david-dm.org/bumped/bumped#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/bumped.svg?style=flat-square)](https://www.npmjs.org/package/bumped)

@@ -26,6 +26,7 @@ nbproject
 testApp
 coverage
 test/sample_directory
+.nyc_output
 
 ############################
 # Other
