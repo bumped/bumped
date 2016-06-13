@@ -48,7 +48,7 @@
     "semver": "~5.1.0",
     "spawn-sync": "~1.0.15",
     "time-span": "~1.0.0",
-    "update-notifier": "~0.7.0"
+    "update-notifier": "~1.0.0"
   },
   "devDependencies": {
     "mocha": "latest",
