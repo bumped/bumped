@@ -1,6 +1,6 @@
 # .version
 
-If you're not sure what the current synchronized version across your configuration files, then run `bumped version`:
+It prints the current synchronized version.
 
 ```bash
 $ bumped version
@@ -8,4 +8,6 @@ $ bumped version
 info	: Current version is '1.0.0'.
 ```
 
-The shared version is the major version detected in them. On the other hand, it will not be syncrhonized until the next release.
+This means that the higher version declared across your configuration files is `1.0.0`.
+
+Every time that you do a release, the version will be updated in all the files.

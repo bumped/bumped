@@ -1,25 +1,53 @@
 # .release
 
-It's moment to release a new version of your sofware. You can do this in two different ways:
+It's used for release a new version of your project.
 
-- Providing the exact version that you want to release.
+The purpose of this command is increment the value under the `version` field of your `files` declared at `.bumpedrc`.
 
-- Providing the semantic semver version to release (using the keywords `major`, `minor`, `patch`,...
+When you want to release a new version, you need to specify a high new version of your project.
 
-In both cases, the only requisite is that the version to be released has to be major than the current version.
+For do that, we can follow different approach:
 
-For example, if your current version is `1.0.0` and you want to release to the version `1.1.0`, you can do:
+## Semver
 
-```bash
-$ bumped release 1.1.0
+This is the classic way. You have to provide the keyword that increment the `X`,`Y` or `Z` version of your `X.Y.Z` version declared.
 
-success	: Releases version '1.1.0'.
+In this mode, you can also create prebuilds. Are the keywords availables in this mode are:
+
+```
+bumped release <major|premajor|minor|preminor|patch|prepatch|prerelease>
 ```
 
-Or, if you prefer a more semantic semver way to do the same, you simply can do:
+## Numerical
+
+Providing the exact version that you want to release.
+
+It's similar to semver approach, but specifying using numbers the version to be released.
+
+It's aligned with the pattern:
+
+```
+bumped release <[0-9].[0-9].[0-9]>
+```
+
+## Nature
+
+It's a modification of the semver version focusing in a more semantic keywords.
+
+```
+bumped release <breaking|feature|fix>
+```
+
+The following example is equivalent between the three approaches
 
 ```bash
-$ bumped release minor
+$ bumped release 2.0.0
+$ bumped release major
+$ bumped release breaking
+```
 
-success	: Releases version '1.1.0'.
+Where in all the cases the message will be:
+
+```bash
+success	: Releases version '2.0.0'.
 ```

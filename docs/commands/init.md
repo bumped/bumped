@@ -1,24 +1,18 @@
 # .init
 
-The first command that you need to run is `bumped init`. If you run it in a totally blank project, you'll see something like this:
+It initializes a `.bumpedrdc` file in the path.
 
-```bash
-$ bumped init
+`bumped init` is a smart command that try to add common configuration files.
 
-warn  : It has been impossible to detect files automatically.
-warn  : Try to add manually with 'add' command.
-warn  : There isn\'t version declared.
-success : Config file created!.
+For example, if your project have `package.json` and `bower.json` it detects and add them automagically:
+
 ```
-
-The magic appears when running it in a project with common package manager configuration files, for instance, like `package.json` or `bower.json`:
-
-```bash
 $ bumped init
 
-info	: Detected 'package.json' in the directory.
-info	: Current version is '1.0.1'.
-success	: Config file created!.
+bumped File package.json has been added.
+bumped File bower.json has been added.
+bumped Current version is 0.0.0.
+bumped Config file created!.
 ```
 
 At this moment, **Bumped** creates a configuration file `.bumpedrc`, which is associated with the project folder. If you open this file, its content is a list made up of all the synchronized files:
@@ -26,5 +20,13 @@ At this moment, **Bumped** creates a configuration file `.bumpedrc`, which is as
 ```cson
 files: [
   "package.json"
+  "bower.json"
 ]
+plugins:
+  prerelease: {}
+  postrelease: {}
 ```
+
+For synchronize the version around all the files, **Bumped** needs at least a one file with a `version` field. If is not possible detect a configuration file, the command will create a `package.json` with `version` field.
+
+As you can see, it also initializes plugins section.

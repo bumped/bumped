@@ -1,5 +1,7 @@
 # .add
 
+It's used to add configuration file under `files` path of `.bumpedrc`.
+
 In the beginning, **Bumped** automatically detects common configuration files from the most popular packages managers, but you may need to add one manually.
 
 For example, I want to add a new file called `component.json` that which version setted to `2.0.0`:
@@ -10,7 +12,7 @@ For example, I want to add a new file called `component.json` that which version
 }
 ```
 
-I can be done typing `bumped add`:
+I can be done using `bumped add`:
 
 ```bash
 $ bumped add component.json

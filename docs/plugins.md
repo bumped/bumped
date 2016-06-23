@@ -1,13 +1,14 @@
 # Plugins
 
-They define the way you connect your releases steps with third party software.
+They are actions that will be executed every time that you release a new version of your project.
 
-## How to use it
+## Declaration
 
-Basically a plugin is a façade around a third party software to make easy the connection between your project and the third party software.
+When you declare a plugin under the `plugins` path at your `.bumpedrc`, you are creating a step to be executed before or after you release a new version.
 
-Plugins are declared in the `plugins` section of your `.bumpedrc`.
+Plugins can be used as `prereleases` and `postrelease` steps interchangeably: You can put it in the step that you need it.
 
+In all the cases, the plugin declaration is formed by the description message of the step and the plugin that you want to use.
 
 ```YAML
 plugins:
@@ -17,18 +18,22 @@ plugins:
       command: 'echo Hello my friend!'
 ```
 
-First of all, plugins are used as `prereleases` and `postrelease` interchangeably. So, you can put the plugin where you need.
-
-Second, the plugin declaration is formed by the description message of the step and the plugin that you want to use.
-
 The rest of information, (in this example, `command`) depends of the specific plugin used.
 
-## Running process
+## Execution
 
+Every time that you release a new version, plugins will be executed.
 
+Also, As you can imagine, the workflow will be:
 
-## Handling Exceptions
+- Execute `prerelease` plugins.
+- Increment the current version.
+- Execute `postrelease` plugins.
 
+Plugins are executed on series. Under the words, this means:
+
+- Order is important (or not): first plugin declared will be first plugin to be executed.
+- If a plugin have a unexepected exit, it stop the pipeline and the release process.
 
 ## Available plugins
 

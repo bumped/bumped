@@ -1,6 +1,6 @@
 # .remove
 
-If you decide to remove a file, just use the `remove` command:
+It's used to remove configuration file under `files` path of `.bumpedrc`.
 
 ```
 $ bumped remove component.json
