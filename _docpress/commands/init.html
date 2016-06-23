@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=a5a1fcab">
+    <link rel="stylesheet" href="../extra.css?t=da39a3ee">
+    <script src="../assets/script.js?t=3b192864"></script>
+    <title>.init</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-commandsinit">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/bumped/bumped" data-title="bumped/bumped" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id=".init">.init</h1>
+<p>The first command that you need to run is <code>bumped init</code>. If you run it in a totally blank project, you&apos;ll see something like this:</p>
+<pre><code class="lang-bash">$ bumped init
+
+warn  : It has been impossible to detect files automatically.
+warn  : Try to add manually with <span class="pl-s">&apos;add&apos;</span> command.
+warn  : There isn\<span class="pl-s">&apos;t version declared.
+success : Config file created!.
+</span></code></pre>
+<p>The magic appears when running it in a project with common package manager configuration files, for instance, like <code>package.json</code> or <code>bower.json</code>:</p>
+<pre><code class="lang-bash">$ bumped init
+
+info	: Detected <span class="pl-s">&apos;package.json&apos;</span> <span class="pl-k">in</span> the directory.
+info	: Current version is <span class="pl-s">&apos;1.0.1&apos;</span>.
+success	: Config file created!.
+</code></pre>
+<p>At this moment, <strong>Bumped</strong> creates a configuration file <code>.bumpedrc</code>, which is associated with the project folder. If you open this file, its content is a list made up of all the synchronized files:</p>
+<pre><code class="lang-cson">files: [
+  <span class="pl-s">&quot;package.json&quot;</span>
+]
+</code></pre>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../index.html"><span class="title">Bumped</span></a></div>
+          <div class="right"><a href="../commands/version.html"><span class="label">Next: </span><span class="title">.version</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="../index.html" class="link title  link-index">Bumped</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Commands</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="../commands/init.html" class="link title -active link-commandsinit">.init</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/version.html" class="link title  link-commandsversion">.version</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/add.html" class="link title  link-commandsadd">.add</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/release.html" class="link title  link-commandsrelease">.release</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/remove.html" class="link title  link-commandsremove">.remove</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/set.html" class="link title  link-commandsset">.set</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1"><a href="../plugins.html" class="link title  link-plugins">Plugins</a>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>

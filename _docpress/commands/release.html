@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=a5a1fcab">
+    <link rel="stylesheet" href="../extra.css?t=da39a3ee">
+    <script src="../assets/script.js?t=3b192864"></script>
+    <title>.release</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-commandsrelease">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/bumped/bumped" data-title="bumped/bumped" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id=".release">.release</h1>
+<p>It&apos;s moment to release a new version of your sofware. You can do this in two different ways:</p>
+<ul>
+<li>
+<p>Providing the exact version that you want to release.</p>
+</li>
+<li>
+<p>Providing the semantic semver version to release (using the keywords <code>major</code>, <code>minor</code>, <code>patch</code>,...</p>
+</li>
+</ul>
+<p>In both cases, the only requisite is that the version to be released has to be major than the current version.</p>
+<p>For example, if your current version is <code>1.0.0</code> and you want to release to the version <code>1.1.0</code>, you can do:</p>
+<pre><code class="lang-bash">$ bumped release 1.1.0
+
+success	: Releases version <span class="pl-s">&apos;1.1.0&apos;</span>.
+</code></pre>
+<p>Or, if you prefer a more semantic semver way to do the same, you simply can do:</p>
+<pre><code class="lang-bash">$ bumped release minor
+
+success	: Releases version <span class="pl-s">&apos;1.1.0&apos;</span>.
+</code></pre>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../commands/add.html"><span class="title">.add</span></a></div>
+          <div class="right"><a href="../commands/remove.html"><span class="label">Next: </span><span class="title">.remove</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="../index.html" class="link title  link-index">Bumped</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Commands</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="../commands/init.html" class="link title  link-commandsinit">.init</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/version.html" class="link title  link-commandsversion">.version</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/add.html" class="link title  link-commandsadd">.add</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/release.html" class="link title -active link-commandsrelease">.release</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/remove.html" class="link title  link-commandsremove">.remove</a>
+                </li>
+                <li class="menu-item -level-2"><a href="../commands/set.html" class="link title  link-commandsset">.set</a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1"><a href="../plugins.html" class="link title  link-plugins">Plugins</a>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>

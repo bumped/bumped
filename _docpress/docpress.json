@@ -1,0 +1,11 @@
+{
+  "github": "bumped/bumped",
+  "plugins": {
+    "docpress-core": {},
+    "docpress-one": {}
+  },
+  "css": [
+   "docs/extra.css"
+ ]
+
+}
