@@ -27,19 +27,19 @@ When you start a new project, run `bumped init`.
 
 It creates a configuration file called `.bumpedrc` associated with your project where your releases steps will be declared.
 
-The configuration file are divided in 3 sections:
+The configuration file has divided in 3 sections:
 
 - Files that will be increment the version.
 - Steps to do **before** increment the version
 - Steps to do **after** increment the version
 
-For example, a typicall `.bumpedrc` file will do:
+For example, a typical `.bumpedrc` file will do:
 
-- Perfom actions before the files version: lint code, run test build, check for git unstaged changes.. all thinks that you need to check to be sure that we can continue with the releasing process.
-- Increment the version declared at `package.json` and `bower.json`.
-- Perfom after version, like create a git tag, publish the tag on GitHub and NPM.
+- Before increment the project version, do a set of actions related with the integrity of the project: Run tests, lint files, check for unstaged changes, etc.
+- Increment the project version in all necessary files, for example, at `package.json` and `bower.json`.
+- After that, do actions mostly related with the publishing process: Publish a new git tag on GitHub, publish new bower/NPM project version.
 
-Now, next time that you run `bumped release <major|minor|patch` it perform the release steps:
+Now, next time that you run `bumped release <major|minor|patch>` it performs all the releases steps.
 
 <p align="center">
   <img src="https://i.imgur.com/GUmrIgB.gif" alt="bumped">
