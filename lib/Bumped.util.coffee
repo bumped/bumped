@@ -7,6 +7,9 @@ jsonFuture = require 'json-future'
 
 module.exports =
 
+  createJSON: (opts, cb)->
+    jsonFuture.saveAsync opts.file, opts.data, (err) -> cb err
+
   ###*
    * A sweet way to update JSON Arrays, Objects or String from String.
    * @param  {Object}   opts [description]

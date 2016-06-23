@@ -37,7 +37,7 @@ module.exports = class Config
         , next
       fallbackUnderNotDetect = (next) =>
         return next() if @rc.files.length isnt 0
-        @addFallback file:DEFAULT.fallbackFileName, next
+        @addFallback next
     ]
 
     async.waterfall tasks, cb
@@ -45,18 +45,17 @@ module.exports = class Config
   ###*
    * Special '.add' action to be called when autodetect fails.
   ###
-  addFallback: ->
-    [opts, cb] = DEFAULT.args arguments
+  addFallback: (cb) ->
+    opts =
+      file: DEFAULT.fallbackFileName
+      data: version:'0.0.0'
 
     tasks = [
-      createFallbackFile = (next) ->
-        jsonFuture.saveAsync opts.file, version:'0.0.0', next
-      addFallbackFile = (next) =>
-        @addFile opts, next
+      createFallbackFile = (next) -> util.createJSON opts, next
+      addFallbackFile = (next) => @addFile opts, next
     ]
 
-    # TODO: avoid workaround
-    async.series tasks, (err) -> cb(err)
+    async.waterfall tasks, cb
 
   ###*
    * Add a file into configuration file.
