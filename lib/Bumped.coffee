@@ -12,7 +12,6 @@ module.exports = class Bumped
 
   constructor: (opts = {}) ->
     process.chdir opts.cwd if opts.cwd
-
     @pkg = require '../package.json'
     @config = new Config this
     @semver = new Semver this
@@ -21,17 +20,24 @@ module.exports = class Bumped
 
     this
 
-  start: ->
-    [opts, cb] = DEFAULT.args arguments
-    return cb() unless @config.rc.config
-    @load opts, cb
-
+  ###*
+   * Load a previously cofinguration file declared.
+  ###
   load: ->
     [opts, cb] = DEFAULT.args arguments
 
-    tasks = [ @config.load ]
-    async.waterfall tasks, => @semver.sync opts, cb
+    return cb() unless @config.rc.config
 
+    tasks = [
+      (next) => @config.load opts, next
+      (next) => @semver.sync opts, next
+    ]
+
+    async.series tasks, cb
+
+  ###*
+   * Initialize a new configuration file in the current path.
+  ###
   init: =>
     [opts, cb] = DEFAULT.args arguments
 
@@ -48,7 +54,6 @@ module.exports = class Bumped
   end: ->
     [opts, cb] = DEFAULT.args arguments
 
-    @logger.warn MSG.NOT_AUTODETECTED() if @config.rc.files.length is 0
     @semver.version opts, =>
       @logger.success MSG.CONFIG_CREATED()
       cb()

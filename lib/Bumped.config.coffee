@@ -5,6 +5,7 @@ async      = require 'async'
 CSON       = require 'season'
 fs         = require 'fs-extra'
 existsFile = require 'exists-file'
+jsonFuture = require 'json-future'
 util       = require './Bumped.util'
 DEFAULT    = require './Bumped.default'
 MSG        = require './Bumped.messages'
@@ -16,36 +17,63 @@ module.exports = class Config
     @rc = require('rc') bumped.pkg.name, DEFAULT.scaffold(), null, (config) ->
       CSON.parse config
 
+  ###*
+   * Special '.add' action that try to autodetect common configuration files
+   * It doesn't print a error message if the file are not present
+   * in the directory.
+  ###
   autodetect: ->
     [opts, cb] = DEFAULT.args arguments
 
     tasks = [
-      (next) =>
+      removePreviousConfigFile = (next) =>
         return next() unless @rc.config
         fs.remove @rc.config, next
-      (next) =>
+      detectCommonFiles = (next) =>
         @rc.files =  DEFAULT.scaffold().files
         @rc.plugins = DEFAULT.scaffold().plugins
-
-        async.each DEFAULT.detect, (file, next) =>
-          @add file: file, next
+        async.each DEFAULT.detectFileNames, (file, done) =>
+          @add file:file, output:false, (err) -> done()
         , next
+      fallbackUnderNotDetect = (next) =>
+        return next() if @rc.files.length isnt 0
+        @addFallback file:DEFAULT.fallbackFileName, next
     ]
 
     async.waterfall tasks, cb
 
-  detect: ->
+  ###*
+   * Special '.add' action to be called when autodetect fails.
+  ###
+  addFallback: ->
     [opts, cb] = DEFAULT.args arguments
 
-    filePath = path.join(process.cwd(), opts.file)
-    existsFile filePath, cb
+    tasks = [
+      createFallbackFile = (next) ->
+        jsonFuture.saveAsync opts.file, version:'0.0.0', next
+      addFallbackFile = (next) =>
+        @addFile opts, next
+    ]
 
+    # TODO: avoid workaround
+    async.series tasks, (err) -> cb(err)
+
+  ###*
+   * Add a file into configuration file.
+   * Before do it, check:
+   *  - The file was previously added.
+   *  - The file that are you trying to add exists.
+  ###
   add: =>
     [opts, cb] = DEFAULT.args arguments
 
+    loggerOptions =
+      lineBreak: false
+      output: opts.output
+
     if @hasFile opts.file
       message = MSG.NOT_ALREADY_ADD_FILE opts.file
-      return @bumped.logger.errorHandler message, lineBreak:false, cb
+      return @bumped.logger.errorHandler message, loggerOptions, cb
 
     tasks = [
       (next) =>
@@ -53,13 +81,22 @@ module.exports = class Config
       (exists, next) =>
         return @addFile opts, next if exists
         message = MSG.NOT_ADD_FILE opts.file
-        return @bumped.logger.errorHandler message, lineBreak:false, cb
+        return @bumped.logger.errorHandler message, loggerOptions, cb
       (next) =>
         unless opts.save then next() else @save opts, next
     ]
 
     async.waterfall tasks, (err, result) =>
       cb err, @rc.files
+
+  ###*
+   * Detect if a configuration file exists in the project path.
+  ###
+  detect: ->
+    [opts, cb] = DEFAULT.args arguments
+
+    filePath = path.join(process.cwd(), opts.file)
+    existsFile filePath, cb
 
   remove: =>
     [opts, cb] = DEFAULT.args arguments
@@ -76,6 +113,9 @@ module.exports = class Config
     async.waterfall tasks, (err, result) =>
       cb(err, @rc.files)
 
+  ###*
+   * Write from memory to config file.
+  ###
   save: =>
     [opts, cb] = DEFAULT.args arguments
 

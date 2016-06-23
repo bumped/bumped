@@ -62,7 +62,7 @@ process.stdout.write('\n')
 
 if (command === 'init') return commands[command]()
 
-return bumped.start(function (err) {
+return bumped.load(function (err) {
   if (err) throw err
   return commands[command]()
 })

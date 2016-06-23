@@ -20,7 +20,8 @@ module.exports =
       feature: 'minor'
       fix: 'patch'
 
-  detect: ['package.json', 'bower.json']
+  detectFileNames: ['package.json', 'bower.json']
+  fallbackFileName: 'package.json'
 
   logger:
     keyword: 'bumped'
@@ -39,6 +40,6 @@ module.exports =
   args: ->
     args = Args([
       { opts :  Args.OBJECT   | Args.Optional }
-      { cb   :  Args.FUNCTION | Args.Required               }
+      { cb   :  Args.FUNCTION | Args.Required }
     ], arguments[0])
     return [args.opts, args.cb]

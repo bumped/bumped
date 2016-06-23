@@ -13,6 +13,10 @@ module.exports = class Semver
   constructor: (bumped) ->
     @bumped = bumped
 
+  ###*
+   * Get the high project version across config files declared.
+   * @return {[type]} [description]
+  ###
   sync: =>
     [opts, cb] = DEFAULT.args arguments
     async.compose(@max, @versions) (err, max) =>
@@ -84,6 +88,9 @@ module.exports = class Semver
       force    : index is 0
     , cb
 
+  ###*
+   * Print the current synchronized version.
+  ###
   version: =>
     [opts, cb] = DEFAULT.args arguments
 
