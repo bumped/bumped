@@ -1,3 +1,19 @@
+<a name="0.9.2"></a>
+## 0.9.2 (2016-06-23)
+
+* Add autodetect fallback ([f79c56a](https://github.com/bumped/bumped/commit/f79c56a))
+* Add build docs script ([b988405](https://github.com/bumped/bumped/commit/b988405))
+* Add coverage ([c6b1b25](https://github.com/bumped/bumped/commit/c6b1b25))
+* Add plugins docs (WIP) ([7492754](https://github.com/bumped/bumped/commit/7492754))
+* Little refactor ([1c34449](https://github.com/bumped/bumped/commit/1c34449))
+* Lock dep ([36475de](https://github.com/bumped/bumped/commit/36475de))
+* Update doc ([ec9b5da](https://github.com/bumped/bumped/commit/ec9b5da))
+* Update docs ([a738501](https://github.com/bumped/bumped/commit/a738501))
+* Update docs ([b2badf8](https://github.com/bumped/bumped/commit/b2badf8))
+* chore(package): update update-notifier to version 1.0.0 ([3f6d58b](https://github.com/bumped/bumped/commit/3f6d58b))
+
+
+
 <a name="0.9.1"></a>
 ## 0.9.1 (2016-06-04)
 
