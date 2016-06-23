@@ -55,7 +55,8 @@
     "git-dirty": "latest",
     "mocha": "latest",
     "nyc": "latest",
-    "should": "latest"
+    "should": "latest",
+    "travis-after-all": "latest"
   },
   "engines": {
     "node": ">= 0.10.0"

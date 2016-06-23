@@ -6,4 +6,30 @@ node_js:
   - "0.12"
   - "0.10"
   - "iojs"
-after_success: npm run coveralls
+
+env:
+  global:
+    - GIT_NAME: Travis CI
+    - GIT_EMAIL: nobody@nobody.org
+    - GITHUB_REPO: bumped/bumped.github.io
+    - GIT_SOURCE: _docpress
+    - GIT_BRANCH: master
+
+after_success:
+  - npm run coveralls
+
+after_script:
+  - |
+      declare exitCode;
+
+      # -- [1] -------------------------------------------------------
+
+      $(npm bin)/travis-after-all
+      exitCode=$?
+
+      # -- [2] -------------------------------------------------------
+
+      if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" -a $exitCode -eq 0 ]; then
+        npm install docpress git-update-ghpages
+        ./node_modules/.bin/docpress build && ./node_modules/.bin/git-update-ghpages -e
+      fi
