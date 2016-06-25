@@ -10,3 +10,4 @@
   * [.release](/docs/commands/release.md)
 * [Plugins](/docs/plugins.md)
 * [Examples](/docs/examples.md)
+* [Changelog](/CHANGELOG.md)
