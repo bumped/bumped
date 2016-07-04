@@ -24,7 +24,7 @@ module.exports = class Animation
     process.stdout.write '\n' if @isPostRelease
 
     @logger.keyword = "#{chalk.magenta(shortcut)} #{@logger.keyword}"
-    @logger.success "Starting #{chalk.cyan(@text)}..."
+    @logger.success "Starting #{chalk.cyan(@text)}"
     cb()
 
   stop: (err, cb) ->
