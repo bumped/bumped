@@ -1,3 +1,18 @@
+<a name="0.9.3"></a>
+## 0.9.3 (2016-08-27)
+
+* Add Changelog docs ([da6b9b0](https://github.com/bumped/bumped/commit/da6b9b0))
+* Define a better plugin interface ([dc51357](https://github.com/bumped/bumped/commit/dc51357))
+* Remove dot from message ([fc2e91d](https://github.com/bumped/bumped/commit/fc2e91d))
+* chore(package): update async to version 2.0.0 ([c1576ac](https://github.com/bumped/bumped/commit/c1576ac))
+* chore(package): update exists-file to version 2.1.0 ([8a7757b](https://github.com/bumped/bumped/commit/8a7757b))
+* chore(package): update lodash.clonedeep to version 4.4.0 ([9d31fcc](https://github.com/bumped/bumped/commit/9d31fcc))
+* chore(package): update lodash.clonedeep to version 4.5.0 ([247f536](https://github.com/bumped/bumped/commit/247f536))
+* chore(package): update semver to version 5.2.0 ([1aa87a2](https://github.com/bumped/bumped/commit/1aa87a2))
+* chore(package): update semver to version 5.3.0 ([6b5c00b](https://github.com/bumped/bumped/commit/6b5c00b))
+
+
+
 <a name="0.9.2"></a>
 ## 0.9.2 (2016-06-23)
 
