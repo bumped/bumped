@@ -43,6 +43,7 @@ Plugins are executed on series. Under the words, this means:
 | [bumped-changelog](https://github.com/bumped/bumped-changelog) | Auto generates a changelog file in each bump.           |
 | [bumped-finepack](https://github.com/bumped/bumped-finepack)   | Lints your JSON Config files and keep them readables.   |
 | [bumped-http](https://github.com/bumped/bumped-http)           | Expose an HTTP Client to interact with API's endpoints. |
+| [bumped-gh-pages](https://github.com/bumped/bumped-gh-pages)   | Publishing files on GitHub Pages.                       |
 
 ## Write a plugin!
 
