@@ -1,6 +1,7 @@
 'use strict'
 
 path           = require 'path'
+omit           = require 'lodash.omit'
 async          = require 'async'
 resolveUp      = require 'resolve-up'
 spawnSync      = require 'spawn-sync'
@@ -40,10 +41,10 @@ module.exports = class Plugin
     path.resolve globalNpmPath, plugin
 
   buildOptions: (opts) ->
-    obj = clone opts
-    obj.logger = @bumped.logger
-    obj.path = @pluginPath opts.plugin
-    obj
+    opts: omit(opts, 'plugin')
+    title: opts.plugin
+    logger: @bumped.logger
+    path: @pluginPath opts.plugin
 
   exec: (opts, cb) ->
     pluginType = @[opts.type]
