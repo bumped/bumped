@@ -4,7 +4,7 @@
   <br>
   <img src="http://i.imgur.com/DmMbFwL.png" alt="bumped">
   <br>
-  Makes easy release software.
+  Make releasing software easy.
   <br>
   <br>
 </h1>
