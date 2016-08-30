@@ -1,10 +1,10 @@
 # .init
 
-It initializes a `.bumpedrdc` file in the path.
+It initializes a `.bumpedrc` file in the path.
 
-`bumped init` is a smart command that try to add common configuration files.
+`bumped init` is a smart command that tries to add common configuration files.
 
-For example, if your project have `package.json` and `bower.json` it detects and add them automagically:
+For example, if your project has `package.json` and `bower.json` it detects and adds them automagically:
 
 ```
 $ bumped init
@@ -27,6 +27,6 @@ plugins:
   postrelease: {}
 ```
 
-For synchronize the version around all the files, **Bumped** needs at least a one file with a `version` field. If is not possible detect a configuration file, the command will create a `package.json` with `version` field.
+For synchronizing the version around all the files, **Bumped** needs at least a one file with a `version` field. If it cannot detect a configuration file, the command will create a `package.json` with a `version` field.
 
-As you can see, it also initializes plugins section.
+As you can see, it also initializes the plugins section.
