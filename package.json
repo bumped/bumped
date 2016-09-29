@@ -27,7 +27,7 @@
     "version"
   ],
   "dependencies": {
-    "acho": "~3.0.0",
+    "acho": "~3.1.0",
     "args-js": "~0.10.11",
     "async": "~2.0.0",
     "chalk": "~1.1.2",
