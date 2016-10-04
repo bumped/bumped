@@ -1,7 +1,7 @@
 'use strict'
 
+ms       = require 'ms'
 chalk    = require 'chalk'
-ms       = require 'pretty-ms'
 timeSpan = require 'time-span'
 DEFAULT  = require './Bumped.default'
 MSG      = require './Bumped.messages'
