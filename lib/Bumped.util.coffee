@@ -7,6 +7,7 @@ dotProp     = require 'dot-prop'
 jsonFuture  = require 'json-future'
 parser      = require 'parse-config-file'
 parserAsync = async.asyncify parser
+serializer  = require('yaml-parser').safeDump
 
 module.exports =
 
@@ -51,8 +52,8 @@ module.exports =
 
     async.waterfall tasks, cb
 
-  saveCSON: (opts, cb) ->
-    data = require('season').stringify opts.data, null, 2
+  saveConfig: (opts, cb) ->
+    data = serializer opts.data
     fs.writeFile opts.path, data, encoding: 'utf8', cb
 
   isBoolean: (n) ->

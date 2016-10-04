@@ -8,7 +8,6 @@ jsonFuture = require 'json-future'
 util       = require './Bumped.util'
 DEFAULT    = require './Bumped.default'
 MSG        = require './Bumped.messages'
-parser     = require 'parse-config-file'
 
 module.exports = class Config
 
@@ -119,7 +118,7 @@ module.exports = class Config
   save: =>
     [opts, cb] = DEFAULT.args arguments
 
-    util.saveCSON
+    util.saveConfig
       path : ".#{@bumped.pkg.name}rc"
       data :
         files: @rc.files
