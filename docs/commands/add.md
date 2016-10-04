@@ -23,11 +23,10 @@ success	: 'component.json' has been added.
 
 If you check now the `.bumpedrc` file, the list of configuration files has been updated:
 
-```cson
-files: [
-  "package.json"
-  "component.json"
-]
+```yaml
+files:
+  - package.json
+  - component.json
 ```
 
 If you type now `bumped version`, you can check that the shared version has changed:
@@ -38,4 +37,4 @@ $ bumped version
 info	: Current version is '2.0.0'.
 ```
 
-The version is setted to 2.0.0 because it's the major version between all the configuration files.
+The version is set to `2.0.0` because it's the major version between all the configuration files.
