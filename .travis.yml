@@ -3,9 +3,6 @@ node_js:
   - "stable"
   - "5"
   - "4"
-  - "0.12"
-  - "0.10"
-  - "iojs"
 
 env:
   global:
