@@ -1,3 +1,27 @@
+<a name="0.10.0"></a>
+# 0.10.0 (2016-10-04)
+
+* Add missing dep ([55ab4ba](https://github.com/bumped/bumped/commit/55ab4ba))
+* Drop node < 0.10 node support ([2756e6c](https://github.com/bumped/bumped/commit/2756e6c))
+* Fix arguments number ([ef0366c](https://github.com/bumped/bumped/commit/ef0366c))
+* Fix tests ([559cbe4](https://github.com/bumped/bumped/commit/559cbe4))
+* Grammar ([d6b71a9](https://github.com/bumped/bumped/commit/d6b71a9))
+* Grammar for init section ([08a09ef](https://github.com/bumped/bumped/commit/08a09ef))
+* Little refactor ([8060af4](https://github.com/bumped/bumped/commit/8060af4))
+* Remove existential-default dep ([a961e79](https://github.com/bumped/bumped/commit/a961e79))
+* Serializer YAML file ([41304ff](https://github.com/bumped/bumped/commit/41304ff))
+* Smart way to generate init file ([ddc6db5](https://github.com/bumped/bumped/commit/ddc6db5))
+* Update docs using YAML by default ([5fd115e](https://github.com/bumped/bumped/commit/5fd115e))
+* Update loadConfig and initConfig ([f1325a4](https://github.com/bumped/bumped/commit/f1325a4))
+* Update plugins.md ([611edaa](https://github.com/bumped/bumped/commit/611edaa))
+* Upgrade json-future ([8cef7c6](https://github.com/bumped/bumped/commit/8cef7c6))
+* chore(package): update acho to version 3.1.0 ([47193ab](https://github.com/bumped/bumped/commit/47193ab))
+* chore(package): update coffee-script to version 1.11.0 ([9b4a696](https://github.com/bumped/bumped/commit/9b4a696))
+* chore(package): update season to version 5.4.1 ([463e668](https://github.com/bumped/bumped/commit/463e668))
+* Readme: grammar fixes ([efdc788](https://github.com/bumped/bumped/commit/efdc788))
+
+
+
 <a name="0.9.3"></a>
 ## 0.9.3 (2016-08-27)
 
