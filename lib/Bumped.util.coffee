@@ -41,7 +41,7 @@ module.exports =
       jsonFuture.saveAsync(opts.filename, file, cb)
 
   initConfig: (opts) ->
-    rc opts.appname, opts.default, parser
+    rc opts.appname, opts.default, null, parser
 
   loadConfig: (opts, cb) ->
     tasks = [
