@@ -38,7 +38,7 @@
     "fn-partial": "~0.12.12",
     "fs-extra": "~0.30.0",
     "global-modules": "~0.2.1",
-    "json-future": ">=1 <2",
+    "json-future": "~2.0.1",
     "lodash.clonedeep": "~4.5.0",
     "lodash.omit": "~4.5.0",
     "meow": "~3.7.0",
