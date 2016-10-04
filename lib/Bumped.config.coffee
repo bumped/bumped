@@ -14,7 +14,7 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @rc = require('rc') bumped.pkg.name, DEFAULT.scaffold(), CSON.parse
+    @rc = require('rc') bumped.pkg.name, DEFAULT.scaffold(), null, CSON.parse
 
   ###*
    * Special '.add' action that try to autodetect common configuration files
