@@ -4,11 +4,18 @@ Args = require 'args-js'
 
 module.exports =
 
-  scaffold: (files) ->
+  scaffold: ->
     return {
-      files: [ 'package.json']
+      files: []
       plugins:
+        prerelease: {}
+        postrelease: {}
+    }
 
+
+  plugins: (files) ->
+    return {
+      plugins:
         prerelease:
           'Linting config files':
             plugin: 'bumped-finepack'
@@ -17,7 +24,7 @@ module.exports =
             plugin: 'bumped-changelog'
           'Commiting new version':
             plugin: 'bumped-terminal'
-            command: 'git add CHANGELOG.md package.json && git commit -m "Release $newVersion"'
+            command: 'git add CHANGELOG.md ' + files.join(' ') + ' && git commit -m "Release $newVersion"'
           'Detecting problems before publish':
             plugin: 'bumped-terminal'
             command: 'git-dirty && npm test'

@@ -13,8 +13,11 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
+    @init()
+
+  init: (files) =>
     @rc = util.initConfig
-      appname: bumped.pkg.name
+      appname: @bumped.pkg.name
       default: DEFAULT.scaffold()
 
   ###*
@@ -28,16 +31,22 @@ module.exports = class Config
     tasks = [
       removePreviousConfigFile = (next) =>
         return next() unless @rc.config
-        fs.remove @rc.config, next
+
+        fs.remove @rc.config, (err) =>
+          return next err if err
+          @init()
+          next()
+
       detectCommonFiles = (next) =>
-        @rc.files =  DEFAULT.scaffold().files
-        @rc.plugins = DEFAULT.scaffold().plugins
         async.each DEFAULT.detectFileNames, (file, done) =>
           @add file:file, output:false, (err) -> done()
         , next
       fallbackUnderNotDetect = (next) =>
         return next() if @rc.files.length isnt 0
         @addFallback next
+      generateDefaultPlugins = (next) =>
+        @rc.plugins = DEFAULT.plugins @rc.files
+        next()
     ]
 
     async.waterfall tasks, cb
