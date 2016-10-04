@@ -1,3 +1,10 @@
+<a name="0.10.1"></a>
+## 0.10.1 (2016-10-04)
+
+* Update dop-prop dep ([a62ff6b](https://github.com/bumped/bumped/commit/a62ff6b))
+
+
+
 <a name="0.10.0"></a>
 # 0.10.0 (2016-10-04)
 
