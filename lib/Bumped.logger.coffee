@@ -3,8 +3,6 @@
 Acho          = require 'acho'
 DEFAULT       = require './Bumped.default'
 MSG           = require './Bumped.messages'
-# TODO: Remove, Use Object.assign instead.
-existsDefault = require 'existential-default'
 noop          = require('./Bumped.util').noop
 isArray       = require('./Bumped.util').isArray
 isBoolean     = require('./Bumped.util').isBoolean
@@ -25,8 +23,8 @@ errorHandler = (err, opts, cb) ->
     cb = opts
     opts = optsDefault
   else
-    opts = existsDefault opts, optsDefault
-    cb = existsDefault cb, noop
+    opts = Object.assign optsDefault, opts
+    cb ||= noop
 
   return cb err if @level is 'silent' or not opts.output
 
@@ -39,7 +37,7 @@ errorHandler = (err, opts, cb) ->
   cb err
 
 module.exports = (opts) ->
-  opts = existsDefault opts, DEFAULT.logger
+  opts = Object.assign DEFAULT.logger, opts
   logger = Acho opts
   logger.errorHandler = errorHandler
   logger

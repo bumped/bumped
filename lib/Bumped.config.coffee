@@ -2,7 +2,6 @@
 
 path       = require 'path'
 async      = require 'async'
-CSON       = require 'season'
 fs         = require 'fs-extra'
 existsFile = require 'exists-file'
 jsonFuture = require 'json-future'
@@ -14,7 +13,12 @@ module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @rc = require('rc') bumped.pkg.name, DEFAULT.scaffold(), null, CSON.parse
+    @init()
+
+  init: (files) =>
+    @rc = util.initConfig
+      appname: @bumped.pkg.name
+      default: DEFAULT.scaffold()
 
   ###*
    * Special '.add' action that try to autodetect common configuration files
@@ -27,16 +31,22 @@ module.exports = class Config
     tasks = [
       removePreviousConfigFile = (next) =>
         return next() unless @rc.config
-        fs.remove @rc.config, next
+
+        fs.remove @rc.config, (err) =>
+          return next err if err
+          @init()
+          next()
+
       detectCommonFiles = (next) =>
-        @rc.files =  DEFAULT.scaffold().files
-        @rc.plugins = DEFAULT.scaffold().plugins
         async.each DEFAULT.detectFileNames, (file, done) =>
           @add file:file, output:false, (err) -> done()
         , next
       fallbackUnderNotDetect = (next) =>
         return next() if @rc.files.length isnt 0
         @addFallback next
+      generateDefaultPlugins = (next) =>
+        @rc.plugins = DEFAULT.plugins @rc.files
+        next()
     ]
 
     async.waterfall tasks, cb
@@ -117,7 +127,7 @@ module.exports = class Config
   save: =>
     [opts, cb] = DEFAULT.args arguments
 
-    util.saveCSON
+    util.saveConfig
       path : ".#{@bumped.pkg.name}rc"
       data :
         files: @rc.files
@@ -127,7 +137,7 @@ module.exports = class Config
   load: =>
     [opts, cb] = DEFAULT.args arguments
 
-    util.loadCSON
+    util.loadConfig
       path: @bumped.config.rc.config
     , (err, filedata) =>
       throw err if err

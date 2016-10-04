@@ -1,9 +1,13 @@
 'use strict'
 
-CSON       = require 'season'
-fs         = require 'fs-extra'
-dotProp    = require 'dot-prop'
-jsonFuture = require 'json-future'
+rc          = require 'rc'
+async       = require 'async'
+fs          = require 'fs-extra'
+dotProp     = require 'dot-prop'
+jsonFuture  = require 'json-future'
+parser      = require 'parse-config-file'
+parserAsync = async.asyncify parser
+serializer  = require('yaml-parser').safeDump
 
 module.exports =
 
@@ -37,13 +41,19 @@ module.exports =
 
       jsonFuture.saveAsync(opts.filename, file, cb)
 
-  loadCSON: (opts, cb) ->
-    fs.readFile opts.path, encoding: 'utf8', (err, data) ->
-      return cb err if err
-      cb null, CSON.parse data
+  initConfig: (opts) ->
+    rc opts.appname, opts.default, null, parser
 
-  saveCSON: (opts, cb) ->
-    data = CSON.stringify opts.data, null, 2
+  loadConfig: (opts, cb) ->
+    tasks = [
+      (next) -> fs.readFile opts.path, encoding:'utf8', next
+      parserAsync
+    ]
+
+    async.waterfall tasks, cb
+
+  saveConfig: (opts, cb) ->
+    data = serializer opts.data
     fs.writeFile opts.path, data, encoding: 'utf8', cb
 
   isBoolean: (n) ->

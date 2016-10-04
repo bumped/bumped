@@ -13,9 +13,9 @@ In all the cases, the plugin declaration is formed by the description message of
 ```YAML
 plugins:
   prerelease:
-    'Say hello':
-      plugin: 'bumped-terminal'
-      command: 'echo Hello my friend!'
+    Say hello:
+      plugin: bumped-terminal
+      command: echo Hello my friend!
 ```
 
 The rest of information, (in this example, `command`) depends of the specific plugin used.

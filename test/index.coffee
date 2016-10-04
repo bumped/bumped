@@ -1,12 +1,15 @@
 'use strict'
 
 path       = require 'path'
-CSON       = require 'season'
 should     = require 'should'
 fs         = require 'fs-extra'
+YAML       = require 'yaml-parser'
 jsonFuture = require 'json-future'
 Bumped     = require '../lib/Bumped'
 pkg        = require '../package.json'
+
+loadConfig = (filepath) ->
+  YAML.safeLoad(filepath)
 
 loadJSON = (relativePath) ->
   jsonFuture.load path.resolve(relativePath)
@@ -37,7 +40,7 @@ describe 'Bumped ::', ->
     it 'initialize a configuration file', (done) ->
       @bumped.init ->
         config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-        config = CSON.parse config
+        config = loadConfig config
         config.files.length.should.be.equal 2
         done()
 
@@ -131,7 +134,7 @@ describe 'Bumped ::', ->
           (err?).should.be.equal false
           files.length.should.be.equal 3
           config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-          config = CSON.parse config
+          config = loadConfig config
           config.files.length.should.be.equal 3
           done()
 
@@ -155,7 +158,7 @@ describe 'Bumped ::', ->
           (err?).should.be.equal false
           @bumped.config.rc.files.length.should.be.equal 2
           config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
-          config = CSON.parse config
+          config = loadConfig config
           config.files.length.should.be.equal 2
           done()
 
@@ -178,7 +181,7 @@ describe 'Bumped ::', ->
 
     it 'exists a plugins section in the basic file scaffold', (done) ->
       config = fs.readFileSync(@bumped.config.rc.config, encoding: 'utf8')
-      config = CSON.parse config
+      config = loadConfig config
       (config.plugins?.prerelease?).should.be.equal true
       (config.plugins?.prerelease?).should.be.equal true
       done()
