@@ -2,19 +2,21 @@
 
 path       = require 'path'
 async      = require 'async'
-CSON       = require 'season'
 fs         = require 'fs-extra'
 existsFile = require 'exists-file'
 jsonFuture = require 'json-future'
 util       = require './Bumped.util'
 DEFAULT    = require './Bumped.default'
 MSG        = require './Bumped.messages'
+parser     = require 'parse-config-file'
 
 module.exports = class Config
 
   constructor: (bumped) ->
     @bumped = bumped
-    @rc = require('rc') bumped.pkg.name, DEFAULT.scaffold(), CSON.parse
+    @rc = util.initConfig
+      appname: bumped.pkg.name
+      default: DEFAULT.scaffold()
 
   ###*
    * Special '.add' action that try to autodetect common configuration files
@@ -127,7 +129,7 @@ module.exports = class Config
   load: =>
     [opts, cb] = DEFAULT.args arguments
 
-    util.loadCSON
+    util.loadConfig
       path: @bumped.config.rc.config
     , (err, filedata) =>
       throw err if err
