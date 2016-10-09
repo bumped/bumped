@@ -33,7 +33,7 @@
     "chalk": "~1.1.2",
     "coffee-script": "~1.11.0",
     "dot-prop": "~4.0.0",
-    "exists-file": "~2.1.0",
+    "exists-file": "~3.0.0",
     "fn-partial": "~0.12.12",
     "fs-extra": "~0.30.0",
     "global-modules": "~0.2.1",
