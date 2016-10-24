@@ -4,13 +4,13 @@ path           = require 'path'
 omit           = require 'lodash.omit'
 async          = require 'async'
 resolveUp      = require 'resolve-up'
-spawnSync      = require 'spawn-sync'
 globalNpmPath  = require 'global-modules'
 updateNotifier = require 'update-notifier'
 clone          = require 'lodash.clonedeep'
 MSG            = require './Bumped.messages'
 Animation      = require './Bumped.animation'
 isEmpty        = require('./Bumped.util').isEmpty
+spawnSync      = require('child_process').spawnSync
 
 npmInstallGlobal = (pkg) ->
   spawnSync 'npm', [ 'install', pkg ],
