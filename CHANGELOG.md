@@ -1,3 +1,13 @@
+<a name="0.10.2"></a>
+## 0.10.2 (2016-10-24)
+
+* Drop unnecessary dep ([e714fbb](https://github.com/bumped/bumped/commit/e714fbb))
+* Replace partial dep ([a5a9487](https://github.com/bumped/bumped/commit/a5a9487))
+* chore(package): update async to version 2.1.1 ([8c99ec9](https://github.com/bumped/bumped/commit/8c99ec9))
+* chore(package): update exists-file to version 3.0.0 ([e4a11e9](https://github.com/bumped/bumped/commit/e4a11e9))
+
+
+
 <a name="0.10.1"></a>
 ## 0.10.1 (2016-10-04)
 
