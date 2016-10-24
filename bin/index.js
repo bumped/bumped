@@ -4,7 +4,7 @@ require('coffee-script').register()
 var fs = require('fs')
 var Bumped = require('./../lib/Bumped')
 var updateNotifier = require('update-notifier')
-var partial = require('fn-partial')
+var partial = require('lodash.partial')
 var cli = require('meow')({
   pkg: '../package.json',
   help: fs.readFileSync(__dirname + '/help.txt', 'utf8')
