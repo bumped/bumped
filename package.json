@@ -59,7 +59,7 @@
     "travis-after-all": "latest"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4"
   },
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
