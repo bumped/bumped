@@ -28,10 +28,10 @@ module.exports =
           'Detecting problems before publish':
             plugin: 'bumped-terminal'
             command: 'git-dirty && npm test'
-          'Publishing tag at Github':
+          'Publishing tag to GitHub':
             plugin: 'bumped-terminal'
             command: 'git tag $newVersion && git push && git push --tags'
-          'Publishing at NPM':
+          'Publishing to NPM':
             plugin: 'bumped-terminal'
             command: 'npm publish'
     }
