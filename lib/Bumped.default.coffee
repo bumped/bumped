@@ -15,25 +15,24 @@ module.exports =
 
   plugins: (files) ->
     return {
-      plugins:
-        prerelease:
-          'Linting config files':
-            plugin: 'bumped-finepack'
-        postrelease:
-          'Generating CHANGELOG file':
-            plugin: 'bumped-changelog'
-          'Commiting new version':
-            plugin: 'bumped-terminal'
-            command: 'git add CHANGELOG.md ' + files.join(' ') + ' && git commit -m "Release $newVersion"'
-          'Detecting problems before publish':
-            plugin: 'bumped-terminal'
-            command: 'git-dirty && npm test'
-          'Publishing tag to GitHub':
-            plugin: 'bumped-terminal'
-            command: 'git tag $newVersion && git push && git push --tags'
-          'Publishing to NPM':
-            plugin: 'bumped-terminal'
-            command: 'npm publish'
+      prerelease:
+        'Linting config files':
+          plugin: 'bumped-finepack'
+      postrelease:
+        'Generating CHANGELOG file':
+          plugin: 'bumped-changelog'
+        'Commiting new version':
+          plugin: 'bumped-terminal'
+          command: 'git add CHANGELOG.md ' + files.join(' ') + ' && git commit -m "Release $newVersion"'
+        'Detecting problems before publish':
+          plugin: 'bumped-terminal'
+          command: 'git-dirty && npm test'
+        'Publishing tag to GitHub':
+          plugin: 'bumped-terminal'
+          command: 'git tag $newVersion && git push && git push --tags'
+        'Publishing to NPM':
+          plugin: 'bumped-terminal'
+          command: 'npm publish'
     }
 
   keywords:
