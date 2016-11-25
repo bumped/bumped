@@ -36,7 +36,7 @@ plugins:
     Generating CHANGELOG file:
       plugin: bumped-changelog
 
-    Commiting new version:
+    Committing new version:
       plugin: bumped-terminal
       command: git add CHANGELOG.md package.json && git commit -m "Release $newVersion"
 
