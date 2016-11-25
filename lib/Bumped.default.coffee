@@ -21,7 +21,7 @@ module.exports =
       postrelease:
         'Generating CHANGELOG file':
           plugin: 'bumped-changelog'
-        'Commiting new version':
+        'Committing new version':
           plugin: 'bumped-terminal'
           command: 'git add CHANGELOG.md ' + files.join(' ') + ' && git commit -m "Release $newVersion"'
         'Detecting problems before publish':
