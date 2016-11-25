@@ -1,3 +1,18 @@
+<a name="0.10.3"></a>
+## 0.10.3 (2016-11-25)
+
+* Change wording for npm and git plugins ([af55ac7](https://github.com/bumped/bumped/commit/af55ac7))
+* Fix case for GitHub ([14401ec](https://github.com/bumped/bumped/commit/14401ec))
+* Fix typo ([beb6a5a](https://github.com/bumped/bumped/commit/beb6a5a))
+* chore: drop support for Node.js 0.10 ([1143f55](https://github.com/bumped/bumped/commit/1143f55))
+* chore(package): update dependencies ([34a90e8](https://github.com/bumped/bumped/commit/34a90e8))
+
+
+### BREAKING CHANGE
+
+* This module no longer supports Node.js 0.10
+
+
 <a name="0.10.2"></a>
 ## 0.10.2 (2016-10-24)
 
