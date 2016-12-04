@@ -31,7 +31,7 @@
     "args-js": "~0.10.11",
     "async": "~2.1.1",
     "chalk": "~1.1.2",
-    "coffee-script": "~1.11.0",
+    "coffee-script": "~1.12.0",
     "dot-prop": "~4.1.0",
     "exists-file": "~3.0.0",
     "fs-extra": "~1.0.0",
