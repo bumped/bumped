@@ -1,8 +1,8 @@
 'use strict'
 
 path           = require 'path'
-omit           = require 'lodash.omit'
 async          = require 'async'
+omit           = require 'lodash.omit'
 resolveUp      = require 'resolve-up'
 globalNpmPath  = require 'global-modules'
 updateNotifier = require 'update-notifier'
