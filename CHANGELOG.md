@@ -1,3 +1,15 @@
+<a name="0.10.4"></a>
+## 0.10.4 (2017-01-16)
+
+* chore(package): update dependencies ([4a55c58](https://github.com/bumped/bumped/commit/4a55c58))
+* chore(package): update fs-extra to version 2.0.0 ([11ce8c3](https://github.com/bumped/bumped/commit/11ce8c3))
+* Fix typos ([586162b](https://github.com/bumped/bumped/commit/586162b))
+* Sort deps ([03f434a](https://github.com/bumped/bumped/commit/03f434a))
+* fix(package): update coffee-script to version 1.12.0 ([1e5d674](https://github.com/bumped/bumped/commit/1e5d674))
+* fix(package): update dot-prop to version 4.1.0 ([908e213](https://github.com/bumped/bumped/commit/908e213))
+
+
+
 <a name="0.10.3"></a>
 ## 0.10.3 (2016-11-25)
 
