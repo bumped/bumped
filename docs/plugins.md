@@ -47,4 +47,34 @@ Plugins are executed on series. Under the words, this means:
 
 ## Write a plugin!
 
-*SOON*
+A plugin is a simple interface for connect thid party software with bumped workflow.
+
+First need to define the API for your plugin, for example:
+
+```yaml
+Say Hello:
+  plugin: bumped-echo
+  message: 'hello world'
+```
+
+Here we are defining `bumped-echo` plugin that output a `message`.
+
+Now, write the necessary code for do the task:
+
+```js
+/**
+ * bumped-echo, print a message in your temrinal
+ * @param  {Object}   bumped
+ * @param  {Object}   plugin        
+ * @param  {Object}   plugin.opts   
+ * @param  {Object}   plugin.title  
+ * @param  {Object}   plugin.logger
+ * @param  {Object}   plugin.path
+ * @param  {Function} cb
+ */
+module.exports = function(bumped, plugin, cb) {
+  const {message} = plugin
+  console.log(message)
+  cb()
+}
+```
