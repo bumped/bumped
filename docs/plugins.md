@@ -73,7 +73,7 @@ Now, write the necessary code for do the task:
  * @param  {Function} cb
  */
 module.exports = function(bumped, plugin, cb) {
-  const {message} = plugin
+  const {message} = plugin.opts
   console.log(message)
   cb()
 }
