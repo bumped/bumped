@@ -44,7 +44,7 @@
     "parse-config-file": "~1.0.0",
     "pretty-ms": "~2.1.0",
     "rc": "~1.2.0",
-    "resolve-up": "~0.5.2",
+    "resolve-up": "~1.0.0",
     "semver": "~5.3.0",
     "time-span": "~2.0.0",
     "update-notifier": "~2.1.0",
