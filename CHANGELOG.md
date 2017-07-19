@@ -1,3 +1,32 @@
+<a name="0.10.5"></a>
+## 0.10.5 (2017-07-19)
+
+* Update homepage ([0c0c004](https://github.com/bumped/bumped/commit/0c0c004))
+* Update plugins.md ([bf3894a](https://github.com/bumped/bumped/commit/bf3894a))
+* Update plugins.md ([eddee52](https://github.com/bumped/bumped/commit/eddee52))
+* fix(package): update acho to version 3.2.0 ([de637ca](https://github.com/bumped/bumped/commit/de637ca))
+* fix(package): update async to version 2.5.0 ([27528d5](https://github.com/bumped/bumped/commit/27528d5))
+* fix(package): update chalk to version 2.0.0 ([c7dd10e](https://github.com/bumped/bumped/commit/c7dd10e))
+* fix(package): update fs-extra to version 4.0.0 ([18174d4](https://github.com/bumped/bumped/commit/18174d4))
+* fix(package): update global-modules to version 1.0.0 ([0d7323e](https://github.com/bumped/bumped/commit/0d7323e))
+* fix(package): update pretty-ms to version 3.0.0 ([549f864](https://github.com/bumped/bumped/commit/549f864))
+* fix(package): update resolve-up to version 1.0.0 ([74eee7c](https://github.com/bumped/bumped/commit/74eee7c))
+* fix(package): update update-notifier to version 2.0.0 ([864d693](https://github.com/bumped/bumped/commit/864d693))
+* fix(package): update update-notifier to version 2.2.0 ([956fc01](https://github.com/bumped/bumped/commit/956fc01))
+* chore: add yarn.lock ([ace8f31](https://github.com/bumped/bumped/commit/ace8f31))
+* chore(package): update acho to version 3.3.0 ([a845745](https://github.com/bumped/bumped/commit/a845745))
+* chore(package): update async to version 2.2.0 ([29f4ac7](https://github.com/bumped/bumped/commit/29f4ac7))
+* chore(package): update async to version 2.3.0 ([5d2c4da](https://github.com/bumped/bumped/commit/5d2c4da))
+* chore(package): update async to version 2.4.0 ([486acef](https://github.com/bumped/bumped/commit/486acef))
+* chore(package): update fs-extra to version 2.1.0 ([799d21d](https://github.com/bumped/bumped/commit/799d21d))
+* chore(package): update fs-extra to version 3.0.0 ([83ca7fe](https://github.com/bumped/bumped/commit/83ca7fe))
+* chore(package): update json-future to version 2.1.0 ([a6b7b9a](https://github.com/bumped/bumped/commit/a6b7b9a))
+* chore(package): update rc to version 1.2.0 ([698d209](https://github.com/bumped/bumped/commit/698d209))
+* chore(package): update time-span to version 2.0.0 ([aea369d](https://github.com/bumped/bumped/commit/aea369d))
+* chore(package): update update-notifier to version 2.1.0 ([1d812b8](https://github.com/bumped/bumped/commit/1d812b8))
+
+
+
 <a name="0.10.4"></a>
 ## 0.10.4 (2017-01-16)
 
