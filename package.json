@@ -32,7 +32,7 @@
     "async": "~2.5.0",
     "chalk": "~2.0.0",
     "coffee-script": "~1.12.2",
-    "dot-prop": "~4.1.0",
+    "dot-prop": "~4.2.0",
     "exists-file": "~3.0.0",
     "fs-extra": "~4.0.0",
     "global-modules": "~1.0.0",
