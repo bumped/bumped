@@ -43,7 +43,7 @@ module.exports =
       feature: 'minor'
       fix: 'patch'
 
-  detectFileNames: ['package.json', 'bower.json']
+  detectFileNames: ['package.json']
   fallbackFileName: 'package.json'
 
   logger:
@@ -52,13 +52,13 @@ module.exports =
     types:
       error:
         level : 0
-        color : 'red'
+        color : ['red']
       warn:
         level : 1
-        color : 'yellow'
+        color : ['yellow']
       success:
         level : 2
-        color : 'green'
+        color : ['green']
 
   args: ->
     args = Args([

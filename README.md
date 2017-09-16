@@ -36,8 +36,8 @@ The configuration file is divided into 3 sections:
 For example, a typical `.bumpedrc` file will have:
 
 - Before increment the project version, do a set of actions related to the integrity of the project: Run tests, lint files, check for unstaged changes, etc.
-- Increment the project version in all necessary files, for example, in `package.json` and `bower.json`.
-- After that, do actions mostly related with the publishing process: Publish a new git tag on GitHub, publish new bower/NPM project version.
+- Increment the project version in all necessary files, for example, in `package.json`.
+- After that, do actions mostly related with the publishing process: Publish a new git tag on GitHub, publish new NPM project version.
 
 Now, next time you run `bumped release <major|minor|patch>` it performs all the release steps.
 
@@ -52,7 +52,7 @@ Now, next time you run `bumped release <major|minor|patch>` it performs all the 
 - Easy to integrate it with both with your current and new projects.
 - Provides a plugin system for associate action before and after releasing your software.
 
-**Bumped** synchronizes your software version across different package manager configuration files (npm, bower,...) and controls, edits and releases each of its versions to ensure all the files have the same version.
+**Bumped** synchronizes your software version across different package manager configuration files and controls, edits and releases each of its versions to ensure all the files have the same version.
 
 Because writing software is hard enough, we must make the publishing process of software simple and effective.
 

@@ -2,9 +2,9 @@ Usage
   $ bumped <command>
 
 Commands
-  init     Initializes a new .bumpedrc file in the current directory.
-           Bumped detects configuration files as package.json or
-           bower.json by default, but you can add files with 'add' as well.
+  init     Initializes a new `.bumpedrc` file in the current directory.
+           Bumped detects configuration files such as `package.json`
+           by default, but you can add files with `add` as well.
 
   add      Add a new file in your current configuration.
            When you add a file, the shared version between the configuration

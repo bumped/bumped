@@ -41,7 +41,7 @@ describe 'Bumped ::', ->
       @bumped.init ->
         config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
         config = loadConfig config
-        config.files.length.should.be.equal 2
+        config.files.length.should.be.equal 1
         done()
 
   describe 'semver ::', ->
@@ -75,8 +75,8 @@ describe 'Bumped ::', ->
           @bumped.semver.release version:'1.0.0', (err, version) ->
             (err?).should.be.equal false
             version.should.be.equal('1.0.0')
-            bower = loadJSON('./bower.json')
-            bower.version.should.be.equal('1.0.0')
+            pkg = loadJSON('./package.json')
+            pkg.version.should.be.equal('1.0.0')
             done()
 
       describe 'semver', ->
@@ -85,7 +85,8 @@ describe 'Bumped ::', ->
           @bumped.semver.release version:'minor', (err, version) ->
             (err?).should.be.equal false
             version.should.be.equal('1.1.0')
-            loadJSON('./bower.json').version.should.be.equal('1.1.0')
+            pkg = loadJSON('./package.json')
+            pkg.version.should.be.equal('1.1.0')
             done()
 
       describe 'nature', ->
@@ -93,7 +94,8 @@ describe 'Bumped ::', ->
           @bumped.semver.release version:'fix', (err, version) ->
             (err?).should.be.equal false
             version.should.be.equal('1.1.1')
-            loadJSON('./bower.json').version.should.be.equal('1.1.1')
+            pkg = loadJSON('./package.json')
+            pkg.version.should.be.equal('1.1.1')
             done()
 
   describe 'config ::', ->
@@ -112,7 +114,7 @@ describe 'Bumped ::', ->
           file: 'package.json'
         , (err) =>
           (err?).should.be.equal true
-          @bumped.config.rc.files.length.should.be.equal 2
+          @bumped.config.rc.files.length.should.be.equal 1
           done()
 
       it 'prevent add a file that doesn\'t exist in the directory', (done) ->
@@ -121,7 +123,7 @@ describe 'Bumped ::', ->
           detect: true
         , (err) =>
           (err?).should.be.equal true
-          @bumped.config.rc.files.length.should.be.equal 2
+          @bumped.config.rc.files.length.should.be.equal 1
           done()
 
       it 'add a file that exist in the directory and then save it', (done) ->
@@ -130,12 +132,11 @@ describe 'Bumped ::', ->
           detect: true
           save: true
         , (err, files) ->
-          console.log err
           (err?).should.be.equal false
-          files.length.should.be.equal 3
+          files.length.should.be.equal 2
           config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
           config = loadConfig config
-          config.files.length.should.be.equal 3
+          config.files.length.should.be.equal 2
           done()
 
     describe 'remove ::', ->
@@ -146,7 +147,7 @@ describe 'Bumped ::', ->
           save: true
         , (err) =>
           (err?).should.be.equal true
-          @bumped.config.rc.files.length.should.be.equal 3
+          @bumped.config.rc.files.length.should.be.equal 2
           done()
 
       it 'remove a previous declared file', (done) ->
@@ -156,10 +157,10 @@ describe 'Bumped ::', ->
           save: true
         , (err) =>
           (err?).should.be.equal false
-          @bumped.config.rc.files.length.should.be.equal 2
+          @bumped.config.rc.files.length.should.be.equal 1
           config = fs.readFileSync('.bumpedrc', encoding: 'utf8')
           config = loadConfig config
-          config.files.length.should.be.equal 2
+          config.files.length.should.be.equal 1
           done()
 
     describe 'set ::', ->
@@ -171,8 +172,8 @@ describe 'Bumped ::', ->
           value: descriptionValue
         , (err) ->
           (err?).should.be.equal false
-          loadJSON('./bower.json').description.should.be.equal descriptionValue
-          loadJSON('./package.json').description.should.be.equal descriptionValue
+          pkg = loadJSON('./package.json')
+          pkg.description.should.be.equal descriptionValue
           done()
 
   describe 'plugins ::', ->

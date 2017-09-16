@@ -4,13 +4,12 @@ It initializes a `.bumpedrc` file in the path.
 
 `bumped init` is a smart command that tries to add common configuration files.
 
-For example, if your project has `package.json` and `bower.json` it detects and adds them automagically:
+For example, if your project has `package.json`, it detects and adds them automagically:
 
 ```
 $ bumped init
 
 bumped File package.json has been added.
-bumped File bower.json has been added.
 bumped Current version is 0.0.0.
 bumped Config file created!.
 ```
