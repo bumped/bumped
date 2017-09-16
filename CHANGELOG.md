@@ -1,3 +1,14 @@
+<a name="0.10.6"></a>
+## 0.10.6 (2017-09-16)
+
+* Update deps ([9c6b70f](https://github.com/bumped/bumped/commit/9c6b70f))
+* Update travis builds ([28a049d](https://github.com/bumped/bumped/commit/28a049d))
+* fix(package): update chalk to version 2.1.0 ([24bc284](https://github.com/bumped/bumped/commit/24bc284))
+* fix(package): update dot-prop to version 4.2.0 ([d511beb](https://github.com/bumped/bumped/commit/d511beb))
+* fix(package): update semver to version 5.4.0 ([bc16813](https://github.com/bumped/bumped/commit/bc16813))
+
+
+
 <a name="0.10.5"></a>
 ## 0.10.5 (2017-07-19)
 
