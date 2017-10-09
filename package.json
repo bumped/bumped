@@ -47,7 +47,7 @@
     "resolve-up": "~1.0.0",
     "semver": "~5.4.1",
     "time-span": "~2.0.0",
-    "update-notifier": "~2.2.0",
+    "update-notifier": "~2.3.0",
     "yaml-parser": "~3.5.3"
   },
   "devDependencies": {
