@@ -1,3 +1,15 @@
+<a name="0.10.7"></a>
+## 0.10.7 (2017-11-26)
+
+* Delete yarn lock ([8a2dc54](https://github.com/bumped/bumped/commit/8a2dc54))
+* fix(package): update async to version 2.6.0 ([a1be17d](https://github.com/bumped/bumped/commit/a1be17d))
+* fix(package): update chalk to version 2.2.0 ([5a5f6ae](https://github.com/bumped/bumped/commit/5a5f6ae))
+* fix(package): update meow to version 4.0.0 ([b051cea](https://github.com/bumped/bumped/commit/b051cea))
+* fix(package): update pretty-ms to version 3.1.0 ([0ab4676](https://github.com/bumped/bumped/commit/0ab4676))
+* fix(package): update update-notifier to version 2.3.0 ([e9f52b7](https://github.com/bumped/bumped/commit/e9f52b7))
+
+
+
 <a name="0.10.6"></a>
 ## 0.10.6 (2017-09-16)
 
