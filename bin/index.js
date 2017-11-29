@@ -6,7 +6,7 @@ var Bumped = require('./../lib/Bumped')
 var updateNotifier = require('update-notifier')
 var partial = require('lodash.partial')
 var cli = require('meow')({
-  pkg: '../package.json',
+  pkg: require('../package.json'),
   help: fs.readFileSync(__dirname + '/help.txt', 'utf8')
 })
 
