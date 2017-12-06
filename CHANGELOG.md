@@ -1,3 +1,10 @@
+<a name="0.10.8"></a>
+## 0.10.8 (2017-12-06)
+
+* Fix #118 ([ffacd4e](https://github.com/bumped/bumped/commit/ffacd4e)), closes [#118](https://github.com/bumped/bumped/issues/118)
+
+
+
 <a name="0.10.7"></a>
 ## 0.10.7 (2017-11-26)
 
