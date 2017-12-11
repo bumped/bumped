@@ -34,7 +34,7 @@
     "coffee-script": "~1.12.7",
     "dot-prop": "~4.2.0",
     "exists-file": "~3.0.2",
-    "fs-extra": "~4.0.2",
+    "fs-extra": "~5.0.0",
     "global-modules": "~1.0.0",
     "json-future": "~2.1.2",
     "lodash.clonedeep": "~4.5.0",
