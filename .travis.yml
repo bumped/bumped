@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - "node"
   - "lts/*"
+  - "8"
   - "6"
-  - "4"
 
 env:
   global:
