@@ -61,6 +61,11 @@
   "engines": {
     "node": ">= 4"
   },
+  "files": [
+    "bin",
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "posttest": "cp .bumpedrc_backup .bumpedrc",
