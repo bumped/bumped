@@ -99,7 +99,7 @@ module.exports = class Semver
     else
       @bumped.logger.errorHandler MSG.NOT_CURRENT_VERSION(), lineBreak:false
 
-    return cb @bumped._version
+    return cb null, @bumped._version
 
   detect: (word) ->
     return 'semver' if util.includes DEFAULT.keywords.semver, word

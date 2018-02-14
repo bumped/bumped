@@ -48,9 +48,10 @@ describe 'Bumped ::', ->
 
     describe 'version ::', ->
 
-      it 'sync correctly the version between the files', ->
-        @bumped.semver.version (version) ->
+      it 'sync correctly the version between the files', (done) ->
+        @bumped.semver.version (err, version) ->
           version.should.be.equal('0.2.0')
+          done(err)
 
     describe 'release style ::', ->
 
