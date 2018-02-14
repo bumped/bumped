@@ -1,3 +1,15 @@
+<a name="0.10.9"></a>
+## 0.10.9 (2018-02-14)
+
+* .version: Follow async interface ([d26dcfe](https://github.com/bumped/bumped/commit/d26dcfe)), closes [#124](https://github.com/bumped/bumped/issues/124)
+* Add files field ([42539c4](https://github.com/bumped/bumped/commit/42539c4))
+* Drop node 4 support ([b2d214c](https://github.com/bumped/bumped/commit/b2d214c))
+* fix(package): update chalk to version 2.3.1 ([077b04f](https://github.com/bumped/bumped/commit/077b04f))
+* fix(package): update fs-extra to version 5.0.0 ([0e45bfe](https://github.com/bumped/bumped/commit/0e45bfe))
+* fix(package): update semver to version 5.5.0 ([851a149](https://github.com/bumped/bumped/commit/851a149))
+
+
+
 <a name="0.10.8"></a>
 ## 0.10.8 (2017-12-06)
 
