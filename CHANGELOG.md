@@ -1,3 +1,15 @@
+<a name="0.10.10"></a>
+## 0.10.10 (2018-05-10)
+
+* Fix node 10 build ([b573b68](https://github.com/bumped/bumped/commit/b573b68))
+* fix(package): update chalk to version 2.4.0 ([b288293](https://github.com/bumped/bumped/commit/b288293))
+* fix(package): update fs-extra to version 6.0.0 ([adfb4d6](https://github.com/bumped/bumped/commit/adfb4d6))
+* fix(package): update meow to version 5.0.0 ([8d585a8](https://github.com/bumped/bumped/commit/8d585a8))
+* fix(package): update update-notifier to version 2.4.0 ([8b78028](https://github.com/bumped/bumped/commit/8b78028))
+* fix(package): update update-notifier to version 2.5.0 ([7368a68](https://github.com/bumped/bumped/commit/7368a68))
+
+
+
 <a name="0.10.9"></a>
 ## 0.10.9 (2018-02-14)
 
