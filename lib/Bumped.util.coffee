@@ -54,7 +54,7 @@ module.exports =
 
   saveConfig: (opts, cb) ->
     data = serializer opts.data
-    fs.writeFile opts.path, data, encoding: 'utf8', cb
+    fs.writeFile opts.path, data, encoding: 'utf8', (err) -> cb(err)
 
   isBoolean: (n) ->
     typeof n is 'boolean'
