@@ -1,3 +1,13 @@
+<a name="0.10.11"></a>
+## 0.10.11 (2018-10-11)
+
+* fix(package): update fs-extra to version 7.0.0 ([816e728](https://github.com/bumped/bumped/commit/816e728))
+* fix(package): update pretty-ms to version 3.2.0 ([25867fc](https://github.com/bumped/bumped/commit/25867fc))
+* fix(package): update pretty-ms to version 4.0.0 ([5b25478](https://github.com/bumped/bumped/commit/5b25478))
+* fix(package): update semver to version 5.6.0 ([b389f67](https://github.com/bumped/bumped/commit/b389f67))
+
+
+
 <a name="0.10.10"></a>
 ## 0.10.10 (2018-05-10)
 
