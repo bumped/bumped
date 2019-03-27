@@ -1,3 +1,11 @@
+<a name="0.10.12"></a>
+## 0.10.12 (2019-03-27)
+
+* Migrate coffeescript ([3191d78](https://github.com/bumped/bumped/commit/3191d78))
+* fix(package): update global-modules to version 2.0.0 ([80a28a0](https://github.com/bumped/bumped/commit/80a28a0))
+
+
+
 <a name="0.10.11"></a>
 ## 0.10.11 (2018-10-11)
 
