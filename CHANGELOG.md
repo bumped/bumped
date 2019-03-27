@@ -1,3 +1,11 @@
+<a name="0.10.13"></a>
+## 0.10.13 (2019-03-27)
+
+* Migrate coffeescript ([ede93d8](https://github.com/bumped/bumped/commit/ede93d8))
+* update dependencies ([bd1d088](https://github.com/bumped/bumped/commit/bd1d088))
+
+
+
 <a name="0.10.12"></a>
 ## 0.10.12 (2019-03-27)
 
