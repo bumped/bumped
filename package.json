@@ -46,7 +46,7 @@
     "rc": "~1.2.8",
     "resolve-up": "~1.0.0",
     "semver": "~6.0.0",
-    "time-span": "~3.0.0",
+    "time-span": "~3.1.0",
     "update-notifier": "~2.5.0",
     "yaml-parser": "~3.5.3"
   },
