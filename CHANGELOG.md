@@ -1,3 +1,19 @@
+<a name="0.11.0"></a>
+# 0.11.0 (2019-05-23)
+
+* Drop node 6 support ([3da1c0f](https://github.com/bumped/bumped/commit/3da1c0f))
+* Setup node 8 or above ([ed23816](https://github.com/bumped/bumped/commit/ed23816))
+* Update package.json ([8946e55](https://github.com/bumped/bumped/commit/8946e55))
+* fix(package): update coffeescript to version 2.4.0 ([7de7930](https://github.com/bumped/bumped/commit/7de7930))
+* fix(package): update dot-prop to version 5.0.0 ([21e64b5](https://github.com/bumped/bumped/commit/21e64b5))
+* fix(package): update fs-extra to version 8.0.0 ([c7e1531](https://github.com/bumped/bumped/commit/c7e1531))
+* fix(package): update pretty-ms to version 5.0.0 ([b54e0b3](https://github.com/bumped/bumped/commit/b54e0b3))
+* fix(package): update semver to version 6.1.0 ([b2bf244](https://github.com/bumped/bumped/commit/b2bf244))
+* fix(package): update time-span to version 3.1.0 ([c3d972e](https://github.com/bumped/bumped/commit/c3d972e))
+* fix(package): update update-notifier to version 2.6.0 ([737a680](https://github.com/bumped/bumped/commit/737a680))
+
+
+
 <a name="0.10.13"></a>
 ## 0.10.13 (2019-03-27)
 
