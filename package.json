@@ -29,7 +29,7 @@
   "dependencies": {
     "acho": "~4.0.4",
     "args-js": "~0.10.12",
-    "async": "~2.6.2",
+    "async": "~3.0.1",
     "chalk": "~2.4.2",
     "coffeescript": "~2.4.0",
     "dot-prop": "~5.0.0",
