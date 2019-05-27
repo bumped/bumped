@@ -36,7 +36,7 @@
     "exists-file": "~3.0.2",
     "fs-extra": "~8.0.0",
     "global-modules": "~2.0.0",
-    "json-future": "~2.1.4",
+    "json-future": "~2.2.0",
     "lodash.clonedeep": "~4.5.0",
     "lodash.omit": "~4.5.0",
     "lodash.partial": "~4.2.1",
