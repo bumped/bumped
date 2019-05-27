@@ -1,3 +1,10 @@
+<a name="0.12.0"></a>
+# 0.12.0 (2019-05-27)
+
+* fix(package): update async to version 3.0.1 ([fc02bbe](https://github.com/bumped/bumped/commit/fc02bbe))
+
+
+
 <a name="0.11.0"></a>
 # 0.11.0 (2019-05-23)
 
