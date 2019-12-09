@@ -1,3 +1,20 @@
+<a name="0.12.1"></a>
+## 0.12.1 (2019-12-09)
+
+* build: update dependencies ([9175cb3](https://github.com/bumped/bumped/commit/9175cb3))
+* fix(package): update async to version 3.1.0 ([39622a9](https://github.com/bumped/bumped/commit/39622a9))
+* fix(package): update chalk to version 3.0.0 ([918efa0](https://github.com/bumped/bumped/commit/918efa0))
+* fix(package): update dot-prop to version 5.1.0 ([3767fa6](https://github.com/bumped/bumped/commit/3767fa6))
+* fix(package): update dot-prop to version 5.2.0 ([c2a004f](https://github.com/bumped/bumped/commit/c2a004f))
+* fix(package): update fs-extra to version 8.1.0 ([744f216](https://github.com/bumped/bumped/commit/744f216))
+* fix(package): update json-future to version 2.2.0 ([1579c7e](https://github.com/bumped/bumped/commit/1579c7e))
+* fix(package): update meow to version 6.0.0 ([85b9ae3](https://github.com/bumped/bumped/commit/85b9ae3))
+* fix(package): update pretty-ms to version 5.1.0 ([5c3fef7](https://github.com/bumped/bumped/commit/5c3fef7))
+* fix(package): update semver to version 6.2.0 ([31cb216](https://github.com/bumped/bumped/commit/31cb216))
+* fix(package): update semver to version 6.3.0 ([7385adf](https://github.com/bumped/bumped/commit/7385adf))
+
+
+
 <a name="0.12.0"></a>
 # 0.12.0 (2019-05-27)
 
