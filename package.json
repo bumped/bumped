@@ -31,12 +31,12 @@
     "args-js": "~0.10.12",
     "async": "~3.1.0",
     "chalk": "~3.0.0",
-    "coffeescript": "~2.4.0",
+    "coffeescript": "~2.4.1",
     "dot-prop": "~5.2.0",
     "exists-file": "~3.0.2",
     "fs-extra": "~8.1.0",
     "global-modules": "~2.0.0",
-    "json-future": "~2.2.0",
+    "json-future": "~2.2.4",
     "lodash.clonedeep": "~4.5.0",
     "lodash.omit": "~4.5.0",
     "lodash.partial": "~4.2.1",
@@ -47,7 +47,7 @@
     "resolve-up": "~1.0.0",
     "semver": "~6.3.0",
     "time-span": "~3.1.0",
-    "update-notifier": "~3.0.0",
+    "update-notifier": "~3.0.1",
     "yaml-parser": "~3.5.3"
   },
   "devDependencies": {
