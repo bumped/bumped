@@ -1,3 +1,16 @@
+## 0.13.0 (2020-02-14)
+
+* fix(package): update coffeescript to version 2.5.0 ([88fe5ff](https://github.com/bumped/bumped/commit/88fe5ff))
+* fix(package): update coffeescript to version 2.5.1 ([180e6d4](https://github.com/bumped/bumped/commit/180e6d4))
+* fix(package): update pretty-ms to version 6.0.0 ([7a547ef](https://github.com/bumped/bumped/commit/7a547ef))
+* fix(package): update semver to version 7.0.0 ([bd97ecd](https://github.com/bumped/bumped/commit/bd97ecd))
+* fix(package): update update-notifier to version 4.0.0 ([8c9fe2e](https://github.com/bumped/bumped/commit/8c9fe2e))
+* fix(package): update update-notifier to version 4.1.0 ([59ed228](https://github.com/bumped/bumped/commit/59ed228))
+* Bump semver from 7.0.0 to 7.1.0 ([338ce15](https://github.com/bumped/bumped/commit/338ce15))
+* Bump update-notifier from 3.0.1 to 4.0.0 ([93cbdad](https://github.com/bumped/bumped/commit/93cbdad))
+
+
+
 ## <small>0.12.2 (2019-12-09)</small>
 
 
