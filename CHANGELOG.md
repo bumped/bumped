@@ -1,3 +1,12 @@
+## <small>0.13.1 (2020-04-02)</small>
+
+* build: update dependencies ([c766b9b](https://github.com/bumped/bumped/commit/c766b9b))
+* Bump async from 3.1.1 to 3.2.0 ([103254c](https://github.com/bumped/bumped/commit/103254c))
+* Bump meow from 6.0.1 to 6.1.0 ([9aa2d96](https://github.com/bumped/bumped/commit/9aa2d96))
+* Bump time-span from 3.1.0 to 4.0.0 ([bd08a3c](https://github.com/bumped/bumped/commit/bd08a3c))
+
+
+
 ## 0.13.0 (2020-02-14)
 
 * fix(package): update coffeescript to version 2.5.0 ([88fe5ff](https://github.com/bumped/bumped/commit/88fe5ff))
