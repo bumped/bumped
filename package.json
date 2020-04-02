@@ -30,7 +30,7 @@
     "acho": "~4.0.4",
     "args-js": "~0.10.12",
     "async": "~3.2.0",
-    "chalk": "~3.0.0",
+    "chalk": "~4.0.0",
     "coffeescript": "~2.5.1",
     "dot-prop": "~5.2.0",
     "exists-file": "~3.0.2",
