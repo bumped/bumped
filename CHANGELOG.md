@@ -1,3 +1,9 @@
+## <small>0.13.2 (2020-04-07)</small>
+
+* Bump semver from 7.1.3 to 7.2.1 ([df27c91](https://github.com/bumped/bumped/commit/df27c91))
+
+
+
 ## <small>0.13.1 (2020-04-02)</small>
 
 * build: update dependencies ([c766b9b](https://github.com/bumped/bumped/commit/c766b9b))
