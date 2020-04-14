@@ -1,3 +1,10 @@
+## <small>0.13.3 (2020-04-14)</small>
+
+* Bump semver from 7.2.3 to 7.3.0 ([84a7d32](https://github.com/bumped/bumped/commit/84a7d32))
+* ci: drop node8 support ([8e61151](https://github.com/bumped/bumped/commit/8e61151))
+
+
+
 ## <small>0.13.2 (2020-04-07)</small>
 
 * Bump semver from 7.1.3 to 7.2.1 ([df27c91](https://github.com/bumped/bumped/commit/df27c91))
