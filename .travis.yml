@@ -1,31 +1,29 @@
 language: node_js
+
 node_js:
-  - "node"
-  - "lts/*"
+  - lts/*
+  - node
 
-env:
-  global:
-    - GIT_NAME: Travis CI
-    - GIT_EMAIL: nobody@nobody.org
-    - GITHUB_REPO: bumped/bumped.github.io
-    - GIT_SOURCE: _docpress
-    - GIT_BRANCH: master
+after_success: npm run coverage
 
-after_success:
-  - npm run coveralls
+stages:
+  - Test
+  - name: Release
+    if: branch = master AND commit_message !~ /(release|no-release)/
 
-after_script:
-  - |
-      declare exitCode;
-
-      # -- [1] -------------------------------------------------------
-
-      $(npm bin)/travis-after-all
-      exitCode=$?
-
-      # -- [2] -------------------------------------------------------
-
-      if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" -a $exitCode -eq 0 ]; then
-        npm install docpress git-update-ghpages
-        ./node_modules/.bin/docpress build && ./node_modules/.bin/git-update-ghpages -e
-      fi
+jobs:
+  include:
+    - stage: Release
+      node_js: lts/*
+      install: npm install --no-package-lock
+      before_deploy:
+        - git config user.email ${GITHUB_EMAIL:-"travis@travis-ci.org"}
+        - git config user.name ${GITHUB_USER:-"Travis CI"}
+        - git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
+        - git checkout master
+      deploy:
+        skip_cleanup: true
+        provider: script
+        script: npm run release
+        on:
+          branch: master

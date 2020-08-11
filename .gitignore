@@ -33,3 +33,4 @@ test/sample_directory
 # Other
 ############################
 .node_history
+.envrc
