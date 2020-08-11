@@ -70,7 +70,15 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "posttest": "cp .bumpedrc_backup .bumpedrc",
     "pretest": "rm .bumpedrc || exit 0",
-    "test": "nyc --extension .coffee mocha test/index.coffee"
+    "test": "nyc --extension .coffee mocha test/*.coffee"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "mocha": {
+    "bail": true,
+    "reporter": "spec",
+    "require": [
+      "coffeescript/register",
+      "should"
+    ]
+  }
 }
