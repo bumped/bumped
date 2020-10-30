@@ -12,6 +12,24 @@
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
+  "contributors": [
+    {
+      "name": "Ilya Radchenko",
+      "email": "ilya@burstcreations.com"
+    },
+    {
+      "name": "Filip Dupanović",
+      "email": "filip.dupanovic@gmail.com"
+    },
+    {
+      "name": "Kornel Dubieniecki",
+      "email": "lekterable@gmail.com"
+    },
+    {
+      "name": "Elena Torro",
+      "email": "elenatorro@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bumped/bumped.git"
