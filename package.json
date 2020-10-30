@@ -40,9 +40,9 @@
     "lodash.clonedeep": "~4.5.0",
     "lodash.omit": "~4.5.0",
     "lodash.partial": "~4.2.1",
-    "meow": "~7.1.0",
+    "meow": "~8.0.0",
     "parse-config-file": "~1.0.4",
-    "pretty-ms": "~7.0.0",
+    "pretty-ms": "~7.0.1",
     "rc": "~1.2.8",
     "resolve-up": "~1.0.0",
     "semver": "~7.3.2",
@@ -51,22 +51,22 @@
     "yaml-parser": "~3.5.3"
   },
   "devDependencies": {
-    "coveralls": "latest",
-    "git-dirty": "latest",
-    "mocha": "latest",
-    "nyc": "latest",
-    "should": "latest",
-    "travis-after-all": "latest",
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ci-publish": "latest",
     "conventional-github-releaser": "latest",
+    "coveralls": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
+    "git-dirty": "latest",
     "husky": "latest",
     "lint-staged": "latest",
+    "mocha": "latest",
     "npm-check-updates": "latest",
-    "standard-version": "latest"
+    "nyc": "latest",
+    "should": "latest",
+    "standard-version": "latest",
+    "travis-after-all": "latest"
   },
   "engines": {
     "node": ">= 8"
@@ -77,28 +77,20 @@
     "lib"
   ],
   "scripts": {
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "posttest": "cp .bumpedrc_backup .bumpedrc",
-    "pretest": "rm .bumpedrc || exit 0",
-    "test": "nyc --extension .coffee mocha test/*.coffee",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "postrelease": "npm run release:tags && npm run release:github && ci-publish",
+    "posttest": "cp .bumpedrc_backup .bumpedrc",
     "prerelease": "npm run update:check && npm run contributors",
+    "pretest": "rm .bumpedrc || exit 0",
+    "release": "standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
-    "release": "standard-version -a",
-    "update:check": "ncu -- --error-level 2",
-    "update": "ncu -u"
+    "test": "nyc --extension .coffee mocha test/*.coffee",
+    "update": "ncu -u",
+    "update:check": "ncu -- --error-level 2"
   },
   "license": "MIT",
-  "mocha": {
-    "bail": true,
-    "reporter": "spec",
-    "require": [
-      "coffeescript/register",
-      "should"
-    ]
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -113,6 +105,14 @@
   "lint-staged": {
     "package.json": [
       "finepack"
+    ]
+  },
+  "mocha": {
+    "bail": true,
+    "reporter": "spec",
+    "require": [
+      "coffeescript/register",
+      "should"
     ]
   }
 }
