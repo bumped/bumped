@@ -1,24 +1,75 @@
-## <small>0.13.3 (2020-04-14)</small>
+# Changelog
 
-* Bump semver from 7.2.3 to 7.3.0 ([84a7d32](https://github.com/bumped/bumped/commit/84a7d32))
-* ci: drop node8 support ([8e61151](https://github.com/bumped/bumped/commit/8e61151))
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-
-
-## <small>0.13.2 (2020-04-07)</small>
-
-* Bump semver from 7.1.3 to 7.2.1 ([df27c91](https://github.com/bumped/bumped/commit/df27c91))
+## 0.14.0 (2020-10-30)
 
 
+### ⚠ BREAKING CHANGES
 
-## <small>0.13.1 (2020-04-02)</small>
+* This module no longer supports Node.js 0.10
 
-* build: update dependencies ([c766b9b](https://github.com/bumped/bumped/commit/c766b9b))
-* Bump async from 3.1.1 to 3.2.0 ([103254c](https://github.com/bumped/bumped/commit/103254c))
-* Bump meow from 6.0.1 to 6.1.0 ([9aa2d96](https://github.com/bumped/bumped/commit/9aa2d96))
-* Bump time-span from 3.1.0 to 4.0.0 ([bd08a3c](https://github.com/bumped/bumped/commit/bd08a3c))
+### Bug Fixes
+
+* **package:** update acho to version 3.2.0 ([de637ca](https://github.com/bumped/bumped/commit/de637ca2c18d9fc96fd0fea62c32657ab491457a))
+* **package:** update async to version 2.5.0 ([27528d5](https://github.com/bumped/bumped/commit/27528d5b94afa6a8ef137b6efd121e7d1790eca5))
+* **package:** update async to version 2.6.0 ([a1be17d](https://github.com/bumped/bumped/commit/a1be17df9c4a00f16d8bfb0668c8238226e2e0f1))
+* **package:** update async to version 3.0.1 ([fc02bbe](https://github.com/bumped/bumped/commit/fc02bbe08fd7c67c96577074f5e56ff009f8bc84))
+* **package:** update async to version 3.1.0 ([39622a9](https://github.com/bumped/bumped/commit/39622a9c4e2c8d167751993961c899d10653a8f6))
+* **package:** update chalk to version 2.0.0 ([c7dd10e](https://github.com/bumped/bumped/commit/c7dd10e0072b4ef306567b2a62ccae020d1dde65))
+* **package:** update chalk to version 2.1.0 ([24bc284](https://github.com/bumped/bumped/commit/24bc284da394b65409f5617d38fe42d204b80998))
+* **package:** update chalk to version 2.2.0 ([5a5f6ae](https://github.com/bumped/bumped/commit/5a5f6ae8d7550ff9ed12b85982cce2070711a98f))
+* **package:** update chalk to version 2.3.1 ([077b04f](https://github.com/bumped/bumped/commit/077b04f1b13ed7cbc11546c98a83f21f5fe61aa1))
+* **package:** update chalk to version 2.4.0 ([b288293](https://github.com/bumped/bumped/commit/b2882936e9ac7a27e77dab6b7ed8cd4bca0eb1df))
+* **package:** update chalk to version 3.0.0 ([918efa0](https://github.com/bumped/bumped/commit/918efa019ed27eedfeb08ee5ff5876f4320844d8))
+* **package:** update coffee-script to version 1.12.0 ([1e5d674](https://github.com/bumped/bumped/commit/1e5d67430a58893bfcd9e1ba3061ff279181f349))
+* **package:** update coffeescript to version 2.4.0 ([7de7930](https://github.com/bumped/bumped/commit/7de7930dcf7a05440fadd35e3cf7a9a08f7e4245))
+* **package:** update coffeescript to version 2.5.0 ([88fe5ff](https://github.com/bumped/bumped/commit/88fe5ff4e3506d389b28429834d8cfe74d805ca5))
+* **package:** update coffeescript to version 2.5.1 ([180e6d4](https://github.com/bumped/bumped/commit/180e6d4a5eefa791e97aadbf122de924587187cf))
+* **package:** update dot-prop to version 4.1.0 ([908e213](https://github.com/bumped/bumped/commit/908e213c40cf9b8c65f9d6428998f62a752a628d))
+* **package:** update dot-prop to version 4.2.0 ([d511beb](https://github.com/bumped/bumped/commit/d511beb2999fd67cd6b236be674b2d05872192b0))
+* **package:** update dot-prop to version 5.0.0 ([21e64b5](https://github.com/bumped/bumped/commit/21e64b560549a5674014cee64aaeb779be72c956))
+* **package:** update dot-prop to version 5.1.0 ([3767fa6](https://github.com/bumped/bumped/commit/3767fa6eabc9e910db2b78f56bd30648b1d45e30))
+* **package:** update dot-prop to version 5.2.0 ([c2a004f](https://github.com/bumped/bumped/commit/c2a004f0d0b0f134b29cd3fa207dfdba5bd3b5b7))
+* **package:** update fs-extra to version 4.0.0 ([18174d4](https://github.com/bumped/bumped/commit/18174d4646d31a3f08008d59aeb2aa990877423d))
+* **package:** update fs-extra to version 5.0.0 ([0e45bfe](https://github.com/bumped/bumped/commit/0e45bfe4d9952326183db35d8ef61284ae12728e))
+* **package:** update fs-extra to version 6.0.0 ([adfb4d6](https://github.com/bumped/bumped/commit/adfb4d6a8b08d9f4dbddf48e9785a398a1428340))
+* **package:** update fs-extra to version 7.0.0 ([816e728](https://github.com/bumped/bumped/commit/816e728cafdc68115e8ddc8387baa4e4440a9474))
+* **package:** update fs-extra to version 8.0.0 ([c7e1531](https://github.com/bumped/bumped/commit/c7e1531ab8a7981dfe538816a227fc955192bc22))
+* **package:** update fs-extra to version 8.1.0 ([744f216](https://github.com/bumped/bumped/commit/744f2164dd2892c73c04497086908dc164b0198b))
+* **package:** update global-modules to version 1.0.0 ([0d7323e](https://github.com/bumped/bumped/commit/0d7323ea43678075f77030b48ec7cc5af0e6959e))
+* **package:** update global-modules to version 2.0.0 ([80a28a0](https://github.com/bumped/bumped/commit/80a28a0eb8104ff7f335d37c5e3010dbc93d5731))
+* **package:** update json-future to version 2.2.0 ([1579c7e](https://github.com/bumped/bumped/commit/1579c7e2da2d0b821c3e5cb0686a352e5b821bf4))
+* **package:** update meow to version 4.0.0 ([b051cea](https://github.com/bumped/bumped/commit/b051cea3e68b047d315133975f96ff7bb7171602))
+* **package:** update meow to version 5.0.0 ([8d585a8](https://github.com/bumped/bumped/commit/8d585a849b004dfbf72455a810fa0f431ec941c6))
+* **package:** update meow to version 6.0.0 ([85b9ae3](https://github.com/bumped/bumped/commit/85b9ae342db82fe9fd65c79fbb4da1359faa0fcc))
+* **package:** update pretty-ms to version 3.0.0 ([549f864](https://github.com/bumped/bumped/commit/549f8643bdba7570ba8fb5b790f7209faf1f9021))
+* **package:** update pretty-ms to version 3.1.0 ([0ab4676](https://github.com/bumped/bumped/commit/0ab467678569663560796cc339ecd3ea66e115f7))
+* **package:** update pretty-ms to version 3.2.0 ([25867fc](https://github.com/bumped/bumped/commit/25867fc788bb2eb617280d59b1afe7964dfadf1e))
+* **package:** update pretty-ms to version 4.0.0 ([5b25478](https://github.com/bumped/bumped/commit/5b254785d5a7bc0910e02cc9e85a7661691bc694))
+* **package:** update pretty-ms to version 5.0.0 ([b54e0b3](https://github.com/bumped/bumped/commit/b54e0b3b89c7c35bcc48bfc97bbe1a93801a23dc))
+* **package:** update pretty-ms to version 5.1.0 ([5c3fef7](https://github.com/bumped/bumped/commit/5c3fef7bce3b88519c22789222ddc2231374a62e))
+* **package:** update pretty-ms to version 6.0.0 ([7a547ef](https://github.com/bumped/bumped/commit/7a547ef3720519167178441da37e6d832cac0760))
+* **package:** update resolve-up to version 1.0.0 ([74eee7c](https://github.com/bumped/bumped/commit/74eee7c29f14f6727efee162e3a75474b148fb4f))
+* **package:** update semver to version 5.4.0 ([bc16813](https://github.com/bumped/bumped/commit/bc16813e928e163f5260f8723f59ce7ea7bd7424))
+* **package:** update semver to version 5.5.0 ([851a149](https://github.com/bumped/bumped/commit/851a1496740ef8bbd7ccc7f69a9ea42ccd731a2b))
+* **package:** update semver to version 5.6.0 ([b389f67](https://github.com/bumped/bumped/commit/b389f67a699bbed42d7b003e21fdae41fb530777))
+* **package:** update semver to version 6.1.0 ([b2bf244](https://github.com/bumped/bumped/commit/b2bf2444716a781d7ebabe4a7f4de7d7608a3233))
+* **package:** update semver to version 6.2.0 ([31cb216](https://github.com/bumped/bumped/commit/31cb216750dbea7a64abbbfe8dfa36bbdbe7c45c))
+* **package:** update semver to version 6.3.0 ([7385adf](https://github.com/bumped/bumped/commit/7385adf4494ebcf51824f340beaebe8aa0ea135b))
+* **package:** update semver to version 7.0.0 ([bd97ecd](https://github.com/bumped/bumped/commit/bd97ecdd7209f11587e5a298c53934883f974fc4))
+* **package:** update time-span to version 3.1.0 ([c3d972e](https://github.com/bumped/bumped/commit/c3d972ee0a2ec884d00055e0333799d68bfbf6b4))
+* **package:** update update-notifier to version 2.0.0 ([864d693](https://github.com/bumped/bumped/commit/864d693d4284ab2e817f82822284cc8e82fba9c9))
+* **package:** update update-notifier to version 2.2.0 ([956fc01](https://github.com/bumped/bumped/commit/956fc01c4e2c052621e5141a9e7d93d4defc5549))
+* **package:** update update-notifier to version 2.3.0 ([e9f52b7](https://github.com/bumped/bumped/commit/e9f52b77b453eaffd01ae7140ca8d52367b49ae8))
+* **package:** update update-notifier to version 2.4.0 ([8b78028](https://github.com/bumped/bumped/commit/8b78028a1070eb1457cdd7e8915144fd34600b3d))
+* **package:** update update-notifier to version 2.5.0 ([7368a68](https://github.com/bumped/bumped/commit/7368a684be36a0f031148a62365fa8a53e1f97aa))
+* **package:** update update-notifier to version 2.6.0 ([737a680](https://github.com/bumped/bumped/commit/737a6802e4cbfe6ef74d4824da8772c85d704476))
+* **package:** update update-notifier to version 4.0.0 ([8c9fe2e](https://github.com/bumped/bumped/commit/8c9fe2eef23f8f28eaf4a58736638811f7b6792d))
+* **package:** update update-notifier to version 4.1.0 ([59ed228](https://github.com/bumped/bumped/commit/59ed2284f94c94c3a227318332d62dc58325defa))
 
 
+* drop support for Node.js 0.10 ([1143f55](https://github.com/bumped/bumped/commit/1143f55a3d1ae23102aef306be9b111af0cebc98))
 
 ## 0.13.0 (2020-02-14)
 
@@ -689,6 +740,3 @@
 * updated ([a6850ac](https://github.com/bumped/bumped/commit/a6850ac))
 * updated ([d6e7734](https://github.com/bumped/bumped/commit/d6e7734))
 * use rc namespace instead of config ([df49d4a](https://github.com/bumped/bumped/commit/df49d4a))
-
-
-
