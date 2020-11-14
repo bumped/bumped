@@ -63,7 +63,7 @@ Now, write the necessary code for do the task:
 
 ```js
 /**
- * bumped-echo, print a message in your temrinal
+ * bumped-echo, print a message in your terminal
  * @param  {Object}   bumped
  * @param  {Object}   plugin        
  * @param  {Object}   plugin.opts   
