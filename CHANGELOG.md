@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.2](https://github.com/bumped/bumped/compare/v0.14.1...v0.14.2) (2021-02-01)
+
 ### [0.14.1](https://github.com/bumped/bumped/compare/v0.14.0...v0.14.1) (2021-01-10)
 
 ## 0.14.0 (2020-10-30)
