@@ -7,8 +7,9 @@ after_success: npm run coverage
 
 stages:
   - Test
+    if: branch = master AND commit_message !~ /(docs|release|no-release)/
   - name: Release
-    if: branch = master AND commit_message !~ /(release|no-release)/
+    if: branch = master AND commit_message !~ /(docs|release|no-release)/
 
 jobs:
   include:

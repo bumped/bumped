@@ -97,7 +97,7 @@
   "scripts": {
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "postrelease": "npm run release:tags && npm run release:github && ci-publish",
+    "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
     "posttest": "cp .bumpedrc_backup .bumpedrc",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "rm .bumpedrc || exit 0",
