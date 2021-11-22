@@ -58,7 +58,7 @@
     "lodash.clonedeep": "~4.5.0",
     "lodash.omit": "~4.5.0",
     "lodash.partial": "~4.2.1",
-    "meow": "~9.0.0",
+    "meow": "~10.1.2",
     "parse-config-file": "~1.0.4",
     "pretty-ms": "~7.0.1",
     "rc": "~1.2.8",
