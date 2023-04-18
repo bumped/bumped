@@ -63,7 +63,7 @@
     "pretty-ms": "~7.0.1",
     "rc": "~1.2.8",
     "resolve-up": "~1.0.0",
-    "semver": "~7.4.0",
+    "semver": "~7.5.0",
     "time-span": "~4.0.0",
     "update-notifier": "~5.1.0",
     "yaml-parser": "~3.5.3"
